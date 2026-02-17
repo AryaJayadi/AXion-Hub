@@ -1,0 +1,10 @@
+node_modules
+.next
+.git
+.planning
+.storybook
+storybook-static
+.env.local
+.env*.local
+*.md
+.claude
