@@ -74,15 +74,15 @@ Plans:
   3. User can edit an agent's identity files (SOUL.md, IDENTITY.md, USER.md, AGENTS.md) with a Markdown editor at /agents/[agentId]/identity
   4. User can navigate every agent sub-page (sessions, memory, skills, tools, sandbox, channels, logs, metrics) and see relevant data populated from the gateway
   5. Agent detail at /agents/[agentId] shows current status, model, context usage, uptime, and current task in a unified overview
-**Plans**: TBD
+**Plans**: 6 plans in 3 waves
 
 Plans:
-- [ ] 03-01: Agent roster page (grid/list view, status badges, search/filter) and Zustand agent store
-- [ ] 03-02: Agent detail overview page, agent creation form, and agent templates
-- [ ] 03-03: Agent identity editor (Markdown editor for SOUL.md, IDENTITY.md, USER.md, AGENTS.md)
-- [ ] 03-04: Agent sessions view with token counts and agent memory viewer/editor
-- [ ] 03-05: Agent skills management, tool allow/deny configuration, sandbox config
-- [ ] 03-06: Agent channel routing view, activity logs, and metrics dashboard
+- [ ] 03-01-PLAN.md -- Agent entity model, Zustand store, TanStack Query hooks, and roster page with card grid, status glow, search/filter (Wave 1)
+- [ ] 03-02-PLAN.md -- Agent detail layout with persistent sidebar navigation and overview dashboard page (Wave 2)
+- [ ] 03-03-PLAN.md -- Multi-step agent creation wizard and template gallery (Wave 2)
+- [ ] 03-04-PLAN.md -- Identity editor with split-pane Markdown, file sidebar, and auto-save (Wave 3)
+- [ ] 03-05-PLAN.md -- Agent sessions data table and memory browser/editor (Wave 3)
+- [ ] 03-06-PLAN.md -- Skills, tools, sandbox, channels, logs, and metrics sub-pages (Wave 3)
 
 ### Phase 4: Real-Time Chat
 **Goal**: Users can converse with any agent in real time with streaming responses, see tool calls as they happen, and manage multiple concurrent conversations
@@ -225,7 +225,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4/5/6/7 (partially parallel afte
 |-------|----------------|--------|-----------|
 | 1. Foundation & Infrastructure | 0/7 | Not started | - |
 | 2. Authentication & App Shell | 0/4 | Planned | - |
-| 3. Agent Management | 0/6 | Not started | - |
+| 3. Agent Management | 0/6 | Planned | - |
 | 4. Real-Time Chat | 0/4 | Not started | - |
 | 5. Dashboard & Monitoring | 0/4 | Not started | - |
 | 6. Mission Board | 0/4 | Not started | - |
