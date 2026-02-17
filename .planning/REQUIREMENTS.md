@@ -204,13 +204,127 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| (populated during roadmap creation) | | |
+| INFR-01 | Phase 1 | Pending |
+| INFR-02 | Phase 1 | Pending |
+| INFR-03 | Phase 1 | Pending |
+| INFR-04 | Phase 1 | Pending |
+| INFR-05 | Phase 1 | Pending |
+| INFR-06 | Phase 1 | Pending |
+| INFR-07 | Phase 1 | Pending |
+| INFR-08 | Phase 1 | Pending |
+| INFR-09 | Phase 1 | Pending |
+| INFR-10 | Phase 1 | Pending |
+| INFR-11 | Phase 1 | Pending |
+| AUTH-01 | Phase 2 | Pending |
+| AUTH-02 | Phase 2 | Pending |
+| AUTH-03 | Phase 2 | Pending |
+| AUTH-04 | Phase 2 | Pending |
+| AUTH-05 | Phase 2 | Pending |
+| AUTH-06 | Phase 2 | Pending |
+| AGNT-01 | Phase 3 | Pending |
+| AGNT-02 | Phase 3 | Pending |
+| AGNT-03 | Phase 3 | Pending |
+| AGNT-04 | Phase 3 | Pending |
+| AGNT-05 | Phase 3 | Pending |
+| AGNT-06 | Phase 3 | Pending |
+| AGNT-07 | Phase 3 | Pending |
+| AGNT-08 | Phase 3 | Pending |
+| AGNT-09 | Phase 3 | Pending |
+| AGNT-10 | Phase 3 | Pending |
+| AGNT-11 | Phase 3 | Pending |
+| AGNT-12 | Phase 3 | Pending |
+| AGNT-13 | Phase 3 | Pending |
+| CHAT-01 | Phase 4 | Pending |
+| CHAT-02 | Phase 4 | Pending |
+| CHAT-03 | Phase 4 | Pending |
+| CHAT-04 | Phase 4 | Pending |
+| CHAT-05 | Phase 4 | Pending |
+| CHAT-06 | Phase 4 | Pending |
+| CHAT-07 | Phase 4 | Pending |
+| CHAT-08 | Phase 4 | Pending |
+| DASH-01 | Phase 5 | Pending |
+| DASH-02 | Phase 5 | Pending |
+| DASH-03 | Phase 5 | Pending |
+| DASH-04 | Phase 5 | Pending |
+| DASH-05 | Phase 5 | Pending |
+| DASH-06 | Phase 5 | Pending |
+| DASH-07 | Phase 5 | Pending |
+| MNTR-01 | Phase 5 | Pending |
+| MNTR-02 | Phase 5 | Pending |
+| MNTR-03 | Phase 5 | Pending |
+| MNTR-04 | Phase 5 | Pending |
+| TASK-01 | Phase 6 | Pending |
+| TASK-02 | Phase 6 | Pending |
+| TASK-03 | Phase 6 | Pending |
+| TASK-04 | Phase 6 | Pending |
+| TASK-05 | Phase 6 | Pending |
+| TASK-06 | Phase 6 | Pending |
+| TASK-07 | Phase 6 | Pending |
+| TASK-08 | Phase 6 | Pending |
+| TASK-09 | Phase 6 | Pending |
+| GATE-01 | Phase 7 | Pending |
+| GATE-02 | Phase 7 | Pending |
+| GATE-03 | Phase 7 | Pending |
+| GATE-04 | Phase 7 | Pending |
+| GATE-05 | Phase 7 | Pending |
+| GATE-06 | Phase 7 | Pending |
+| CHAN-01 | Phase 7 | Pending |
+| CHAN-02 | Phase 7 | Pending |
+| CHAN-03 | Phase 7 | Pending |
+| CHAN-04 | Phase 7 | Pending |
+| CHAN-05 | Phase 7 | Pending |
+| MODL-01 | Phase 7 | Pending |
+| MODL-02 | Phase 7 | Pending |
+| MODL-03 | Phase 7 | Pending |
+| MODL-04 | Phase 7 | Pending |
+| MODL-05 | Phase 7 | Pending |
+| SESS-01 | Phase 8 | Pending |
+| SESS-02 | Phase 8 | Pending |
+| SESS-03 | Phase 8 | Pending |
+| MEMO-01 | Phase 8 | Pending |
+| MEMO-02 | Phase 8 | Pending |
+| FILE-01 | Phase 8 | Pending |
+| FILE-02 | Phase 8 | Pending |
+| FILE-03 | Phase 8 | Pending |
+| FILE-04 | Phase 8 | Pending |
+| GOVR-01 | Phase 8 | Pending |
+| GOVR-02 | Phase 8 | Pending |
+| GOVR-03 | Phase 8 | Pending |
+| GOVR-04 | Phase 8 | Pending |
+| SKIL-01 | Phase 9 | Pending |
+| SKIL-02 | Phase 9 | Pending |
+| SKIL-03 | Phase 9 | Pending |
+| SKIL-04 | Phase 9 | Pending |
+| SKIL-05 | Phase 9 | Pending |
+| WORK-01 | Phase 9 | Pending |
+| WORK-02 | Phase 9 | Pending |
+| WORK-03 | Phase 9 | Pending |
+| WORK-04 | Phase 9 | Pending |
+| WORK-05 | Phase 9 | Pending |
+| SETT-01 | Phase 10 | Pending |
+| SETT-02 | Phase 10 | Pending |
+| SETT-03 | Phase 10 | Pending |
+| SETT-04 | Phase 10 | Pending |
+| SETT-05 | Phase 10 | Pending |
+| SETT-06 | Phase 10 | Pending |
+| SETT-07 | Phase 10 | Pending |
+| SETT-08 | Phase 10 | Pending |
+| SETT-09 | Phase 10 | Pending |
+| SETT-10 | Phase 10 | Pending |
+| SITE-01 | Phase 10 | Pending |
+| SITE-02 | Phase 10 | Pending |
+| SITE-03 | Phase 10 | Pending |
+| SITE-04 | Phase 10 | Pending |
+| SITE-05 | Phase 10 | Pending |
+| SITE-06 | Phase 10 | Pending |
+| ADEV-01 | Phase 10 | Pending |
+| ADEV-02 | Phase 10 | Pending |
 
 **Coverage:**
-- v1 requirements: 97 total
-- Mapped to phases: 0
-- Unmapped: 97
+- v1 requirements: 115 total
+- Mapped to phases: 115
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-02-17*
-*Last updated: 2026-02-17 after initial definition*
+*Last updated: 2026-02-17 after roadmap creation*
