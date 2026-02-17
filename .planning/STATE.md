@@ -12,25 +12,25 @@ See: .planning/PROJECT.md (updated 2026-02-17)
 Phase: 1 of 10 (Foundation & Infrastructure)
 Plan: 6 of 7 in current phase
 Status: Executing
-Last activity: 2026-02-17 — Completed 01-02 Docker Compose setup
+Last activity: 2026-02-17 — Completed 01-05 State Management & Gateway Provider
 
-Progress: [███░░░░░░░] 9%
+Progress: [███░░░░░░░] 10%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 4
-- Average duration: 11min
-- Total execution time: 0.70 hours
+- Total plans completed: 5
+- Average duration: 9min
+- Total execution time: 0.75 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01 | 4 | 42min | 11min |
+| 01 | 5 | 45min | 9min |
 
 **Recent Trend:**
-- Last 5 plans: 11min, 8min, 9min, 14min
+- Last 5 plans: 11min, 8min, 9min, 14min, 3min
 - Trend: stable
 
 *Updated after each plan completion*
@@ -57,6 +57,9 @@ Recent decisions affecting current work:
 - [01-02]: Service hostnames in Docker: db for PostgreSQL, redis for Redis; host.docker.internal for gateway
 - [01-06]: shadcn/ui generated code needs exactOptionalPropertyTypes fixes (defaults for optional props)
 - [01-06]: StatusBadge maps 15 status strings to 6 variants; all optional props need `| undefined` for strict TS
+- [01-05]: Zustand for PUSH state (WebSocket events), TanStack Query for PULL state (REST APIs) -- separate concerns
+- [01-05]: GatewayProvider uses useRef for stack init; auto-connects gracefully when NEXT_PUBLIC_GATEWAY_URL set
+- [01-05]: Query key factory uses hierarchical arrays for precise cache invalidation granularity
 
 ### Pending Todos
 
@@ -70,5 +73,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-17
-Stopped at: Completed 01-02-PLAN.md
-Resume file: .planning/phases/01-foundation-infrastructure/01-02-SUMMARY.md
+Stopped at: Completed 01-05-PLAN.md
+Resume file: .planning/phases/01-foundation-infrastructure/01-05-SUMMARY.md
