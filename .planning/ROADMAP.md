@@ -35,16 +35,16 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. The WebSocket Manager connects to an OpenClaw Gateway instance, maintains connection state (connecting/connected/reconnecting/disconnected), and dispatches typed events through the Event Bus
   4. Database migrations run on startup and Drizzle ORM can read/write to PostgreSQL
   5. A test mutating API endpoint produces an audit log entry in the database
-**Plans**: TBD
+**Plans**: 7 plans in 4 waves
 
 Plans:
-- [ ] 01-01: Next.js project scaffolding, Tailwind v4, shadcn/ui, Biome, feature-sliced directory structure
-- [ ] 01-02: Docker Compose with PostgreSQL, Redis, health checks, and dev/prod configurations
-- [ ] 01-03: Drizzle ORM setup, initial schema, migrations, connection pooling
-- [ ] 01-04: WebSocket Manager singleton, Socket.IO client, Event Bus, gateway abstraction layer, dual-mode connection
-- [ ] 01-05: Zustand store architecture, TanStack Query setup, state management patterns
-- [ ] 01-06: Shared UI component library (DataTable, StatusBadge, FormField, PageHeader, EmptyState, LoadingSkeleton, ActionMenu, FilterBar, ErrorBoundary, SearchInput)
-- [ ] 01-07: Audit logging middleware, BullMQ job queue setup with Redis
+- [ ] 01-01-PLAN.md -- Next.js 16 scaffolding, Tailwind v4 OKLCH theme, shadcn/ui, Biome, Vitest, Storybook, FSD directory structure (Wave 1)
+- [ ] 01-02-PLAN.md -- Docker Compose with PostgreSQL, Redis, multi-stage Dockerfile, dev/prod configs (Wave 2)
+- [ ] 01-03-PLAN.md -- Drizzle ORM, PostgreSQL connection pool, Redis client, audit schema, migrations (Wave 3)
+- [ ] 01-04-PLAN.md -- WebSocket Manager (raw WS, NOT Socket.IO), Event Bus, Gateway Client abstraction, dual-mode connection (Wave 2)
+- [ ] 01-05-PLAN.md -- Zustand connection store, TanStack Query setup, gateway provider, state management patterns (Wave 3)
+- [ ] 01-06-PLAN.md -- Shared UI component library: DataTable, StatusBadge, FormField, PageHeader, EmptyState, LoadingSkeleton, ActionMenu, FilterBar, ErrorBoundary, SearchInput (Wave 2)
+- [ ] 01-07-PLAN.md -- Audit logging middleware, BullMQ job queue, audit worker, health endpoint (Wave 4)
 
 ### Phase 2: Authentication & App Shell
 **Goal**: Users can securely access their accounts and see the authenticated application shell with navigation across all major sections
