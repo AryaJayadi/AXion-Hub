@@ -6,6 +6,18 @@ export { EventBus } from "./lib/event-bus";
 export { GatewayClient } from "./lib/gateway-client";
 export { ReconnectStrategy } from "./lib/reconnect";
 
+// State management
+export { useConnectionStore, initConnectionStoreSubscriptions } from "./model/store";
+export {
+	useConnectionState,
+	useIsConnected,
+	useIsReconnecting,
+	useConnectionMode,
+	useReconnectInfo,
+	useConnectionError,
+	useRetryConnection,
+} from "./model/hooks";
+
 // Types
 export type {
 	ConnectionState,
