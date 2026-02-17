@@ -9,28 +9,28 @@ See: .planning/PROJECT.md (updated 2026-02-17)
 
 ## Current Position
 
-Phase: 1 of 10 (Foundation & Infrastructure)
-Plan: 7 of 7 in current phase
-Status: Executing
-Last activity: 2026-02-17 — Completed 01-03 Database & Redis Setup
+Phase: 1 of 10 (Foundation & Infrastructure) -- COMPLETE
+Plan: 7 of 7 in current phase (all complete)
+Status: Phase Complete
+Last activity: 2026-02-17 — Completed 01-07 Audit Logging & Health Check
 
 Progress: [████░░░░░░] 10%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 6
+- Total plans completed: 7
 - Average duration: 8min
-- Total execution time: 0.80 hours
+- Total execution time: 0.92 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01 | 6 | 48min | 8min |
+| 01 | 7 | 55min | 8min |
 
 **Recent Trend:**
-- Last 5 plans: 8min, 9min, 14min, 3min, 3min
+- Last 5 plans: 9min, 14min, 3min, 3min, 7min
 - Trend: stable
 
 *Updated after each plan completion*
@@ -62,6 +62,10 @@ Recent decisions affecting current work:
 - [01-05]: Query key factory uses hierarchical arrays for precise cache invalidation granularity
 - [01-03]: db.ts and redis.ts use process.env directly (not env.ts) to avoid circular dep and allow drizzle-kit CLI usage
 - [01-03]: Removed drizzle/meta/ from .gitignore -- migration metadata must be tracked in git
+- [01-07]: BullMQ ConnectionOptions type assertion needed due to duplicate ioredis packages under exactOptionalPropertyTypes
+- [01-07]: pg and ioredis added to serverExternalPackages for Turbopack compatibility in API routes
+- [01-07]: Worker service shares codebase via bind mount but runs workers/index.ts instead of next dev
+- [01-07]: Audit pattern: createAuditLog for direct logging, withAudit HOC for automatic route-level auditing
 
 ### Pending Todos
 
@@ -75,5 +79,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-17
-Stopped at: Completed 01-03-PLAN.md
-Resume file: .planning/phases/01-foundation-infrastructure/01-03-SUMMARY.md
+Stopped at: Completed 01-07-PLAN.md (Phase 01 complete)
+Resume file: .planning/phases/01-foundation-infrastructure/01-07-SUMMARY.md
