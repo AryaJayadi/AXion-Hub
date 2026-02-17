@@ -13,6 +13,7 @@
 		"test:watch": "vitest",
 		"db:generate": "drizzle-kit generate",
 		"db:migrate": "drizzle-kit migrate",
+		"worker": "bun run workers/index.ts",
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build"
 	},
