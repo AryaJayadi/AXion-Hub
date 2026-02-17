@@ -56,13 +56,13 @@ Plans:
   3. User can reset a forgotten password via email link at /forgot-password
   4. User can accept an organization invitation via /invite/[token] and join the org
   5. Unauthenticated users are redirected to /login; authenticated users see the full app shell with sidebar navigation
-**Plans**: TBD
+**Plans**: 4 plans in 3 waves
 
 Plans:
-- [ ] 02-01: better-auth integration, email/password auth, session management, secure cookies
-- [ ] 02-02: OAuth providers (Google, GitHub), registration flow, password reset flow
-- [ ] 02-03: Organization invitations, invite acceptance flow
-- [ ] 02-04: App shell layout with sidebar navigation, auth guards, route protection
+- [ ] 02-01-PLAN.md -- better-auth server config, Drizzle auth schema, API route, email utility, auth client, proxy.ts, validation schemas (Wave 1)
+- [ ] 02-02-PLAN.md -- Auth pages: login, register, forgot-password, reset-password, verify-email with split-screen layout (Wave 2)
+- [ ] 02-03-PLAN.md -- App shell: collapsible sidebar, header bar with breadcrumbs, user menu, dashboard layout with session validation (Wave 2)
+- [ ] 02-04-PLAN.md -- Organization invitation acceptance flow and org switcher in sidebar (Wave 3)
 
 ### Phase 3: Agent Management
 **Goal**: Users can see, create, configure, and deeply inspect every aspect of their AI agents from a single management interface
@@ -224,7 +224,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4/5/6/7 (partially parallel afte
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation & Infrastructure | 0/7 | Not started | - |
-| 2. Authentication & App Shell | 0/4 | Not started | - |
+| 2. Authentication & App Shell | 0/4 | Planned | - |
 | 3. Agent Management | 0/6 | Not started | - |
 | 4. Real-Time Chat | 0/4 | Not started | - |
 | 5. Dashboard & Monitoring | 0/4 | Not started | - |
