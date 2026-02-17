@@ -10,27 +10,27 @@ See: .planning/PROJECT.md (updated 2026-02-17)
 ## Current Position
 
 Phase: 1 of 10 (Foundation & Infrastructure)
-Plan: 6 of 7 in current phase
+Plan: 7 of 7 in current phase
 Status: Executing
-Last activity: 2026-02-17 — Completed 01-05 State Management & Gateway Provider
+Last activity: 2026-02-17 — Completed 01-03 Database & Redis Setup
 
-Progress: [███░░░░░░░] 10%
+Progress: [████░░░░░░] 10%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
-- Average duration: 9min
-- Total execution time: 0.75 hours
+- Total plans completed: 6
+- Average duration: 8min
+- Total execution time: 0.80 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01 | 5 | 45min | 9min |
+| 01 | 6 | 48min | 8min |
 
 **Recent Trend:**
-- Last 5 plans: 11min, 8min, 9min, 14min, 3min
+- Last 5 plans: 8min, 9min, 14min, 3min, 3min
 - Trend: stable
 
 *Updated after each plan completion*
@@ -60,6 +60,8 @@ Recent decisions affecting current work:
 - [01-05]: Zustand for PUSH state (WebSocket events), TanStack Query for PULL state (REST APIs) -- separate concerns
 - [01-05]: GatewayProvider uses useRef for stack init; auto-connects gracefully when NEXT_PUBLIC_GATEWAY_URL set
 - [01-05]: Query key factory uses hierarchical arrays for precise cache invalidation granularity
+- [01-03]: db.ts and redis.ts use process.env directly (not env.ts) to avoid circular dep and allow drizzle-kit CLI usage
+- [01-03]: Removed drizzle/meta/ from .gitignore -- migration metadata must be tracked in git
 
 ### Pending Todos
 
@@ -73,5 +75,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-17
-Stopped at: Completed 01-05-PLAN.md
-Resume file: .planning/phases/01-foundation-infrastructure/01-05-SUMMARY.md
+Stopped at: Completed 01-03-PLAN.md
+Resume file: .planning/phases/01-foundation-infrastructure/01-03-SUMMARY.md
