@@ -12,25 +12,25 @@ See: .planning/PROJECT.md (updated 2026-02-17)
 Phase: 1 of 10 (Foundation & Infrastructure)
 Plan: 6 of 7 in current phase
 Status: Executing
-Last activity: 2026-02-17 — Completed 01-06 shared UI component library
+Last activity: 2026-02-17 — Completed 01-02 Docker Compose setup
 
-Progress: [███░░░░░░░] 8%
+Progress: [███░░░░░░░] 9%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 3
-- Average duration: 9min
-- Total execution time: 0.47 hours
+- Total plans completed: 4
+- Average duration: 11min
+- Total execution time: 0.70 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01 | 3 | 28min | 9min |
+| 01 | 4 | 42min | 11min |
 
 **Recent Trend:**
-- Last 5 plans: 11min, 8min, 9min
+- Last 5 plans: 11min, 8min, 9min, 14min
 - Trend: stable
 
 *Updated after each plan completion*
@@ -52,6 +52,9 @@ Recent decisions affecting current work:
 - [01-04]: EventBus uses method overloads for KnownEvents type safety while accepting arbitrary string keys
 - [01-04]: GatewayClient uses Zod .transform() adapter pattern to map gateway snake_case to internal camelCase
 - [01-04]: ModeAwareResult<T> for dual-mode operations instead of throwing on remote-mode
+- [01-02]: Dockerfile uses --no-verify on bun install for cross-platform lockfile integrity; oven/bun:slim for prod runner
+- [01-02]: Docker dev mode uses anonymous volumes for /app/node_modules and /app/.next to prevent host overwrite
+- [01-02]: Service hostnames in Docker: db for PostgreSQL, redis for Redis; host.docker.internal for gateway
 - [01-06]: shadcn/ui generated code needs exactOptionalPropertyTypes fixes (defaults for optional props)
 - [01-06]: StatusBadge maps 15 status strings to 6 variants; all optional props need `| undefined` for strict TS
 
@@ -67,5 +70,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-17
-Stopped at: Completed 01-06-PLAN.md
-Resume file: .planning/phases/01-foundation-infrastructure/01-06-SUMMARY.md
+Stopped at: Completed 01-02-PLAN.md
+Resume file: .planning/phases/01-foundation-infrastructure/01-02-SUMMARY.md
