@@ -1,13 +1,11 @@
 "use client";
 
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import { formatDistanceToNow, format } from "date-fns";
 import {
 	Calendar,
 	CheckCircle,
 	Clock,
-	FileText,
-	GitBranch,
 	MessageSquare,
 	User,
 	Users,
@@ -27,9 +25,14 @@ import { Badge } from "@/shared/ui/badge";
 import { Checkbox } from "@/shared/ui/checkbox";
 import { Label } from "@/shared/ui/label";
 import { Switch } from "@/shared/ui/switch";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/ui/tabs";
 
+import { getActivityEntriesForTask } from "../api/use-board-tasks";
 import { useTask } from "../model/hooks";
 import { useUpdateTask } from "../api/use-task-mutations";
+import { TaskActivityTimeline } from "./task-activity-timeline";
+import { TaskComments } from "./task-comments";
+import { TaskDispatchLog } from "./task-dispatch-log";
 
 interface TaskDetailContentProps {
 	taskId: string;
@@ -102,6 +105,11 @@ export function TaskDetailContent({
 			</div>
 		);
 	}
+
+	const activityEntries = useMemo(
+		() => getActivityEntriesForTask(task.id),
+		[task.id],
+	);
 
 	const priorityBadge = getPriorityBadgeVariant(task.priority);
 	const completedSubtasks = task.subtasks.filter((s) => s.completed).length;
@@ -369,52 +377,62 @@ export function TaskDetailContent({
 				</div>
 			)}
 
-			{/* Placeholder sections for upcoming plans */}
-			<div className="space-y-4 pt-4 border-t">
-				{/* Activity Timeline placeholder (06-03) */}
-				<div className="space-y-2">
-					<div className="flex items-center gap-2">
-						<GitBranch className="size-4 text-muted-foreground" />
-						<p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-							Activity Timeline
-						</p>
-					</div>
+			{/* Deliverables placeholder (06-03 task 2) */}
+			<div className="space-y-2 pt-4 border-t">
+				<div className="flex items-center gap-2">
+					<Clock className="size-4 text-muted-foreground" />
+					<p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+						Deliverables
+					</p>
+				</div>
+				{task.deliverables.length > 0 ? (
+					<p className="text-xs text-muted-foreground">
+						{task.deliverables.length} deliverable(s) attached
+					</p>
+				) : (
 					<div className="flex items-center justify-center rounded-md border border-dashed p-6">
 						<p className="text-xs text-muted-foreground">
-							Coming soon
+							No deliverables yet
 						</p>
 					</div>
-				</div>
+				)}
+			</div>
 
-				{/* Deliverables placeholder (06-03) */}
-				<div className="space-y-2">
-					<div className="flex items-center gap-2">
-						<FileText className="size-4 text-muted-foreground" />
-						<p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-							Deliverables
-						</p>
-					</div>
-					<div className="flex items-center justify-center rounded-md border border-dashed p-6">
-						<p className="text-xs text-muted-foreground">
-							Coming soon
-						</p>
-					</div>
-				</div>
+			{/* Activity & Dispatch Log tabs */}
+			<div className="pt-4 border-t">
+				<Tabs defaultValue="activity">
+					<TabsList variant="line">
+						<TabsTrigger value="activity">
+							Activity
+						</TabsTrigger>
+						<TabsTrigger value="dispatch">
+							Dispatch Log
+						</TabsTrigger>
+					</TabsList>
+					<TabsContent value="activity" className="pt-3">
+						<TaskActivityTimeline
+							taskId={task.id}
+							entries={activityEntries}
+						/>
+					</TabsContent>
+					<TabsContent value="dispatch" className="pt-3">
+						<TaskDispatchLog
+							taskId={task.id}
+							entries={activityEntries}
+						/>
+					</TabsContent>
+				</Tabs>
+			</div>
 
-				{/* Comments placeholder (06-04) */}
-				<div className="space-y-2">
-					<div className="flex items-center gap-2">
-						<MessageSquare className="size-4 text-muted-foreground" />
-						<p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-							Comments
-						</p>
-					</div>
-					<div className="flex items-center justify-center rounded-md border border-dashed p-6">
-						<p className="text-xs text-muted-foreground">
-							Coming soon
-						</p>
-					</div>
+			{/* Comments section */}
+			<div className="space-y-2 pt-4 border-t">
+				<div className="flex items-center gap-2">
+					<MessageSquare className="size-4 text-muted-foreground" />
+					<p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+						Comments
+					</p>
 				</div>
+				<TaskComments taskId={task.id} />
 			</div>
 		</div>
 	);
