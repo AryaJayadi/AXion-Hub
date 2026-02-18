@@ -94,13 +94,13 @@ Plans:
   3. Tool calls appear as expandable blocks showing tool name, arguments, and output inline with the conversation
   4. User can switch sessions, send images/documents, use quick commands (/new, /compact, /status, /reset), and search messages across conversations
   5. User can observe agent-to-agent conversations in read-only mode at /chat/team/[conversationId]
-**Plans**: TBD
+**Plans**: 4 plans in 3 waves
 
 Plans:
-- [ ] 04-01: Chat hub layout (multi-pane, conversation list, Zustand chat store)
-- [ ] 04-02: Direct agent chat with streaming responses (token buffer + rAF flush pattern)
-- [ ] 04-03: Tool call visualization, media support (images, documents, audio)
-- [ ] 04-04: Session switching, quick commands, message search, team chat observer mode
+- [ ] 04-01-PLAN.md -- Chat entity types, Zustand chat store, resizable three-panel layout, conversation sidebar, participant panel, route pages (Wave 1)
+- [ ] 04-02-PLAN.md -- Token buffer with rAF flush, Streamdown markdown rendering, message list, streaming lanes, chat input, EventBus wiring (Wave 2)
+- [ ] 04-03-PLAN.md -- Tool call collapsible pipeline visualization, tool output side panel, media upload/preview (drag-and-drop, paste, file picker) (Wave 2)
+- [ ] 04-04-PLAN.md -- Slash command popover, Cmd+K command palette, agent picker dialog, message search with scope toggle, team chat observer with interjection (Wave 3)
 
 ### Phase 5: Dashboard & Monitoring
 **Goal**: Users have a command center that shows the real-time health of their entire agent ecosystem at a glance, with proactive alerts when things go wrong
@@ -226,7 +226,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4/5/6/7 (partially parallel afte
 | 1. Foundation & Infrastructure | 7/7 | Complete | 2026-02-17 |
 | 2. Authentication & App Shell | 3/4 | Complete    | 2026-02-18 |
 | 3. Agent Management | 0/6 | Planned | - |
-| 4. Real-Time Chat | 0/4 | Not started | - |
+| 4. Real-Time Chat | 0/4 | Planned | - |
 | 5. Dashboard & Monitoring | 0/4 | Not started | - |
 | 6. Mission Board | 0/4 | Not started | - |
 | 7. Gateway, Channels & Models | 0/5 | Not started | - |
