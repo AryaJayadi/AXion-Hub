@@ -16,6 +16,7 @@ import { SearchInput } from "@/shared/ui/search-input";
 import { Separator } from "@/shared/ui/separator";
 import { useChatStore } from "../model/chat-store";
 import { useConversationList } from "../model/hooks";
+import { MessageSearch } from "./message-search";
 
 /**
  * Conversation sidebar with hybrid organization.
@@ -27,7 +28,9 @@ import { useConversationList } from "../model/hooks";
  *
  * Each section is sorted by lastActivity descending.
  */
-export function ConversationSidebar() {
+export function ConversationSidebar({
+	onNewChat,
+}: { onNewChat?: (() => void) | undefined } = {}) {
 	const router = useRouter();
 	const conversations = useConversationList();
 	const activeConversationId = useChatStore((s) => s.activeConversationId);
@@ -99,9 +102,15 @@ export function ConversationSidebar() {
 					variant="ghost"
 					aria-label="New chat"
 					className="shrink-0"
+					onClick={onNewChat}
 				>
 					<MessageSquarePlus className="size-4" />
 				</Button>
+			</div>
+
+			{/* Message search */}
+			<div className="border-b px-3 py-2">
+				<MessageSearch conversationId={activeConversationId ?? undefined} />
 			</div>
 
 			{/* Conversation list */}

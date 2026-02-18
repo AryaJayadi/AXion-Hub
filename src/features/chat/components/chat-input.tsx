@@ -17,12 +17,15 @@ import { Send, XCircle, FileText, Headphones } from "lucide-react";
 import type { Attachment } from "@/entities/chat-message";
 import { cn } from "@/shared/lib/cn";
 import { Button } from "@/shared/ui/button";
+import { useGateway } from "@/app/providers/gateway-provider";
 import { useChatStore } from "../model/chat-store";
 import {
 	createAttachmentFromFile,
 	revokeAttachmentUrl,
 } from "../lib/media-upload";
 import { MediaUploadZone, FileInputTrigger } from "./media-upload-zone";
+import { SlashCommandPopover } from "./slash-command-popover";
+import type { QuickCommand, CommandContext } from "../lib/commands";
 
 interface ChatInputProps {
 	conversationId: string;
@@ -42,11 +45,16 @@ interface ChatInputProps {
  */
 export function ChatInput({ conversationId, onSend, disabled }: ChatInputProps) {
 	const textareaRef = useRef<HTMLTextAreaElement>(null);
+	const { gatewayClient } = useGateway();
 
 	// Load draft on mount / conversation switch
 	const savedDraft = useChatStore.getState().getDraft(conversationId);
 	const [text, setText] = useState(savedDraft);
 	const [pendingAttachments, setPendingAttachments] = useState<Attachment[]>([]);
+
+	// Slash command popover state
+	const [slashOpen, setSlashOpen] = useState(false);
+	const [slashFilter, setSlashFilter] = useState("");
 
 	// Sync draft when conversation changes
 	useEffect(() => {
@@ -94,9 +102,64 @@ export function ChatInput({ conversationId, onSend, disabled }: ChatInputProps) 
 			setText(value);
 			useChatStore.getState().saveDraft(conversationId, value);
 			handleInput();
+
+			// Detect slash command: '/' at start of input
+			if (value.startsWith("/")) {
+				setSlashOpen(true);
+				setSlashFilter(value.slice(1));
+			} else {
+				setSlashOpen(false);
+				setSlashFilter("");
+			}
 		},
 		[conversationId, handleInput],
 	);
+
+	const handleSlashSelect = useCallback(
+		(command: QuickCommand) => {
+			// Clear the '/' text from input
+			setText("");
+			useChatStore.getState().saveDraft(conversationId, "");
+			setSlashOpen(false);
+			setSlashFilter("");
+
+			// Reset textarea height
+			if (textareaRef.current) {
+				textareaRef.current.style.height = "auto";
+			}
+
+			// Build context and execute command
+			const store = useChatStore.getState();
+			const activeConvo = store.conversations.get(conversationId);
+			const agentId = activeConvo?.agentIds[0] ?? null;
+
+			const context: CommandContext = {
+				conversationId,
+				agentId,
+				gatewayClient,
+				insertSystemMessage: (msgText: string) => {
+					store.addMessage(conversationId, {
+						id: crypto.randomUUID(),
+						conversationId,
+						role: "system",
+						agentId: undefined,
+						content: msgText,
+						timestamp: new Date(),
+						toolCalls: [],
+						attachments: [],
+					});
+				},
+			};
+
+			command.action(context);
+		},
+		[conversationId, gatewayClient],
+	);
+
+	const handleSlashClose = useCallback(() => {
+		setSlashOpen(false);
+		setSlashFilter("");
+	}, []);
 
 	const handleFilesAdded = useCallback((files: File[]) => {
 		const newAttachments = files.map(createAttachmentFromFile);
@@ -132,12 +195,16 @@ export function ChatInput({ conversationId, onSend, disabled }: ChatInputProps) 
 
 	const handleKeyDown = useCallback(
 		(e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+			// Don't send when slash command popover is open (it handles
+			// Enter/Escape/ArrowUp/ArrowDown via its own keyboard listener)
+			if (slashOpen) return;
+
 			if (e.key === "Enter" && !e.shiftKey) {
 				e.preventDefault();
 				handleSend();
 			}
 		},
-		[handleSend],
+		[handleSend, slashOpen],
 	);
 
 	const canSend =
@@ -148,10 +215,17 @@ export function ChatInput({ conversationId, onSend, disabled }: ChatInputProps) 
 			<MediaUploadZone onFilesAdded={handleFilesAdded} disabled={disabled}>
 				<div
 					className={cn(
-						"rounded-lg border border-input bg-background",
+						"relative rounded-lg border border-input bg-background",
 						"focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-1",
 					)}
 				>
+					{/* Slash command popover */}
+					<SlashCommandPopover
+						isOpen={slashOpen}
+						filter={slashFilter}
+						onSelect={handleSlashSelect}
+						onClose={handleSlashClose}
+					/>
 					{/* Pending attachment chips */}
 					{pendingAttachments.length > 0 && (
 						<div className="flex flex-wrap gap-1.5 px-3 pt-2">
