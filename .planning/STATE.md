@@ -179,5 +179,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-18
-Stopped at: Completed 05-06-PLAN.md (Phase 5 fully complete with gap closure)
-Resume file: .planning/phases/05-dashboard-monitoring/05-06-SUMMARY.md
+Stopped at: Phase 6 context gathered
+Resume file: .planning/phases/06-mission-board/06-CONTEXT.md
