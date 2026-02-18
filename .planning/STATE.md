@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-17)
 
 **Core value:** A single pane of glass where you can see everything your AI agents are doing, direct their work, and maintain governance.
-**Current focus:** Phase 5 - Dashboard & Monitoring
+**Current focus:** Phase 6 - Mission Board
 
 ## Current Position
 
-Phase: 5 of 10 (Dashboard & Monitoring)
-Plan: 6 of 6 in current phase (PHASE COMPLETE)
-Status: Phase Complete
-Last activity: 2026-02-18 -- Completed 05-06 Store Subscription Wiring (gap closure)
+Phase: 6 of 10 (Mission Board)
+Plan: 1 of 4 in current phase
+Status: In Progress
+Last activity: 2026-02-18 -- Completed 06-01 Core Kanban Board
 
-Progress: [██████░░░░] 55%
+Progress: [██████░░░░] 58%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 27
+- Total plans completed: 28
 - Average duration: 6min
-- Total execution time: 2.8 hours
+- Total execution time: 3.0 hours
 
 **By Phase:**
 
@@ -32,9 +32,10 @@ Progress: [██████░░░░] 55%
 | 03 | 6 | 51min | 9min |
 | 04 | 4 | 25min | 6min |
 | 05 | 6 | 28min | 5min |
+| 06 | 1 | 11min | 11min |
 
 **Recent Trend:**
-- Last 5 plans: 5min, 5min, 5min, 6min, 2min
+- Last 5 plans: 5min, 5min, 6min, 2min, 11min
 - Trend: stable
 
 *Updated after each plan completion*
@@ -57,6 +58,7 @@ Progress: [██████░░░░] 55%
 | Phase 05 P04 | 5min | 2 tasks | 14 files |
 | Phase 05 P05 | 6min | 2 tasks | 13 files |
 | Phase 05 P06 | 2min | 1 tasks | 1 files |
+| Phase 06 P01 | 11min | 3 tasks | 22 files |
 
 ## Accumulated Context
 
@@ -166,6 +168,12 @@ Recent decisions affecting current work:
 - [05-05]: Form data normalized with undefined-to-null conversion for exactOptionalPropertyTypes mutations
 - [Phase 05-06]: initAgentStoreSubscriptions called without cleanup capture since it returns void (permanent subscriptions)
 - [Phase 05-06]: Cleanup order: connection, dashboard, activity stores, then wsManager.disconnect()
+- [06-01]: Zustand with immer middleware for board store enables immutable-style updates with mutable syntax in drag handlers
+- [06-01]: Pending transition queue in board store prevents race conditions when EventBus fires during active drag
+- [06-01]: KanbanCard wrapped in React.memo to prevent unnecessary re-renders during drag operations
+- [06-01]: TaskCardSlot wrapper component in KanbanColumn avoids useTask hook-in-loop violation
+- [06-01]: useDroppable on column container ensures empty columns accept drops (dnd-kit Pitfall 3)
+- [06-01]: Column naming uses QUEUED/IN REVIEW (not ASSIGNED/REVIEW) per CONTEXT.md locked decision
 
 ### Pending Todos
 
@@ -179,5 +187,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-18
-Stopped at: Phase 6 context gathered
-Resume file: .planning/phases/06-mission-board/06-CONTEXT.md
+Stopped at: Completed 06-01-PLAN.md
+Resume file: .planning/phases/06-mission-board/06-01-SUMMARY.md

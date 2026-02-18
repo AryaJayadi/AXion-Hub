@@ -42,7 +42,7 @@ Requirements for initial release. Each maps to roadmap phases. All ~87 pages/vie
 
 ### Mission Board (Task Management)
 
-- [ ] **TASK-01**: User can view and manage tasks on a drag-and-drop Kanban board at `/missions` with columns: INBOX, ASSIGNED, IN PROGRESS, REVIEW, DONE, ARCHIVED
+- [x] **TASK-01**: User can view and manage tasks on a drag-and-drop Kanban board at `/missions` with columns: INBOX, ASSIGNED, IN PROGRESS, REVIEW, DONE, ARCHIVED
 - [ ] **TASK-02**: User can view full task detail at `/missions/[taskId]` with title, Markdown description, priority (urgent/high/normal/low), assigned agent(s), human reviewer, skills/tags, subtasks/checklist
 - [ ] **TASK-03**: User can create tasks via form/modal at `/missions/new` with all task fields
 - [ ] **TASK-04**: Task detail shows activity timeline (status changes, comments, agent output) and dispatch log
@@ -253,7 +253,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | MNTR-02 | Phase 5 | Complete |
 | MNTR-03 | Phase 5 | Complete |
 | MNTR-04 | Phase 5 | Complete |
-| TASK-01 | Phase 6 | Pending |
+| TASK-01 | Phase 6 | Complete |
 | TASK-02 | Phase 6 | Pending |
 | TASK-03 | Phase 6 | Pending |
 | TASK-04 | Phase 6 | Pending |
