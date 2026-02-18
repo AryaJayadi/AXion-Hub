@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-17)
 
 **Core value:** A single pane of glass where you can see everything your AI agents are doing, direct their work, and maintain governance.
-**Current focus:** Phase 4 - Real-Time Chat
+**Current focus:** Phase 5 - Dashboard & Monitoring
 
 ## Current Position
 
-Phase: 4 of 10 (Real-Time Chat) -- COMPLETE
-Plan: 4 of 4 in current phase
-Status: Phase Complete
-Last activity: 2026-02-18 -- Completed 04-04 Quick Commands, Search & Team Chat
+Phase: 5 of 10 (Dashboard & Monitoring)
+Plan: 1 of 5 in current phase
+Status: In Progress
+Last activity: 2026-02-18 -- Completed 05-01 Dashboard Data Layer
 
-Progress: [██████░░░░] 40%
+Progress: [██████░░░░] 44%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 21
+- Total plans completed: 22
 - Average duration: 7min
-- Total execution time: 2.3 hours
+- Total execution time: 2.4 hours
 
 **By Phase:**
 
@@ -31,9 +31,10 @@ Progress: [██████░░░░] 40%
 | 02 | 4 | 13min | 3min |
 | 03 | 6 | 51min | 9min |
 | 04 | 4 | 25min | 6min |
+| 05 | 1 | 4min | 4min |
 
 **Recent Trend:**
-- Last 5 plans: 11min, 7min, 7min, 5min, 6min
+- Last 5 plans: 7min, 7min, 5min, 6min, 4min
 - Trend: stable
 
 *Updated after each plan completion*
@@ -50,6 +51,7 @@ Progress: [██████░░░░] 40%
 | Phase 04 P02 | 7min | 2 tasks | 12 files |
 | Phase 04 P03 | 5min | 2 tasks | 10 files |
 | Phase 04 P04 | 6min | 2 tasks | 13 files |
+| Phase 05 P01 | 4min | 2 tasks | 13 files |
 
 ## Accumulated Context
 
@@ -137,6 +139,9 @@ Recent decisions affecting current work:
 - [04-04]: Slash popover uses document-level keydown for navigation to avoid conflicts with textarea Enter-to-send
 - [04-04]: Message search uses in-memory Zustand store filtering as placeholder for server-side search
 - [04-04]: Agent picker fetches agents via TanStack Query from gateway with fallback to empty array
+- [05-01]: Activity store uses dual buffer: 20 events for dashboard widget, 200 for /activity page
+- [05-01]: Dashboard store recalculates agent counts from agent store on every agent event (single source of truth)
+- [05-01]: ws.failed used for disconnect detection; ws.connected for reconnect and re-sync
 
 ### Pending Todos
 
@@ -150,5 +155,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-18
-Stopped at: Completed 04-04-PLAN.md (Phase 04 complete)
-Resume file: .planning/phases/04-real-time-chat/04-04-SUMMARY.md
+Stopped at: Completed 05-01-PLAN.md
+Resume file: .planning/phases/05-dashboard-monitoring/05-01-SUMMARY.md

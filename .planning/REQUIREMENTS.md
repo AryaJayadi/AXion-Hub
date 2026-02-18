@@ -32,12 +32,12 @@ Requirements for initial release. Each maps to roadmap phases. All ~87 pages/vie
 
 ### Dashboard
 
-- [ ] **DASH-01**: User sees at-a-glance command center at `/dashboard` with gateway status indicator (connected/disconnected/degraded)
-- [ ] **DASH-02**: Dashboard shows active agents count with health badges (online, idle, working, error)
-- [ ] **DASH-03**: Dashboard shows tasks in flight grouped by status (inbox, assigned, in-progress, review, done)
-- [ ] **DASH-04**: Dashboard shows context window usage gauge per active agent
-- [ ] **DASH-05**: Dashboard shows model & token cost summary (current session / today / this week)
-- [ ] **DASH-06**: Dashboard shows live activity feed (last 20 events, scrollable, real-time via WebSocket)
+- [x] **DASH-01**: User sees at-a-glance command center at `/dashboard` with gateway status indicator (connected/disconnected/degraded)
+- [x] **DASH-02**: Dashboard shows active agents count with health badges (online, idle, working, error)
+- [x] **DASH-03**: Dashboard shows tasks in flight grouped by status (inbox, assigned, in-progress, review, done)
+- [x] **DASH-04**: Dashboard shows context window usage gauge per active agent
+- [x] **DASH-05**: Dashboard shows model & token cost summary (current session / today / this week)
+- [x] **DASH-06**: Dashboard shows live activity feed (last 20 events, scrollable, real-time via WebSocket)
 - [ ] **DASH-07**: Dashboard provides quick actions: New Task, New Agent, Send Message
 
 ### Mission Board (Task Management)
@@ -242,12 +242,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CHAT-06 | Phase 4 | Complete |
 | CHAT-07 | Phase 4 | Complete |
 | CHAT-08 | Phase 4 | Complete |
-| DASH-01 | Phase 5 | Pending |
-| DASH-02 | Phase 5 | Pending |
-| DASH-03 | Phase 5 | Pending |
-| DASH-04 | Phase 5 | Pending |
-| DASH-05 | Phase 5 | Pending |
-| DASH-06 | Phase 5 | Pending |
+| DASH-01 | Phase 5 | Complete |
+| DASH-02 | Phase 5 | Complete |
+| DASH-03 | Phase 5 | Complete |
+| DASH-04 | Phase 5 | Complete |
+| DASH-05 | Phase 5 | Complete |
+| DASH-06 | Phase 5 | Complete |
 | DASH-07 | Phase 5 | Pending |
 | MNTR-01 | Phase 5 | Pending |
 | MNTR-02 | Phase 5 | Pending |
