@@ -8,7 +8,7 @@ interface FormFieldProps {
 	/** Help text displayed below the label */
 	description?: string;
 	/** Error message displayed below the input */
-	error?: string;
+	error?: string | undefined;
 	/** Shows a red asterisk on the label */
 	required?: boolean;
 	/** The form input element */
