@@ -18,6 +18,15 @@ export const auditQueue = new Queue("audit", {
 	},
 });
 
+export const alertQueue = new Queue("alerts", {
+	connection: createBullMQConnection(),
+	defaultJobOptions: {
+		removeOnComplete: { count: 500 },
+		removeOnFail: { count: 1000 },
+		attempts: 3,
+		backoff: { type: "exponential", delay: 2000 },
+	},
+});
+
 // Future queues (placeholder comments):
 // export const workflowQueue = new Queue('workflow', { connection: createBullMQConnection() });
-// export const notificationQueue = new Queue('notification', { connection: createBullMQConnection() });
