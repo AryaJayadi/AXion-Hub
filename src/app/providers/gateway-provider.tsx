@@ -26,6 +26,7 @@ import {
 } from "@/features/gateway-connection/model/store";
 import { initDashboardStoreSubscriptions, initActivityStoreSubscriptions } from "@/features/dashboard";
 import { initAgentStoreSubscriptions } from "@/features/agents";
+import { initMissionStoreSubscriptions } from "@/features/missions";
 import type { GatewayClient } from "@/features/gateway-connection/lib/gateway-client";
 import type { EventBus } from "@/features/gateway-connection/lib/event-bus";
 
@@ -82,6 +83,7 @@ export function GatewayProvider({ children }: { children: ReactNode }) {
 		const cleanupDashboard = initDashboardStoreSubscriptions(eventBus);
 		const cleanupActivity = initActivityStoreSubscriptions(eventBus);
 		initAgentStoreSubscriptions(eventBus); // No cleanup returned (uses permanent subscriptions)
+		const cleanupMissions = initMissionStoreSubscriptions(eventBus);
 
 		// Store wsManager ref for retry/disconnect actions
 		useConnectionStore.getState().setWsManager(wsManager);
@@ -109,6 +111,7 @@ export function GatewayProvider({ children }: { children: ReactNode }) {
 			cleanup();
 			cleanupDashboard();
 			cleanupActivity();
+			cleanupMissions();
 			wsManager.disconnect();
 		};
 	}, [eventBus, wsManager]);
