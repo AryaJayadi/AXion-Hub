@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-02-17)
 ## Current Position
 
 Phase: 5 of 10 (Dashboard & Monitoring)
-Plan: 4 of 5 in current phase
-Status: In Progress
-Last activity: 2026-02-18 -- Completed 05-04 Activity Pages and Dependency Map
+Plan: 5 of 5 in current phase (PHASE COMPLETE)
+Status: Phase Complete
+Last activity: 2026-02-18 -- Completed 05-05 Alert Rules and Notifications
 
-Progress: [██████░░░░] 52%
+Progress: [██████░░░░] 54%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 25
+- Total plans completed: 26
 - Average duration: 6min
-- Total execution time: 2.7 hours
+- Total execution time: 2.8 hours
 
 **By Phase:**
 
@@ -31,10 +31,10 @@ Progress: [██████░░░░] 52%
 | 02 | 4 | 13min | 3min |
 | 03 | 6 | 51min | 9min |
 | 04 | 4 | 25min | 6min |
-| 05 | 4 | 20min | 5min |
+| 05 | 5 | 26min | 5min |
 
 **Recent Trend:**
-- Last 5 plans: 4min, 6min, 5min, 5min, 5min
+- Last 5 plans: 6min, 5min, 5min, 5min, 6min
 - Trend: stable
 
 *Updated after each plan completion*
@@ -55,6 +55,7 @@ Progress: [██████░░░░] 52%
 | Phase 05 P02 | 6min | 2 tasks | 10 files |
 | Phase 05 P03 | 5min | 2 tasks | 6 files |
 | Phase 05 P04 | 5min | 2 tasks | 14 files |
+| Phase 05 P05 | 6min | 2 tasks | 13 files |
 
 ## Accumulated Context
 
@@ -158,6 +159,10 @@ Recent decisions affecting current work:
 - [05-04]: NodeDetailPanel absolutely positioned inside map container instead of Sheet overlay
 - [05-04]: Dagre layout with rankdir TB, 60px nodesep, 80px ranksep for clean service graph spacing
 - [05-04]: nodesDraggable=false per research Pitfall 4 to reduce event listeners on dependency map
+- [05-05]: drizzle.config.ts schema glob extended to ./src/**/*-schema.ts for alert-schema.ts naming convention
+- [05-05]: Alert worker uses dual job types (evaluate-rule, deliver-webhook) in single BullMQ worker
+- [05-05]: Webhook delivery retries only on 5xx/network errors; 4xx logged but not retried
+- [05-05]: Form data normalized with undefined-to-null conversion for exactOptionalPropertyTypes mutations
 
 ### Pending Todos
 
@@ -171,5 +176,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-18
-Stopped at: Completed 05-04-PLAN.md
-Resume file: .planning/phases/05-dashboard-monitoring/05-04-SUMMARY.md
+Stopped at: Completed 05-05-PLAN.md (Phase 5 complete)
+Resume file: .planning/phases/05-dashboard-monitoring/05-05-SUMMARY.md
