@@ -40,6 +40,7 @@ Progress: [█████░░░░░] 25%
 | Phase 02 P03 | 9 | 2 tasks | 12 files |
 | Phase 02 P04 | 2min | 2 tasks | 4 files |
 | Phase 03 P01 | 7min | 2 tasks | 25 files |
+| Phase 03 P02 | 10min | 2 tasks | 17 files |
 | Phase 03 P03 | 8min | 2 tasks | 17 files |
 
 ## Accumulated Context
@@ -89,6 +90,10 @@ Recent decisions affecting current work:
 - [03-01]: TanStack Query staleTime set to Infinity to prevent WebSocket/Query desync (per research Pitfall 5)
 - [03-01]: Mock data used for agent list until gateway client methods are wired
 - [03-01]: Agent status glow uses box-shadow (not border-width) to prevent layout shift
+- [03-02]: Agent detail sidebar uses usePathname for active state: exact match for overview, startsWith for sub-pages
+- [03-02]: useAgentDetail uses staleTime Infinity and refetchOnWindowFocus false, matching useAgents pattern
+- [03-02]: Send Message quick action disabled with tooltip (available after Phase 4)
+- [03-02]: Loading skeletons use explicit static components instead of Array.from to satisfy Biome noArrayIndexKey rule
 - [03-03]: Zustand persist with sessionStorage for wizard state survival across browser back/forward navigation
 - [03-03]: zodResolver requires as-any cast with Zod v4 + exactOptionalPropertyTypes -- consistent pattern across wizard steps
 - [03-03]: LucideIcon mapping uses explicit Record<string, LucideIcon> with named imports for strict TS compatibility
@@ -106,5 +111,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-18
-Stopped at: Completed 03-03-PLAN.md
-Resume file: .planning/phases/03-agent-management/03-03-SUMMARY.md
+Stopped at: Completed 03-02-PLAN.md (parallel with 03-03)
+Resume file: .planning/phases/03-agent-management/03-02-SUMMARY.md
