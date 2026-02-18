@@ -6,6 +6,7 @@ import { ExternalLink, Plus } from "lucide-react";
 
 import { useBoards } from "@/features/missions/api/use-boards";
 import { useBoardTasks } from "@/features/missions/api/use-board-tasks";
+import { BoardSidebar } from "@/features/missions/components/board-sidebar";
 import { KanbanBoard } from "@/features/missions/components/kanban-board";
 import { TaskCreateDialog } from "@/features/missions/components/task-create-dialog";
 import { TaskSlideOver } from "@/features/missions/components/task-slide-over";
@@ -65,21 +66,28 @@ export function MissionsBoardView() {
 				}
 			/>
 
-			{isLoading ? (
-				<div className="flex gap-4 overflow-x-auto p-4">
-					{Array.from({ length: 6 }).map((_, i) => (
-						<div key={`skeleton-col-${i}`} className="w-72 shrink-0 space-y-3">
-							<Skeleton className="h-6 w-24" />
-							<div className="space-y-2 rounded-lg bg-muted/40 p-2 min-h-24">
-								<Skeleton className="h-24 w-full rounded-lg" />
-								<Skeleton className="h-24 w-full rounded-lg" />
+			{/* Board sidebar + Kanban board layout */}
+			<div className="flex flex-1 min-h-0">
+				<BoardSidebar />
+
+				{isLoading ? (
+					<div className="flex flex-1 gap-4 overflow-x-auto p-4">
+						{Array.from({ length: 6 }).map((_, i) => (
+							<div key={`skeleton-col-${i}`} className="w-72 shrink-0 space-y-3">
+								<Skeleton className="h-6 w-24" />
+								<div className="space-y-2 rounded-lg bg-muted/40 p-2 min-h-24">
+									<Skeleton className="h-24 w-full rounded-lg" />
+									<Skeleton className="h-24 w-full rounded-lg" />
+								</div>
 							</div>
-						</div>
-					))}
-				</div>
-			) : (
-				<KanbanBoard wasDraggingRef={wasDraggingRef} />
-			)}
+						))}
+					</div>
+				) : (
+					<div className="flex-1 min-w-0">
+						<KanbanBoard wasDraggingRef={wasDraggingRef} />
+					</div>
+				)}
+			</div>
 
 			{/* Task creation dialog */}
 			<TaskCreateDialog

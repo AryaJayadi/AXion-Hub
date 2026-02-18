@@ -20,10 +20,27 @@ export {
 	useUpdateTask,
 	useDeleteTask,
 } from "./api/use-task-mutations";
+export {
+	useCreateBoard,
+	useUpdateBoard,
+	useDeleteBoard,
+} from "./api/use-board-mutations";
 
 // Schemas
 export { taskFormSchema, subtaskInputSchema } from "./schemas/task-schemas";
 export type { TaskFormValues } from "./schemas/task-schemas";
+export {
+	createBoardSchema,
+	updateBoardSchema,
+	boardColumnFormSchema,
+	automationRuleSchema,
+} from "./schemas/board-schemas";
+export type {
+	CreateBoardValues,
+	UpdateBoardValues,
+	BoardColumnFormValues,
+	AutomationRule,
+} from "./schemas/board-schemas";
 
 // Subscriptions
 export { initMissionStoreSubscriptions } from "./lib/mission-subscriptions";
