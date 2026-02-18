@@ -150,14 +150,14 @@ Plans:
   3. User can view all channels at /channels, configure individual channels at /channels/[channel], and edit channel-to-agent routing at /channels/routing
   4. User can pair new channels via QR code or pairing flow at /channels/pairing and manage group settings at /channels/groups
   5. User can view providers at /models, configure per-provider settings, browse the model catalog, set up failover chains, and view usage/cost charts
-**Plans**: TBD
+**Plans**: 5 plans in 3 waves
 
 Plans:
-- [ ] 07-01: Gateway overview page, health display, multi-gateway instance management
-- [ ] 07-02: Visual gateway config editor (form-based + raw JSON toggle) covering all openclaw.json sections
-- [ ] 07-03: Channel overview, channel detail, channel-to-agent routing/bindings editor
-- [ ] 07-04: Channel pairing flows (QR code for WhatsApp, tokens for Telegram/Discord), gateway nodes, and group management
-- [ ] 07-05: Model provider overview, per-provider config, model catalog, failover chains, and usage/cost tracking
+- [ ] 07-01-PLAN.md -- Entity types (gateway-config, channel, model-provider), Zod schemas, query key extensions, all route scaffolding, gateway overview with health display, multi-instance management (Wave 1)
+- [ ] 07-02-PLAN.md -- Visual gateway config editor with tabbed form sections, raw JSON toggle, draft-then-apply with diff review, validation panel (Wave 2)
+- [ ] 07-03-PLAN.md -- Channel list, channel detail with inline group settings, channel-to-agent routing editor with table/graph toggle, gateway channels view (Wave 2)
+- [ ] 07-04-PLAN.md -- Channel pairing wizard (WhatsApp QR, Telegram/Discord tokens, Slack OAuth), gateway nodes management page (Wave 3)
+- [ ] 07-05-PLAN.md -- Model provider overview, per-provider config with Test Connection, model catalog, failover chain builder with drag-and-drop, usage/cost charts (Wave 2)
 
 ### Phase 8: Sessions, Memory, Files & Governance
 **Goal**: Users can review agent session histories, browse and search memories, manage workspace files, and enforce governance through approvals and audit trails
@@ -231,7 +231,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4/5/6/7 (partially parallel afte
 | 4. Real-Time Chat | 0/4 | Planned | - |
 | 5. Dashboard & Monitoring | 0/5 | Complete    | 2026-02-18 |
 | 6. Mission Board | 0/4 | Complete    | 2026-02-18 |
-| 7. Gateway, Channels & Models | 0/5 | Not started | - |
+| 7. Gateway, Channels & Models | 0/5 | Planned | - |
 | 8. Sessions, Memory, Files & Governance | 0/6 | Not started | - |
 | 9. Skills, Plugins & Workflows | 0/5 | Not started | - |
 | 10. Settings, Public Pages & Developer Tools | 0/6 | Not started | - |
