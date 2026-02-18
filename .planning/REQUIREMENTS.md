@@ -73,8 +73,8 @@ Requirements for initial release. Each maps to roadmap phases. All ~87 pages/vie
 - [x] **CHAT-01**: User can access multi-pane chat interface at `/chat` showing all agent conversations
 - [x] **CHAT-02**: User can have a direct conversation with a specific agent at `/chat/[agentId]` with real-time streaming responses via WebSocket
 - [ ] **CHAT-03**: User can observe agent-to-agent conversations (observer mode) at `/chat/team/[conversationId]`
-- [ ] **CHAT-04**: Chat displays tool calls as expandable blocks showing tool name, arguments, and output
-- [ ] **CHAT-05**: Chat supports sending/receiving images, documents, and audio
+- [x] **CHAT-04**: Chat displays tool calls as expandable blocks showing tool name, arguments, and output
+- [x] **CHAT-05**: Chat supports sending/receiving images, documents, and audio
 - [ ] **CHAT-06**: User can switch between agent sessions within chat
 - [ ] **CHAT-07**: Chat supports quick commands: `/new`, `/compact`, `/status`, `/reset`
 - [ ] **CHAT-08**: User can search messages across all conversations
@@ -237,8 +237,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CHAT-01 | Phase 4 | Complete |
 | CHAT-02 | Phase 4 | Complete |
 | CHAT-03 | Phase 4 | Pending |
-| CHAT-04 | Phase 4 | Pending |
-| CHAT-05 | Phase 4 | Pending |
+| CHAT-04 | Phase 4 | Complete |
+| CHAT-05 | Phase 4 | Complete |
 | CHAT-06 | Phase 4 | Pending |
 | CHAT-07 | Phase 4 | Pending |
 | CHAT-08 | Phase 4 | Pending |
