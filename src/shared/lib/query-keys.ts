@@ -49,4 +49,20 @@ export const queryKeys = {
 		list: (filters?: Record<string, unknown>) =>
 			[...queryKeys.audit.lists(), filters] as const,
 	},
+	conversations: {
+		all: ["conversations"] as const,
+		lists: () => [...queryKeys.conversations.all, "list"] as const,
+		list: (filters?: Record<string, unknown>) =>
+			[...queryKeys.conversations.lists(), filters] as const,
+		details: () => [...queryKeys.conversations.all, "detail"] as const,
+		detail: (id: string) =>
+			[...queryKeys.conversations.details(), id] as const,
+	},
+	messages: {
+		all: ["messages"] as const,
+		byConversation: (conversationId: string) =>
+			[...queryKeys.messages.all, "conversation", conversationId] as const,
+		search: (query: string, scope?: string) =>
+			[...queryKeys.messages.all, "search", { query, scope }] as const,
+	},
 } as const;
