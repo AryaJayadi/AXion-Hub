@@ -132,13 +132,13 @@ Plans:
   3. Task detail at /missions/[taskId] shows activity timeline, dispatch log, deliverables with preview, and a working sign-off gate toggle
   4. User can comment on tasks with @agent and @human mentions that trigger notifications
   5. User can organize boards by project at /missions/boards and configure custom columns and automation rules at board settings
-**Plans**: TBD
+**Plans**: 4 plans in 3 waves
 
 Plans:
-- [ ] 06-01: Kanban board with drag-and-drop (dnd-kit), column management, Zustand task store with optimistic updates
-- [ ] 06-02: Task creation form/modal, task detail page with all fields
-- [ ] 06-03: Activity timeline, dispatch log, deliverables with preview, sign-off gate toggle
-- [ ] 06-04: Task comments with @mentions, board organization (/missions/boards), and board settings
+- [ ] 06-01-PLAN.md -- Mission entity types, dnd-kit Kanban board with drag-and-drop, board/task Zustand stores with immer, EventBus subscriptions (Wave 1)
+- [ ] 06-02-PLAN.md -- Task creation dialog/form, task detail slide-over panel, full detail page at /missions/[taskId] (Wave 2)
+- [ ] 06-03-PLAN.md -- Activity timeline with expandable agent detail, dispatch log, deliverables preview, sign-off gate review modal (Wave 3)
+- [ ] 06-04-PLAN.md -- Task comments with @mention popover, board organization at /missions/boards, board settings with custom columns and automation rules (Wave 3)
 
 ### Phase 7: Gateway, Channels & Models
 **Goal**: Users can fully manage their gateway configuration, connect and route messaging channels, and configure LLM providers with failover and cost tracking
@@ -230,7 +230,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4/5/6/7 (partially parallel afte
 | 3. Agent Management | 0/6 | Planned | - |
 | 4. Real-Time Chat | 0/4 | Planned | - |
 | 5. Dashboard & Monitoring | 0/5 | Complete    | 2026-02-18 |
-| 6. Mission Board | 0/4 | Not started | - |
+| 6. Mission Board | 0/4 | Planned | - |
 | 7. Gateway, Channels & Models | 0/5 | Not started | - |
 | 8. Sessions, Memory, Files & Governance | 0/6 | Not started | - |
 | 9. Skills, Plugins & Workflows | 0/5 | Not started | - |
