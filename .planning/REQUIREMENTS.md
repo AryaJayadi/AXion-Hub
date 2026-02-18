@@ -23,12 +23,12 @@ Requirements for initial release. Each maps to roadmap phases. All ~87 pages/vie
 
 ### Authentication
 
-- [ ] **AUTH-01**: User can log in with email/password at `/login`
-- [ ] **AUTH-02**: User can log in via OAuth providers (Google, GitHub) at `/login`
-- [ ] **AUTH-03**: User can create an account at `/register`
-- [ ] **AUTH-04**: User can reset password via email link at `/forgot-password`
+- [x] **AUTH-01**: User can log in with email/password at `/login`
+- [x] **AUTH-02**: User can log in via OAuth providers (Google, GitHub) at `/login`
+- [x] **AUTH-03**: User can create an account at `/register`
+- [x] **AUTH-04**: User can reset password via email link at `/forgot-password`
 - [ ] **AUTH-05**: User can accept an organization invitation via `/invite/[token]`
-- [ ] **AUTH-06**: User session persists across browser refresh with secure cookie/token management via better-auth
+- [x] **AUTH-06**: User session persists across browser refresh with secure cookie/token management via better-auth
 
 ### Dashboard
 
@@ -215,12 +215,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 | INFR-09 | Phase 1 | Pending |
 | INFR-10 | Phase 1 | Pending |
 | INFR-11 | Phase 1 | Pending |
-| AUTH-01 | Phase 2 | Pending |
-| AUTH-02 | Phase 2 | Pending |
-| AUTH-03 | Phase 2 | Pending |
-| AUTH-04 | Phase 2 | Pending |
+| AUTH-01 | Phase 2 | Complete |
+| AUTH-02 | Phase 2 | Complete |
+| AUTH-03 | Phase 2 | Complete |
+| AUTH-04 | Phase 2 | Complete |
 | AUTH-05 | Phase 2 | Pending |
-| AUTH-06 | Phase 2 | Pending |
+| AUTH-06 | Phase 2 | Complete |
 | AGNT-01 | Phase 3 | Pending |
 | AGNT-02 | Phase 3 | Pending |
 | AGNT-03 | Phase 3 | Pending |

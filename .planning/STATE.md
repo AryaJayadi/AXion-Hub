@@ -5,32 +5,33 @@
 See: .planning/PROJECT.md (updated 2026-02-17)
 
 **Core value:** A single pane of glass where you can see everything your AI agents are doing, direct their work, and maintain governance.
-**Current focus:** Phase 1 - Foundation & Infrastructure
+**Current focus:** Phase 2 - Authentication & App Shell
 
 ## Current Position
 
-Phase: 1 of 10 (Foundation & Infrastructure) -- COMPLETE
-Plan: 7 of 7 in current phase (all complete)
-Status: Phase Complete
-Last activity: 2026-02-17 — Completed 01-07 Audit Logging & Health Check
+Phase: 2 of 10 (Authentication & App Shell)
+Plan: 1 of 4 in current phase
+Status: In Progress
+Last activity: 2026-02-18 — Completed 02-01 Auth Foundation
 
-Progress: [████░░░░░░] 10%
+Progress: [████░░░░░░] 12%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 7
+- Total plans completed: 8
 - Average duration: 8min
-- Total execution time: 0.92 hours
+- Total execution time: 1.07 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01 | 7 | 55min | 8min |
+| 02 | 1 | 9min | 9min |
 
 **Recent Trend:**
-- Last 5 plans: 9min, 14min, 3min, 3min, 7min
+- Last 5 plans: 14min, 3min, 3min, 7min, 9min
 - Trend: stable
 
 *Updated after each plan completion*
@@ -66,6 +67,11 @@ Recent decisions affecting current work:
 - [01-07]: pg and ioredis added to serverExternalPackages for Turbopack compatibility in API routes
 - [01-07]: Worker service shares codebase via bind mount but runs workers/index.ts instead of next dev
 - [01-07]: Audit pattern: createAuditLog for direct logging, withAudit HOC for automatic route-level auditing
+- [02-01]: Auth schema manually written (not CLI-generated) because better-auth CLI requires running database; verified against internal field definitions
+- [02-01]: drizzle.config.ts schema glob extended to array pattern to include both schema.ts and auth-schema.ts files
+- [02-01]: nodemailer added to serverExternalPackages for Turbopack compatibility
+- [02-01]: Auto-create personal org wrapped in try/catch due to potential databaseHooks context issues in some better-auth versions
+- [02-01]: Zod v4 API (z.email(), z.literal with error option) used consistent with project convention
 
 ### Pending Todos
 
@@ -78,6 +84,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-02-17
-Stopped at: Completed 01-07-PLAN.md (Phase 01 complete)
-Resume file: .planning/phases/01-foundation-infrastructure/01-07-SUMMARY.md
+Last session: 2026-02-18
+Stopped at: Completed 02-01-PLAN.md
+Resume file: .planning/phases/02-authentication-app-shell/02-01-SUMMARY.md
