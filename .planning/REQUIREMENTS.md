@@ -54,7 +54,7 @@ Requirements for initial release. Each maps to roadmap phases. All ~87 pages/vie
 
 ### Agents
 
-- [ ] **AGNT-01**: User can view all agents in grid/list view with status badges at `/agents`
+- [x] **AGNT-01**: User can view all agents in grid/list view with status badges at `/agents`
 - [ ] **AGNT-02**: User can view agent overview at `/agents/[agentId]` showing status, model, context usage, uptime, current task
 - [ ] **AGNT-03**: User can create/provision a new agent at `/agents/new`
 - [ ] **AGNT-04**: User can browse and use agent templates (Lead, Developer, Researcher, Writer, etc.) at `/agents/templates`
@@ -221,7 +221,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AUTH-04 | Phase 2 | Complete |
 | AUTH-05 | Phase 2 | Complete |
 | AUTH-06 | Phase 2 | Complete |
-| AGNT-01 | Phase 3 | Pending |
+| AGNT-01 | Phase 3 | Complete |
 | AGNT-02 | Phase 3 | Pending |
 | AGNT-03 | Phase 3 | Pending |
 | AGNT-04 | Phase 3 | Pending |

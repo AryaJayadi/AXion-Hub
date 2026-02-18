@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-17)
 
 **Core value:** A single pane of glass where you can see everything your AI agents are doing, direct their work, and maintain governance.
-**Current focus:** Phase 2 - Authentication & App Shell
+**Current focus:** Phase 3 - Agent Management
 
 ## Current Position
 
-Phase: 2 of 10 (Authentication & App Shell) -- COMPLETE
-Plan: 4 of 4 in current phase
-Status: Phase Complete
-Last activity: 2026-02-18 — Completed 02-04 Org Invitation & Switcher
+Phase: 3 of 10 (Agent Management)
+Plan: 1 of 6 in current phase
+Status: In Progress
+Last activity: 2026-02-18 — Completed 03-01 Agent Entity and Roster Page
 
-Progress: [████░░░░░░] 20%
+Progress: [████░░░░░░] 22%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 11
+- Total plans completed: 12
 - Average duration: 7min
-- Total execution time: 1.13 hours
+- Total execution time: 1.25 hours
 
 **By Phase:**
 
@@ -29,15 +29,17 @@ Progress: [████░░░░░░] 20%
 |-------|-------|-------|----------|
 | 01 | 7 | 55min | 8min |
 | 02 | 4 | 13min | 3min |
+| 03 | 1 | 7min | 7min |
 
 **Recent Trend:**
-- Last 5 plans: 3min, 7min, 9min, 8min, 2min
+- Last 5 plans: 7min, 9min, 8min, 2min, 7min
 - Trend: stable
 
 *Updated after each plan completion*
 | Phase 02 P02 | 8min | 2 tasks | 16 files |
 | Phase 02 P03 | 9 | 2 tasks | 12 files |
 | Phase 02 P04 | 2min | 2 tasks | 4 files |
+| Phase 03 P01 | 7min | 2 tasks | 25 files |
 
 ## Accumulated Context
 
@@ -82,6 +84,10 @@ Recent decisions affecting current work:
 - [02-04]: OrgSwitcher uses deterministic color hash on org id for avatar backgrounds across 8 color options
 - [02-04]: Create organization option is a console.log placeholder; full org creation UI deferred beyond Phase 2
 - [02-04]: Invite acceptance uses standalone centered Card layout (not auth-layout) since it is a status/action page
+- [03-01]: NuqsAdapter added to AppProviders for URL search param state across all dashboard pages
+- [03-01]: TanStack Query staleTime set to Infinity to prevent WebSocket/Query desync (per research Pitfall 5)
+- [03-01]: Mock data used for agent list until gateway client methods are wired
+- [03-01]: Agent status glow uses box-shadow (not border-width) to prevent layout shift
 
 ### Pending Todos
 
@@ -95,5 +101,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-18
-Stopped at: Completed 02-04-PLAN.md (Phase 2 complete)
-Resume file: .planning/phases/02-authentication-app-shell/02-04-SUMMARY.md
+Stopped at: Completed 03-01-PLAN.md
+Resume file: .planning/phases/03-agent-management/03-01-SUMMARY.md
