@@ -112,7 +112,7 @@ Plans:
   3. A live activity feed streams the last 20 events via WebSocket, and quick action buttons (New Task, New Agent, Send Message) work
   4. User can view a real-time event stream at /activity and search/filter historical activity at /activity/history
   5. User can view system health at /monitor and configure alert rules at /monitor/alerts that trigger notifications
-**Plans**: 5 plans in 4 waves
+**Plans**: 6 plans in 5 waves
 
 Plans:
 - [ ] 05-01-PLAN.md -- Foundation: install deps, dashboard-event entity, Zustand stores, query keys, BentoGrid widget (Wave 1)
@@ -120,6 +120,7 @@ Plans:
 - [ ] 05-03-PLAN.md -- Activity feed widget with scroll-aware auto-scroll and quick actions (Wave 2)
 - [ ] 05-04-PLAN.md -- Activity pages (/activity, /activity/history) and health monitor (/monitor) with React Flow dependency map (Wave 3)
 - [ ] 05-05-PLAN.md -- Alert system: DB schema, BullMQ worker, template presets, rule management UI, notification bell (Wave 4)
+- [ ] 05-06-PLAN.md -- Gap closure: Wire store subscriptions in GatewayProvider for real-time data flow (Wave 5)
 
 ### Phase 6: Mission Board
 **Goal**: Users can visually manage and assign tasks to agents using a Kanban board, track deliverables, enforce sign-off gates, and organize work across multiple boards
