@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-17)
 
 **Core value:** A single pane of glass where you can see everything your AI agents are doing, direct their work, and maintain governance.
-**Current focus:** Phase 3 - Agent Management
+**Current focus:** Phase 4 - Real-Time Chat
 
 ## Current Position
 
-Phase: 3 of 10 (Agent Management)
-Plan: 6 of 6 in current phase
-Status: Phase Complete
-Last activity: 2026-02-18 -- Completed 03-06 Agent Sub-Pages (Skills, Tools, Sandbox, Channels, Logs, Metrics)
+Phase: 4 of 10 (Real-Time Chat)
+Plan: 1 of 4 in current phase
+Status: In Progress
+Last activity: 2026-02-18 -- Completed 04-01 Chat Hub Foundation
 
-Progress: [██████░░░░] 30%
+Progress: [██████░░░░] 33%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 17
+- Total plans completed: 18
 - Average duration: 7min
-- Total execution time: 1.9 hours
+- Total execution time: 2.0 hours
 
 **By Phase:**
 
@@ -30,9 +30,10 @@ Progress: [██████░░░░] 30%
 | 01 | 7 | 55min | 8min |
 | 02 | 4 | 13min | 3min |
 | 03 | 6 | 51min | 9min |
+| 04 | 1 | 7min | 7min |
 
 **Recent Trend:**
-- Last 5 plans: 8min, 8min, 6min, 11min, 11min
+- Last 5 plans: 8min, 6min, 11min, 11min, 7min
 - Trend: stable
 
 *Updated after each plan completion*
@@ -45,6 +46,7 @@ Progress: [██████░░░░] 30%
 | Phase 03 P04 | 6min | 1 task | 7 files |
 | Phase 03 P05 | 11min | 2 tasks | 10 files |
 | Phase 03 P06 | 11min | 2 tasks | 24 files |
+| Phase 04 P01 | 7min | 2 tasks | 20 files |
 
 ## Accumulated Context
 
@@ -115,6 +117,10 @@ Recent decisions affecting current work:
 - [03-06]: Logs virtual scrolling via useVirtualizer with 40px estimated row height and 10-item overscan
 - [03-06]: Metrics charts use ChartConfig with CSS variable colors for theme consistency
 - [03-06]: FormField error prop updated to string | undefined for exactOptionalPropertyTypes compatibility
+- [04-01]: react-resizable-panels v4 uses orientation prop (not direction) and Panel has no order prop
+- [04-01]: Hybrid conversation sidebar: pinned section, rooms section, direct section (per research discretion)
+- [04-01]: StreamingLane keyed by conversationId:agentId for multi-agent parallel streaming
+- [04-01]: Participant panel shows agentId as fallback name until wired to agent store
 
 ### Pending Todos
 
@@ -128,5 +134,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-18
-Stopped at: Completed 03-06-PLAN.md (Phase 03 complete)
-Resume file: .planning/phases/03-agent-management/03-06-SUMMARY.md
+Stopped at: Completed 04-01-PLAN.md
+Resume file: .planning/phases/04-real-time-chat/04-01-SUMMARY.md

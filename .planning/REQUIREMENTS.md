@@ -70,7 +70,7 @@ Requirements for initial release. Each maps to roadmap phases. All ~87 pages/vie
 
 ### Chat & Conversations
 
-- [ ] **CHAT-01**: User can access multi-pane chat interface at `/chat` showing all agent conversations
+- [x] **CHAT-01**: User can access multi-pane chat interface at `/chat` showing all agent conversations
 - [ ] **CHAT-02**: User can have a direct conversation with a specific agent at `/chat/[agentId]` with real-time streaming responses via WebSocket
 - [ ] **CHAT-03**: User can observe agent-to-agent conversations (observer mode) at `/chat/team/[conversationId]`
 - [ ] **CHAT-04**: Chat displays tool calls as expandable blocks showing tool name, arguments, and output
@@ -234,7 +234,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AGNT-11 | Phase 3 | Complete |
 | AGNT-12 | Phase 3 | Complete |
 | AGNT-13 | Phase 3 | Complete |
-| CHAT-01 | Phase 4 | Pending |
+| CHAT-01 | Phase 4 | Complete |
 | CHAT-02 | Phase 4 | Pending |
 | CHAT-03 | Phase 4 | Pending |
 | CHAT-04 | Phase 4 | Pending |
