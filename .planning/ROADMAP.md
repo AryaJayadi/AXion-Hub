@@ -18,7 +18,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 4: Real-Time Chat** - Multi-pane chat hub, streaming agent conversations, tool call visualization, media support, session switching, quick commands, and message search
 - [x] **Phase 5: Dashboard & Monitoring** - Command center dashboard with live widgets, activity feed, health monitoring, alerts, and real-time event streaming (completed 2026-02-18)
 - [x] **Phase 6: Mission Board** - Kanban task management with drag-and-drop, task detail, agent assignment, deliverables, sign-off gates, comments, board organization, and board settings (completed 2026-02-18)
-- [ ] **Phase 7: Gateway, Channels & Models** - Gateway config editor, channel management, channel pairing, routing/bindings, model provider config, failover chains, and usage/cost tracking
+- [x] **Phase 7: Gateway, Channels & Models** - Gateway config editor, channel management, channel pairing, routing/bindings, model provider config, failover chains, and usage/cost tracking (completed 2026-02-18)
 - [ ] **Phase 8: Sessions, Memory, Files & Governance** - Session browser, transcript viewer, memory explorer, semantic search, file browser, workspace editor, deliverables, approval queue, audit log, and governance policies
 - [ ] **Phase 9: Skills, Plugins & Workflows** - Skills library, ClawHub browser, plugin management, visual workflow builder, cron jobs, and webhooks
 - [ ] **Phase 10: Settings, Public Pages & Developer Tools** - All settings pages, landing page, features, pricing, docs, changelog, blog, API reference, and WebSocket playground
@@ -231,7 +231,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4/5/6/7 (partially parallel afte
 | 4. Real-Time Chat | 0/4 | Planned | - |
 | 5. Dashboard & Monitoring | 0/5 | Complete    | 2026-02-18 |
 | 6. Mission Board | 0/4 | Complete    | 2026-02-18 |
-| 7. Gateway, Channels & Models | 0/5 | Planned | - |
+| 7. Gateway, Channels & Models | 0/5 | Complete    | 2026-02-18 |
 | 8. Sessions, Memory, Files & Governance | 0/6 | Not started | - |
 | 9. Skills, Plugins & Workflows | 0/5 | Not started | - |
 | 10. Settings, Public Pages & Developer Tools | 0/6 | Not started | - |
