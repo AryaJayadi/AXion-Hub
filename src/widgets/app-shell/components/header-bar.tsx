@@ -14,6 +14,7 @@ import {
 } from "@/shared/ui/breadcrumb";
 import { Separator } from "@/shared/ui/separator";
 import { SidebarTrigger } from "@/shared/ui/sidebar";
+import { NotificationBell } from "@/features/dashboard/components/notification-bell";
 import { UserMenu } from "./user-menu";
 
 interface HeaderBarProps {
@@ -84,6 +85,7 @@ export function HeaderBar({ user }: HeaderBarProps) {
 				</kbd>
 			</button>
 
+			<NotificationBell />
 			<UserMenu user={user} />
 		</header>
 	);
