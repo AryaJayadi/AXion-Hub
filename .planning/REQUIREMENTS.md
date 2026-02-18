@@ -38,7 +38,7 @@ Requirements for initial release. Each maps to roadmap phases. All ~87 pages/vie
 - [x] **DASH-04**: Dashboard shows context window usage gauge per active agent
 - [x] **DASH-05**: Dashboard shows model & token cost summary (current session / today / this week)
 - [x] **DASH-06**: Dashboard shows live activity feed (last 20 events, scrollable, real-time via WebSocket)
-- [ ] **DASH-07**: Dashboard provides quick actions: New Task, New Agent, Send Message
+- [x] **DASH-07**: Dashboard provides quick actions: New Task, New Agent, Send Message
 
 ### Mission Board (Task Management)
 
@@ -248,7 +248,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DASH-04 | Phase 5 | Complete |
 | DASH-05 | Phase 5 | Complete |
 | DASH-06 | Phase 5 | Complete |
-| DASH-07 | Phase 5 | Pending |
+| DASH-07 | Phase 5 | Complete |
 | MNTR-01 | Phase 5 | Pending |
 | MNTR-02 | Phase 5 | Pending |
 | MNTR-03 | Phase 5 | Pending |
