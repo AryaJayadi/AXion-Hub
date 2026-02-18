@@ -18,6 +18,8 @@ import { formatDistanceToNow } from "date-fns";
 import type { ChatMessage } from "@/entities/chat-message";
 import { cn } from "@/shared/lib/cn";
 import { Avatar, AvatarFallback } from "@/shared/ui/avatar";
+import { ToolCallGroup } from "./tool-call-group";
+import { MediaPreview } from "./media-preview";
 
 // Dynamic import Streamdown to avoid SSR issues with shiki
 const Streamdown = dynamic(
@@ -106,6 +108,13 @@ export function MessageBubble({ message, isStreaming }: MessageBubbleProps) {
 					)}
 				</div>
 
+				{/* Attachments (rendered above text content) */}
+				{message.attachments.length > 0 && (
+					<div className="mt-1">
+						<MediaPreview attachments={message.attachments} />
+					</div>
+				)}
+
 				{/* Message content */}
 				<div className="mt-1">
 					{isUser ? (
@@ -123,6 +132,16 @@ export function MessageBubble({ message, isStreaming }: MessageBubbleProps) {
 						</div>
 					)}
 				</div>
+
+				{/* Tool call visualization (rendered below text content) */}
+				{message.toolCalls.length > 0 && (
+					<ToolCallGroup
+						tools={message.toolCalls}
+						isExecuting={message.toolCalls.some(
+							(t) => t.status === "running" || t.status === "pending",
+						)}
+					/>
+				)}
 			</div>
 		</div>
 	);
