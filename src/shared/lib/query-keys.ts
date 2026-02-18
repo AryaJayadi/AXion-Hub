@@ -42,6 +42,11 @@ export const queryKeys = {
 		all: ["gateway"] as const,
 		health: () => [...queryKeys.gateway.all, "health"] as const,
 		config: () => [...queryKeys.gateway.all, "config"] as const,
+		instances: () => [...queryKeys.gateway.all, "instances"] as const,
+		instance: (id: string) =>
+			[...queryKeys.gateway.instances(), id] as const,
+		nodes: (instanceId: string) =>
+			[...queryKeys.gateway.all, "nodes", instanceId] as const,
 	},
 	audit: {
 		all: ["audit"] as const,
@@ -100,6 +105,23 @@ export const queryKeys = {
 			[...queryKeys.tasks.all, "comments", taskId] as const,
 		activity: (taskId: string) =>
 			[...queryKeys.tasks.all, "activity", taskId] as const,
+	},
+	channels: {
+		all: ["channels"] as const,
+		lists: () => [...queryKeys.channels.all, "list"] as const,
+		detail: (id: string) =>
+			[...queryKeys.channels.all, "detail", id] as const,
+		routing: () => [...queryKeys.channels.all, "routing"] as const,
+	},
+	models: {
+		all: ["models"] as const,
+		providers: () => [...queryKeys.models.all, "providers"] as const,
+		provider: (id: string) =>
+			[...queryKeys.models.providers(), id] as const,
+		catalog: () => [...queryKeys.models.all, "catalog"] as const,
+		failover: () => [...queryKeys.models.all, "failover"] as const,
+		usage: (dimension: string, period: string) =>
+			[...queryKeys.models.all, "usage", { dimension, period }] as const,
 	},
 	alerts: {
 		all: ["alerts"] as const,

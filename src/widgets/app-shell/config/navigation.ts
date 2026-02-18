@@ -5,6 +5,7 @@ import {
 	Kanban,
 	Radio,
 	Globe,
+	Brain,
 	Activity,
 	FolderOpen,
 	Workflow,
@@ -29,7 +30,7 @@ export const navigationConfig: NavGroup[] = [
 	{
 		label: "Core",
 		items: [
-			{ title: "Dashboard", url: "/", icon: LayoutDashboard },
+			{ title: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
 			{ title: "Agents", url: "/agents", icon: Bot },
 			{ title: "Chat", url: "/chat", icon: MessageSquare },
 			{ title: "Missions", url: "/missions", icon: Kanban },
@@ -40,6 +41,7 @@ export const navigationConfig: NavGroup[] = [
 		items: [
 			{ title: "Gateway", url: "/gateway", icon: Radio },
 			{ title: "Channels", url: "/channels", icon: Globe },
+			{ title: "Models", url: "/models", icon: Brain },
 			{ title: "Activity", url: "/activity", icon: Activity },
 			{ title: "Files", url: "/workspace", icon: FolderOpen },
 		],
