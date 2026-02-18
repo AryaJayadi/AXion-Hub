@@ -9,19 +9,19 @@ See: .planning/PROJECT.md (updated 2026-02-17)
 
 ## Current Position
 
-Phase: 4 of 10 (Real-Time Chat)
-Plan: 3 of 4 in current phase
-Status: In Progress
-Last activity: 2026-02-18 -- Completed 04-03 Tool Call Visualization & Media Support
+Phase: 4 of 10 (Real-Time Chat) -- COMPLETE
+Plan: 4 of 4 in current phase
+Status: Phase Complete
+Last activity: 2026-02-18 -- Completed 04-04 Quick Commands, Search & Team Chat
 
-Progress: [██████░░░░] 37%
+Progress: [██████░░░░] 40%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 20
+- Total plans completed: 21
 - Average duration: 7min
-- Total execution time: 2.2 hours
+- Total execution time: 2.3 hours
 
 **By Phase:**
 
@@ -30,10 +30,10 @@ Progress: [██████░░░░] 37%
 | 01 | 7 | 55min | 8min |
 | 02 | 4 | 13min | 3min |
 | 03 | 6 | 51min | 9min |
-| 04 | 3 | 19min | 6min |
+| 04 | 4 | 25min | 6min |
 
 **Recent Trend:**
-- Last 5 plans: 11min, 11min, 7min, 7min, 5min
+- Last 5 plans: 11min, 7min, 7min, 5min, 6min
 - Trend: stable
 
 *Updated after each plan completion*
@@ -49,6 +49,7 @@ Progress: [██████░░░░] 37%
 | Phase 04 P01 | 7min | 2 tasks | 20 files |
 | Phase 04 P02 | 7min | 2 tasks | 12 files |
 | Phase 04 P03 | 5min | 2 tasks | 10 files |
+| Phase 04 P04 | 6min | 2 tasks | 13 files |
 
 ## Accumulated Context
 
@@ -132,6 +133,10 @@ Recent decisions affecting current work:
 - [04-03]: FileInputTrigger exported as separate component from MediaUploadZone for clean composition in ChatInput
 - [04-03]: onSend signature updated to (text, attachments) with chat-view.tsx updated to pass attachments to optimistic message
 - [04-03]: Drag counter ref pattern for reliable drag enter/leave tracking across child elements
+- [04-04]: CommandContext pattern passes gateway client, conversation state, and callbacks to command actions
+- [04-04]: Slash popover uses document-level keydown for navigation to avoid conflicts with textarea Enter-to-send
+- [04-04]: Message search uses in-memory Zustand store filtering as placeholder for server-side search
+- [04-04]: Agent picker fetches agents via TanStack Query from gateway with fallback to empty array
 
 ### Pending Todos
 
@@ -145,5 +150,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-18
-Stopped at: Completed 04-03-PLAN.md
-Resume file: .planning/phases/04-real-time-chat/04-03-SUMMARY.md
+Stopped at: Completed 04-04-PLAN.md (Phase 04 complete)
+Resume file: .planning/phases/04-real-time-chat/04-04-SUMMARY.md
