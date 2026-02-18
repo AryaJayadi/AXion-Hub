@@ -1,10 +1,13 @@
 "use client";
 
-import { Plus } from "lucide-react";
+import { useState } from "react";
+import Link from "next/link";
+import { ExternalLink, Plus } from "lucide-react";
 
 import { useBoards } from "@/features/missions/api/use-boards";
 import { useBoardTasks } from "@/features/missions/api/use-board-tasks";
 import { KanbanBoard } from "@/features/missions/components/kanban-board";
+import { TaskCreateDialog } from "@/features/missions/components/task-create-dialog";
 import { Button } from "@/shared/ui/button";
 import { PageHeader } from "@/shared/ui/page-header";
 import { Skeleton } from "@/shared/ui/skeleton";
@@ -17,22 +20,34 @@ export function MissionsBoardView() {
 
 	const isLoading = boardsLoading || tasksLoading;
 
+	// Dialog state for task creation
+	const [dialogOpen, setDialogOpen] = useState(false);
+
 	return (
 		<div className="flex flex-col h-full">
 			<PageHeader
 				title="Missions"
 				description="Manage and track agent tasks"
 				actions={
-					<Button
-						size="sm"
-						onClick={() => {
-							// Placeholder: will connect in 06-02
-							console.log("[Missions] New Task clicked");
-						}}
-					>
-						<Plus className="mr-1.5 size-4" />
-						New Task
-					</Button>
+					<div className="flex items-center gap-2">
+						<Button
+							variant="outline"
+							size="sm"
+							asChild
+						>
+							<Link href="/missions/new">
+								<ExternalLink className="mr-1.5 size-4" />
+								Full Page
+							</Link>
+						</Button>
+						<Button
+							size="sm"
+							onClick={() => setDialogOpen(true)}
+						>
+							<Plus className="mr-1.5 size-4" />
+							New Task
+						</Button>
+					</div>
 				}
 			/>
 
@@ -51,6 +66,12 @@ export function MissionsBoardView() {
 			) : (
 				<KanbanBoard />
 			)}
+
+			{/* Task creation dialog */}
+			<TaskCreateDialog
+				open={dialogOpen}
+				onOpenChange={setDialogOpen}
+			/>
 		</div>
 	);
 }
