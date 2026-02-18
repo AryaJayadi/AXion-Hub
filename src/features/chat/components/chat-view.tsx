@@ -11,6 +11,7 @@
 
 import { useEffect, useRef, useCallback } from "react";
 import { nanoid } from "nanoid";
+import type { Attachment } from "@/entities/chat-message";
 import { useGateway } from "@/app/providers/gateway-provider";
 import { useChatStore } from "../model/chat-store";
 import { initChatStreamSubscriptions } from "../lib/chat-stream-subscriptions";
@@ -43,9 +44,9 @@ export function ChatView({ conversationId, agentId }: ChatViewProps) {
 		};
 	}, [eventBus]);
 
-	// Handle sending a message
+	// Handle sending a message with optional attachments
 	const handleSend = useCallback(
-		(text: string) => {
+		(text: string, attachments: Attachment[]) => {
 			const targetAgentId = agentId ?? conversationId;
 
 			// Optimistically add the user message to the store
@@ -58,7 +59,7 @@ export function ChatView({ conversationId, agentId }: ChatViewProps) {
 				content: text,
 				timestamp: new Date(),
 				toolCalls: [],
-				attachments: [],
+				attachments,
 			});
 
 			// Send via gateway (fire and forget -- response arrives via EventBus)
