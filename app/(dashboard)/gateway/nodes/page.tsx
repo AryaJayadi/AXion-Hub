@@ -1,17 +1,16 @@
-import { PageHeader } from "@/shared/ui/page-header";
+import { Suspense } from "react";
+import type { Metadata } from "next";
+import { GatewayNodesView } from "@/views/gateway/gateway-nodes-view";
+import { SkeletonTable } from "@/shared/ui/loading-skeleton";
 
-export const metadata = {
+export const metadata: Metadata = {
 	title: "Gateway Nodes | AXion Hub",
 };
 
 export default function GatewayNodesPage() {
 	return (
-		<div className="space-y-6">
-			<PageHeader
-				title="Gateway Nodes"
-				description="Devices and platforms connected to the gateway"
-			/>
-			<p className="text-sm text-muted-foreground">Coming in plan 07-03</p>
-		</div>
+		<Suspense fallback={<SkeletonTable rows={3} columns={6} />}>
+			<GatewayNodesView />
+		</Suspense>
 	);
 }
