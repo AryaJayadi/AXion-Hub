@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-02-17)
 ## Current Position
 
 Phase: 4 of 10 (Real-Time Chat)
-Plan: 1 of 4 in current phase
+Plan: 2 of 4 in current phase
 Status: In Progress
-Last activity: 2026-02-18 -- Completed 04-01 Chat Hub Foundation
+Last activity: 2026-02-18 -- Completed 04-02 Streaming Chat UI
 
-Progress: [██████░░░░] 33%
+Progress: [██████░░░░] 35%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 18
+- Total plans completed: 19
 - Average duration: 7min
-- Total execution time: 2.0 hours
+- Total execution time: 2.1 hours
 
 **By Phase:**
 
@@ -30,10 +30,10 @@ Progress: [██████░░░░] 33%
 | 01 | 7 | 55min | 8min |
 | 02 | 4 | 13min | 3min |
 | 03 | 6 | 51min | 9min |
-| 04 | 1 | 7min | 7min |
+| 04 | 2 | 14min | 7min |
 
 **Recent Trend:**
-- Last 5 plans: 8min, 6min, 11min, 11min, 7min
+- Last 5 plans: 6min, 11min, 11min, 7min, 7min
 - Trend: stable
 
 *Updated after each plan completion*
@@ -47,6 +47,7 @@ Progress: [██████░░░░] 33%
 | Phase 03 P05 | 11min | 2 tasks | 10 files |
 | Phase 03 P06 | 11min | 2 tasks | 24 files |
 | Phase 04 P01 | 7min | 2 tasks | 20 files |
+| Phase 04 P02 | 7min | 2 tasks | 12 files |
 
 ## Accumulated Context
 
@@ -121,6 +122,11 @@ Recent decisions affecting current work:
 - [04-01]: Hybrid conversation sidebar: pinned section, rooms section, direct section (per research discretion)
 - [04-01]: StreamingLane keyed by conversationId:agentId for multi-agent parallel streaming
 - [04-01]: Participant panel shows agentId as fallback name until wired to agent store
+- [04-02]: Streamdown loaded via next/dynamic with ssr:false to avoid SSR issues with shiki
+- [04-02]: Code plugin uses conditional spread for exactOptionalPropertyTypes: `{...(codePlugin ? { plugins: { code: codePlugin } } : {})}`
+- [04-02]: Sticky-bottom auto-scroll uses 50px threshold with "New messages" button when scrolled up
+- [04-02]: EventBus subscriptions use simplified sessionId:agent laneKey for 1:1 chats; multi-agent rooms use explicit agentId
+- [04-02]: Optimistic user messages added to store before gateway roundtrip; errors logged but don't roll back
 
 ### Pending Todos
 
@@ -134,5 +140,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-18
-Stopped at: Completed 04-01-PLAN.md
-Resume file: .planning/phases/04-real-time-chat/04-01-SUMMARY.md
+Stopped at: Completed 04-02-PLAN.md
+Resume file: .planning/phases/04-real-time-chat/04-02-SUMMARY.md
