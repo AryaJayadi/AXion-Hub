@@ -32,6 +32,7 @@ import { useTask } from "../model/hooks";
 import { useUpdateTask } from "../api/use-task-mutations";
 import { TaskActivityTimeline } from "./task-activity-timeline";
 import { TaskComments } from "./task-comments";
+import { TaskDeliverables } from "./task-deliverables";
 import { TaskDispatchLog } from "./task-dispatch-log";
 
 interface TaskDetailContentProps {
@@ -377,26 +378,13 @@ export function TaskDetailContent({
 				</div>
 			)}
 
-			{/* Deliverables placeholder (06-03 task 2) */}
-			<div className="space-y-2 pt-4 border-t">
-				<div className="flex items-center gap-2">
-					<Clock className="size-4 text-muted-foreground" />
-					<p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-						Deliverables
-					</p>
-				</div>
-				{task.deliverables.length > 0 ? (
-					<p className="text-xs text-muted-foreground">
-						{task.deliverables.length} deliverable(s) attached
-					</p>
-				) : (
-					<div className="flex items-center justify-center rounded-md border border-dashed p-6">
-						<p className="text-xs text-muted-foreground">
-							No deliverables yet
-						</p>
-					</div>
-				)}
-			</div>
+			{/* Deliverables */}
+			<TaskDeliverables
+				taskId={task.id}
+				deliverables={task.deliverables}
+				signOffRequired={task.signOffRequired}
+				signOffStatus={task.signOffStatus}
+			/>
 
 			{/* Activity & Dispatch Log tabs */}
 			<div className="pt-4 border-t">
