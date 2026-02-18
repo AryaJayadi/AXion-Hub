@@ -27,7 +27,7 @@ Requirements for initial release. Each maps to roadmap phases. All ~87 pages/vie
 - [x] **AUTH-02**: User can log in via OAuth providers (Google, GitHub) at `/login`
 - [x] **AUTH-03**: User can create an account at `/register`
 - [x] **AUTH-04**: User can reset password via email link at `/forgot-password`
-- [ ] **AUTH-05**: User can accept an organization invitation via `/invite/[token]`
+- [x] **AUTH-05**: User can accept an organization invitation via `/invite/[token]`
 - [x] **AUTH-06**: User session persists across browser refresh with secure cookie/token management via better-auth
 
 ### Dashboard
@@ -219,7 +219,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AUTH-02 | Phase 2 | Complete |
 | AUTH-03 | Phase 2 | Complete |
 | AUTH-04 | Phase 2 | Complete |
-| AUTH-05 | Phase 2 | Pending |
+| AUTH-05 | Phase 2 | Complete |
 | AUTH-06 | Phase 2 | Complete |
 | AGNT-01 | Phase 3 | Pending |
 | AGNT-02 | Phase 3 | Pending |
