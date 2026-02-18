@@ -82,8 +82,8 @@ Requirements for initial release. Each maps to roadmap phases. All ~87 pages/vie
 ### Gateway Management
 
 - [x] **GATE-01**: User can view gateway connection status, health, uptime, and version at `/gateway`
-- [ ] **GATE-02**: User can visually edit `openclaw.json` configuration with form-based editor and raw JSON toggle at `/gateway/config`
-- [ ] **GATE-03**: Gateway config editor covers all sections: identity, session settings, channel configs, model providers, compaction, memory search, security, plugins
+- [x] **GATE-02**: User can visually edit `openclaw.json` configuration with form-based editor and raw JSON toggle at `/gateway/config`
+- [x] **GATE-03**: Gateway config editor covers all sections: identity, session settings, channel configs, model providers, compaction, memory search, security, plugins
 - [ ] **GATE-04**: User can view and manage connected channels (WhatsApp, Telegram, Discord, etc.) with status and pairing at `/gateway/channels`
 - [ ] **GATE-05**: User can view and manage connected nodes (macOS/iOS/Android) with capabilities and pairing at `/gateway/nodes`
 - [x] **GATE-06**: User can manage multiple gateway connections at `/gateway/instances`
@@ -263,8 +263,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | TASK-08 | Phase 6 | Complete |
 | TASK-09 | Phase 6 | Complete |
 | GATE-01 | Phase 7 | Complete |
-| GATE-02 | Phase 7 | Pending |
-| GATE-03 | Phase 7 | Pending |
+| GATE-02 | Phase 7 | Complete |
+| GATE-03 | Phase 7 | Complete |
 | GATE-04 | Phase 7 | Pending |
 | GATE-05 | Phase 7 | Pending |
 | GATE-06 | Phase 7 | Complete |

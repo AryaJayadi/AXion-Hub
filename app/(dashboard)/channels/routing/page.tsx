@@ -1,4 +1,6 @@
-import { PageHeader } from "@/shared/ui/page-header";
+import { Suspense } from "react";
+import { SkeletonTable } from "@/shared/ui/loading-skeleton";
+import { ChannelRoutingView } from "@/views/channels/channel-routing-view";
 
 export const metadata = {
 	title: "Channel Routing | AXion Hub",
@@ -6,16 +8,8 @@ export const metadata = {
 
 export default function ChannelRoutingPage() {
 	return (
-		<div className="space-y-6">
-			<PageHeader
-				title="Channel Routing"
-				description="Configure channel-to-agent routing rules"
-				breadcrumbs={[
-					{ label: "Channels", href: "/channels" },
-					{ label: "Routing" },
-				]}
-			/>
-			<p className="text-sm text-muted-foreground">Coming in plan 07-04</p>
-		</div>
+		<Suspense fallback={<SkeletonTable rows={5} columns={5} />}>
+			<ChannelRoutingView />
+		</Suspense>
 	);
 }
