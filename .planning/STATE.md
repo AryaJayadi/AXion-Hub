@@ -61,6 +61,7 @@ Progress: [██████░░░░] 60%
 | Phase 06 P01 | 11min | 3 tasks | 22 files |
 | Phase 06 P02 | 11min | 2 tasks | 17 files |
 | Phase 06 P04 | 10min | 2 tasks | 13 files |
+| Phase 06 P03 | 11min | 2 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -186,6 +187,9 @@ Recent decisions affecting current work:
 - [Phase 06]: Mention format @[Name](type:id) enables parsing and rendering as colored inline badges in comments
 - [Phase 06]: BoardSidebar rendered as in-content secondary sidebar (w-56 border-r), hidden on mobile via hidden md:flex
 - [Phase 06]: Automation rules use simple trigger-action model stored in local state for initial version
+- [Phase 06]: Activity timeline uses vertical left-border pattern with type-specific dot colors and framer-motion expandable agent detail
+- [Phase 06]: Sign-off review modal uses deliberate two-column layout with required comments for reject/revision
+- [Phase 06]: DeliverablePreviewCard shows code snippet preview (first 3 lines) with full dialog on click, file thumbnails, and clickable links
 
 ### Pending Todos
 

@@ -45,9 +45,9 @@ Requirements for initial release. Each maps to roadmap phases. All ~87 pages/vie
 - [x] **TASK-01**: User can view and manage tasks on a drag-and-drop Kanban board at `/missions` with columns: INBOX, ASSIGNED, IN PROGRESS, REVIEW, DONE, ARCHIVED
 - [x] **TASK-02**: User can view full task detail at `/missions/[taskId]` with title, Markdown description, priority (urgent/high/normal/low), assigned agent(s), human reviewer, skills/tags, subtasks/checklist
 - [x] **TASK-03**: User can create tasks via form/modal at `/missions/new` with all task fields
-- [ ] **TASK-04**: Task detail shows activity timeline (status changes, comments, agent output) and dispatch log
-- [ ] **TASK-05**: Task detail shows deliverables (uploaded files, code artifacts, links) with preview
-- [ ] **TASK-06**: User can toggle sign-off gate on tasks (require human approval before DONE)
+- [x] **TASK-04**: Task detail shows activity timeline (status changes, comments, agent output) and dispatch log
+- [x] **TASK-05**: Task detail shows deliverables (uploaded files, code artifacts, links) with preview
+- [x] **TASK-06**: User can toggle sign-off gate on tasks (require human approval before DONE)
 - [x] **TASK-07**: User can comment on tasks with @agent and @human mentions
 - [x] **TASK-08**: User can organize boards by project/team at `/missions/boards`
 - [x] **TASK-09**: User can configure board settings at `/missions/boards/[boardId]/settings` with custom columns and automation rules
@@ -256,9 +256,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | TASK-01 | Phase 6 | Complete |
 | TASK-02 | Phase 6 | Complete |
 | TASK-03 | Phase 6 | Complete |
-| TASK-04 | Phase 6 | Pending |
-| TASK-05 | Phase 6 | Pending |
-| TASK-06 | Phase 6 | Pending |
+| TASK-04 | Phase 6 | Complete |
+| TASK-05 | Phase 6 | Complete |
+| TASK-06 | Phase 6 | Complete |
 | TASK-07 | Phase 6 | Complete |
 | TASK-08 | Phase 6 | Complete |
 | TASK-09 | Phase 6 | Complete |
