@@ -28,6 +28,41 @@ export type KnownEvents = {
 	"chat.stream.token": { sessionId: string; messageId: string; token: string };
 	"chat.stream.end": { sessionId: string; messageId: string; fullText: string };
 
+	// Gateway tool call events (during agent response)
+	"chat.tool.start": {
+		sessionId: string;
+		messageId: string;
+		toolCallId: string;
+		name: string;
+		arguments: Record<string, unknown>;
+	};
+	"chat.tool.progress": {
+		sessionId: string;
+		messageId: string;
+		toolCallId: string;
+		output: string;
+	};
+	"chat.tool.end": {
+		sessionId: string;
+		messageId: string;
+		toolCallId: string;
+		output: string;
+	};
+	"chat.tool.error": {
+		sessionId: string;
+		messageId: string;
+		toolCallId: string;
+		error: string;
+	};
+
+	// Chat room lifecycle events
+	"chat.room.created": {
+		conversationId: string;
+		type: "room" | "team";
+		agentIds: string[];
+		title: string;
+	};
+
 	// Gateway execution events
 	"exec.approval.requested": {
 		agentId: string;
