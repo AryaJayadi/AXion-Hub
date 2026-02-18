@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Hexagon } from "lucide-react";
 import {
 	Sidebar,
 	SidebarContent,
@@ -17,6 +16,7 @@ import {
 	SidebarRail,
 } from "@/shared/ui/sidebar";
 import { navigationConfig } from "../config/navigation";
+import { OrgSwitcher } from "./org-switcher";
 
 interface AppSidebarProps {
 	user: { name: string; email: string; image?: string | null };
@@ -28,23 +28,7 @@ export function AppSidebar({ user: _user }: AppSidebarProps) {
 	return (
 		<Sidebar collapsible="icon">
 			<SidebarHeader>
-				<SidebarMenu>
-					<SidebarMenuItem>
-						<SidebarMenuButton size="lg" asChild tooltip="AXion Hub">
-							<Link href="/">
-								<div className="bg-primary text-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-									<Hexagon className="size-4" />
-								</div>
-								<div className="grid flex-1 text-left text-sm leading-tight">
-									<span className="truncate font-semibold">AXion Hub</span>
-									<span className="truncate text-xs text-muted-foreground">
-										Mission Control
-									</span>
-								</div>
-							</Link>
-						</SidebarMenuButton>
-					</SidebarMenuItem>
-				</SidebarMenu>
+				<OrgSwitcher />
 			</SidebarHeader>
 
 			<SidebarContent>
