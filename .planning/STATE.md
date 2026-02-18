@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-17)
 
 **Core value:** A single pane of glass where you can see everything your AI agents are doing, direct their work, and maintain governance.
-**Current focus:** Phase 6 - Mission Board
+**Current focus:** Phase 7 - Gateway, Channels & Models
 
 ## Current Position
 
-Phase: 6 of 10 (Mission Board)
-Plan: 4 of 4 in current phase
-Status: Phase Complete
-Last activity: 2026-02-18 -- Completed 06-04 Task Comments and Board Organization
+Phase: 7 of 10 (Gateway, Channels & Models)
+Plan: 2 of 5 in current phase
+Status: In Progress
+Last activity: 2026-02-18 -- Completed 07-01 Entity Types, Route Scaffolding, and Gateway Health UI
 
-Progress: [██████░░░░] 60%
+Progress: [██████░░░░] 65%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 29
+- Total plans completed: 30
 - Average duration: 6min
-- Total execution time: 3.2 hours
+- Total execution time: 3.3 hours
 
 **By Phase:**
 
@@ -33,9 +33,10 @@ Progress: [██████░░░░] 60%
 | 04 | 4 | 25min | 6min |
 | 05 | 6 | 28min | 5min |
 | 06 | 2 | 22min | 11min |
+| 07 | 1 | 5min | 5min |
 
 **Recent Trend:**
-- Last 5 plans: 5min, 6min, 2min, 11min, 11min
+- Last 5 plans: 6min, 2min, 11min, 11min, 5min
 - Trend: stable
 
 *Updated after each plan completion*
@@ -62,6 +63,7 @@ Progress: [██████░░░░] 60%
 | Phase 06 P02 | 11min | 2 tasks | 17 files |
 | Phase 06 P04 | 10min | 2 tasks | 13 files |
 | Phase 06 P03 | 11min | 2 tasks | 7 files |
+| Phase 07 P01 | 5min | 2 tasks | 39 files |
 
 ## Accumulated Context
 
@@ -190,6 +192,12 @@ Recent decisions affecting current work:
 - [Phase 06]: Activity timeline uses vertical left-border pattern with type-specific dot colors and framer-motion expandable agent detail
 - [Phase 06]: Sign-off review modal uses deliberate two-column layout with required comments for reject/revision
 - [Phase 06]: DeliverablePreviewCard shows code snippet preview (first 3 lines) with full dialog on click, file thumbnails, and clickable links
+- [07-01]: Gateway health card uses formatDistanceStrict from date-fns for uptime display
+- [07-01]: HealthDrillDown aggregates component statuses: any down = down, any degraded = degraded, else healthy
+- [07-01]: InstanceDetailPanel includes mock GatewayNode table with 3 nodes (macOS, iOS, Android platforms)
+- [07-01]: channels/groups route redirects to /channels -- group settings managed inline per-channel
+- [07-01]: Mock instances: Production (healthy, v1.4.2, 6 agents) and Staging (degraded, v1.5.0-beta.3, 2 agents)
+- [07-01]: useGatewayInstance(id) derives single instance from useGatewayInstances() list via useMemo
 
 ### Pending Todos
 
@@ -203,5 +211,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-18
-Stopped at: Completed 06-04-PLAN.md
-Resume file: .planning/phases/06-mission-board/06-04-SUMMARY.md
+Stopped at: Completed 07-01-PLAN.md
+Resume file: .planning/phases/07-gateway-channels-models/07-01-SUMMARY.md
