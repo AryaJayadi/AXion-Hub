@@ -85,7 +85,7 @@ Requirements for initial release. Each maps to roadmap phases. All ~87 pages/vie
 - [x] **GATE-02**: User can visually edit `openclaw.json` configuration with form-based editor and raw JSON toggle at `/gateway/config`
 - [x] **GATE-03**: Gateway config editor covers all sections: identity, session settings, channel configs, model providers, compaction, memory search, security, plugins
 - [x] **GATE-04**: User can view and manage connected channels (WhatsApp, Telegram, Discord, etc.) with status and pairing at `/gateway/channels`
-- [ ] **GATE-05**: User can view and manage connected nodes (macOS/iOS/Android) with capabilities and pairing at `/gateway/nodes`
+- [x] **GATE-05**: User can view and manage connected nodes (macOS/iOS/Android) with capabilities and pairing at `/gateway/nodes`
 - [x] **GATE-06**: User can manage multiple gateway connections at `/gateway/instances`
 
 ### Channels
@@ -93,7 +93,7 @@ Requirements for initial release. Each maps to roadmap phases. All ~87 pages/vie
 - [x] **CHAN-01**: User can view all connected channels with status at `/channels`
 - [x] **CHAN-02**: User can configure individual channels (WhatsApp, Telegram, Discord, Slack, etc.) at `/channels/[channel]`
 - [x] **CHAN-03**: User can edit channel-to-agent bindings/routing at `/channels/routing`
-- [ ] **CHAN-04**: User can pair channels via QR code / pairing flow (WhatsApp) and node pairing at `/channels/pairing`
+- [x] **CHAN-04**: User can pair channels via QR code / pairing flow (WhatsApp) and node pairing at `/channels/pairing`
 - [x] **CHAN-05**: User can manage group chat allowlists, mention patterns, and broadcast groups at `/channels/groups`
 
 ### Sessions & Memory
@@ -266,12 +266,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 | GATE-02 | Phase 7 | Complete |
 | GATE-03 | Phase 7 | Complete |
 | GATE-04 | Phase 7 | Complete |
-| GATE-05 | Phase 7 | Pending |
+| GATE-05 | Phase 7 | Complete |
 | GATE-06 | Phase 7 | Complete |
 | CHAN-01 | Phase 7 | Complete |
 | CHAN-02 | Phase 7 | Complete |
 | CHAN-03 | Phase 7 | Complete |
-| CHAN-04 | Phase 7 | Pending |
+| CHAN-04 | Phase 7 | Complete |
 | CHAN-05 | Phase 7 | Complete |
 | MODL-01 | Phase 7 | Complete |
 | MODL-02 | Phase 7 | Complete |
