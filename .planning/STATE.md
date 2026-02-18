@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-02-17)
 ## Current Position
 
 Phase: 7 of 10 (Gateway, Channels & Models)
-Plan: 3 of 5 in current phase
+Plan: 5 of 5 in current phase
 Status: In Progress
-Last activity: 2026-02-18 -- Completed 07-02 Gateway Config Editor with Tabbed Forms and Draft-Apply
+Last activity: 2026-02-18 -- Completed 07-05 Model Provider Management, Failover Chains, and Usage Tracking
 
-Progress: [██████░░░░] 67%
+Progress: [███████░░░] 70%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 31
+- Total plans completed: 32
 - Average duration: 6min
-- Total execution time: 3.4 hours
+- Total execution time: 3.5 hours
 
 **By Phase:**
 
@@ -33,10 +33,10 @@ Progress: [██████░░░░] 67%
 | 04 | 4 | 25min | 6min |
 | 05 | 6 | 28min | 5min |
 | 06 | 2 | 22min | 11min |
-| 07 | 2 | 10min | 5min |
+| 07 | 3 | 18min | 6min |
 
 **Recent Trend:**
-- Last 5 plans: 2min, 11min, 11min, 5min, 5min
+- Last 5 plans: 11min, 11min, 5min, 5min, 8min
 - Trend: stable
 
 *Updated after each plan completion*
@@ -65,6 +65,8 @@ Progress: [██████░░░░] 67%
 | Phase 06 P03 | 11min | 2 tasks | 7 files |
 | Phase 07 P01 | 5min | 2 tasks | 39 files |
 | Phase 07 P02 | 5min | 2 tasks | 19 files |
+| Phase 07 P05 | 8min | 2 tasks | 24 files |
+| Phase 07 P03 | 9min | 2 tasks | 18 files |
 
 ## Accumulated Context
 
@@ -206,6 +208,16 @@ Recent decisions affecting current work:
 - [07-02]: Plugins section uses badge-based add/remove list with read-only JSON config display
 - [07-02]: Raw JSON editor shows full openclaw.json (not per-section) with 500ms debounced sync
 - [07-02]: zodResolver cast as-never for Zod v4 + exactOptionalPropertyTypes compatibility (consistent project pattern)
+- [07-05]: Provider config form uses conditional spread for exactOptionalPropertyTypes on optional mutation fields
+- [07-05]: Failover chain builder uses local state copy of server chains, save button commits changes
+- [07-05]: Usage mock data uses seeded pseudo-random for deterministic output across dimension/period combos
+- [07-05]: Usage dimension toggle uses nuqs parseAsStringLiteral with shared useUsageFilters hook
+- [07-05]: ChartConfig color assignment guards against undefined for exactOptionalPropertyTypes compliance
+- [07-05]: Area chart data typed as Record<string, string | number> for mixed date/numeric columns
+- [Phase 07]: exactOptionalPropertyTypes: conditional spread for DataTable isLoading prop
+- [Phase 07]: Routing graph dagre LR layout: ChannelNode left, AgentNode right, edge labels show routing rules
+- [Phase 07]: Table is default routing view; graph toggle is read-only; nuqs useQueryState for URL persistence
+- [Phase 07]: ChannelGroupSettings uses form.watch + form.setValue for string arrays (simpler than useFieldArray for flat strings)
 
 ### Pending Todos
 
@@ -219,5 +231,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-18
-Stopped at: Completed 07-02-PLAN.md
-Resume file: .planning/phases/07-gateway-channels-models/07-02-SUMMARY.md
+Stopped at: Completed 07-03-PLAN.md
+Resume file: .planning/phases/07-gateway-channels-models/07-03-SUMMARY.md

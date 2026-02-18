@@ -84,17 +84,17 @@ Requirements for initial release. Each maps to roadmap phases. All ~87 pages/vie
 - [x] **GATE-01**: User can view gateway connection status, health, uptime, and version at `/gateway`
 - [x] **GATE-02**: User can visually edit `openclaw.json` configuration with form-based editor and raw JSON toggle at `/gateway/config`
 - [x] **GATE-03**: Gateway config editor covers all sections: identity, session settings, channel configs, model providers, compaction, memory search, security, plugins
-- [ ] **GATE-04**: User can view and manage connected channels (WhatsApp, Telegram, Discord, etc.) with status and pairing at `/gateway/channels`
+- [x] **GATE-04**: User can view and manage connected channels (WhatsApp, Telegram, Discord, etc.) with status and pairing at `/gateway/channels`
 - [ ] **GATE-05**: User can view and manage connected nodes (macOS/iOS/Android) with capabilities and pairing at `/gateway/nodes`
 - [x] **GATE-06**: User can manage multiple gateway connections at `/gateway/instances`
 
 ### Channels
 
-- [ ] **CHAN-01**: User can view all connected channels with status at `/channels`
-- [ ] **CHAN-02**: User can configure individual channels (WhatsApp, Telegram, Discord, Slack, etc.) at `/channels/[channel]`
-- [ ] **CHAN-03**: User can edit channel-to-agent bindings/routing at `/channels/routing`
+- [x] **CHAN-01**: User can view all connected channels with status at `/channels`
+- [x] **CHAN-02**: User can configure individual channels (WhatsApp, Telegram, Discord, Slack, etc.) at `/channels/[channel]`
+- [x] **CHAN-03**: User can edit channel-to-agent bindings/routing at `/channels/routing`
 - [ ] **CHAN-04**: User can pair channels via QR code / pairing flow (WhatsApp) and node pairing at `/channels/pairing`
-- [ ] **CHAN-05**: User can manage group chat allowlists, mention patterns, and broadcast groups at `/channels/groups`
+- [x] **CHAN-05**: User can manage group chat allowlists, mention patterns, and broadcast groups at `/channels/groups`
 
 ### Sessions & Memory
 
@@ -106,11 +106,11 @@ Requirements for initial release. Each maps to roadmap phases. All ~87 pages/vie
 
 ### Models & Providers
 
-- [ ] **MODL-01**: User can view connected providers with auth status and model list at `/models`
-- [ ] **MODL-02**: User can configure per-provider settings (API keys, OAuth, base URL) at `/models/[provider]`
-- [ ] **MODL-03**: User can browse all available models with specs at `/models/catalog`
-- [ ] **MODL-04**: User can configure primary + fallback model chains at `/models/failover`
-- [ ] **MODL-05**: User can view token usage charts and cost breakdown per agent/model/period at `/models/usage`
+- [x] **MODL-01**: User can view connected providers with auth status and model list at `/models`
+- [x] **MODL-02**: User can configure per-provider settings (API keys, OAuth, base URL) at `/models/[provider]`
+- [x] **MODL-03**: User can browse all available models with specs at `/models/catalog`
+- [x] **MODL-04**: User can configure primary + fallback model chains at `/models/failover`
+- [x] **MODL-05**: User can view token usage charts and cost breakdown per agent/model/period at `/models/usage`
 
 ### Workflows & Automation
 
@@ -265,19 +265,19 @@ Which phases cover which requirements. Updated during roadmap creation.
 | GATE-01 | Phase 7 | Complete |
 | GATE-02 | Phase 7 | Complete |
 | GATE-03 | Phase 7 | Complete |
-| GATE-04 | Phase 7 | Pending |
+| GATE-04 | Phase 7 | Complete |
 | GATE-05 | Phase 7 | Pending |
 | GATE-06 | Phase 7 | Complete |
-| CHAN-01 | Phase 7 | Pending |
-| CHAN-02 | Phase 7 | Pending |
-| CHAN-03 | Phase 7 | Pending |
+| CHAN-01 | Phase 7 | Complete |
+| CHAN-02 | Phase 7 | Complete |
+| CHAN-03 | Phase 7 | Complete |
 | CHAN-04 | Phase 7 | Pending |
-| CHAN-05 | Phase 7 | Pending |
-| MODL-01 | Phase 7 | Pending |
-| MODL-02 | Phase 7 | Pending |
-| MODL-03 | Phase 7 | Pending |
-| MODL-04 | Phase 7 | Pending |
-| MODL-05 | Phase 7 | Pending |
+| CHAN-05 | Phase 7 | Complete |
+| MODL-01 | Phase 7 | Complete |
+| MODL-02 | Phase 7 | Complete |
+| MODL-03 | Phase 7 | Complete |
+| MODL-04 | Phase 7 | Complete |
+| MODL-05 | Phase 7 | Complete |
 | SESS-01 | Phase 8 | Pending |
 | SESS-02 | Phase 8 | Pending |
 | SESS-03 | Phase 8 | Pending |
