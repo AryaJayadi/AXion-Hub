@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import Link from "next/link";
 import { ExternalLink, Plus } from "lucide-react";
 
@@ -8,6 +8,8 @@ import { useBoards } from "@/features/missions/api/use-boards";
 import { useBoardTasks } from "@/features/missions/api/use-board-tasks";
 import { KanbanBoard } from "@/features/missions/components/kanban-board";
 import { TaskCreateDialog } from "@/features/missions/components/task-create-dialog";
+import { TaskSlideOver } from "@/features/missions/components/task-slide-over";
+import { useTaskStore } from "@/features/missions/model/task-store";
 import { Button } from "@/shared/ui/button";
 import { PageHeader } from "@/shared/ui/page-header";
 import { Skeleton } from "@/shared/ui/skeleton";
@@ -22,6 +24,18 @@ export function MissionsBoardView() {
 
 	// Dialog state for task creation
 	const [dialogOpen, setDialogOpen] = useState(false);
+
+	// Slide-over state for task detail
+	const selectedTaskId = useTaskStore((s) => s.selectedTaskId);
+	const setSelectedTask = useTaskStore((s) => s.setSelectedTask);
+
+	const handleSlideOverClose = useCallback(() => {
+		setSelectedTask(null);
+	}, [setSelectedTask]);
+
+	// Drag state ref for click-vs-drag detection
+	// Shared with KanbanBoard/KanbanCard via prop
+	const wasDraggingRef = useRef(false);
 
 	return (
 		<div className="flex flex-col h-full">
@@ -64,13 +78,20 @@ export function MissionsBoardView() {
 					))}
 				</div>
 			) : (
-				<KanbanBoard />
+				<KanbanBoard wasDraggingRef={wasDraggingRef} />
 			)}
 
 			{/* Task creation dialog */}
 			<TaskCreateDialog
 				open={dialogOpen}
 				onOpenChange={setDialogOpen}
+			/>
+
+			{/* Task detail slide-over */}
+			<TaskSlideOver
+				taskId={selectedTaskId}
+				open={selectedTaskId !== null}
+				onClose={handleSlideOverClose}
 			/>
 		</div>
 	);

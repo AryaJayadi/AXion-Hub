@@ -1,6 +1,6 @@
 "use client";
 
-import { memo } from "react";
+import { memo, useCallback, type RefObject } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { formatDistanceToNow } from "date-fns";
@@ -13,15 +13,23 @@ import { cn } from "@/shared/lib/cn";
 import { Avatar, AvatarFallback, AvatarGroup, AvatarGroupCount } from "@/shared/ui/avatar";
 import { Badge } from "@/shared/ui/badge";
 
+import { useTaskStore } from "../model/task-store";
+
 interface KanbanCardProps {
 	task: Task;
 	isOverlay?: boolean;
+	/** Ref for click-vs-drag detection -- when true, suppress click handler */
+	wasDraggingRef?: RefObject<boolean> | undefined;
 }
 
 const MAX_VISIBLE_AVATARS = 3;
 const MAX_VISIBLE_TAGS = 3;
 
-function KanbanCardInner({ task, isOverlay = false }: KanbanCardProps) {
+function KanbanCardInner({
+	task,
+	isOverlay = false,
+	wasDraggingRef,
+}: KanbanCardProps) {
 	const {
 		setNodeRef,
 		attributes,
@@ -52,6 +60,12 @@ function KanbanCardInner({ task, isOverlay = false }: KanbanCardProps) {
 				transition: transition ?? undefined,
 			};
 
+	// Click handler for opening slide-over (suppressed during/after drag)
+	const handleClick = useCallback(() => {
+		if (wasDraggingRef?.current) return;
+		useTaskStore.getState().setSelectedTask(task.id);
+	}, [task.id, wasDraggingRef]);
+
 	return (
 		<div
 			ref={isOverlay ? undefined : setNodeRef}
@@ -66,6 +80,7 @@ function KanbanCardInner({ task, isOverlay = false }: KanbanCardProps) {
 			)}
 			{...(isOverlay ? {} : attributes)}
 			{...(isOverlay ? {} : listeners)}
+			onClick={isOverlay ? undefined : handleClick}
 		>
 			{/* Title */}
 			<p className="text-sm font-medium leading-snug line-clamp-2">

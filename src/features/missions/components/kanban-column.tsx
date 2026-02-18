@@ -1,5 +1,6 @@
 "use client";
 
+import type { RefObject } from "react";
 import { useDroppable } from "@dnd-kit/core";
 import { SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
 
@@ -13,16 +14,28 @@ import { KanbanCard } from "./kanban-card";
 interface KanbanColumnProps {
 	column: BoardColumn;
 	taskIds: string[];
+	/** Ref for click-vs-drag detection, passed through to KanbanCard */
+	wasDraggingRef?: RefObject<boolean> | undefined;
 }
 
 /** Wrapper to get task and render card -- avoids hook-in-loop issue */
-function TaskCardSlot({ taskId }: { taskId: string }) {
+function TaskCardSlot({
+	taskId,
+	wasDraggingRef,
+}: {
+	taskId: string;
+	wasDraggingRef?: RefObject<boolean> | undefined;
+}) {
 	const task = useTask(taskId);
 	if (!task) return null;
-	return <KanbanCard task={task} />;
+	return <KanbanCard task={task} wasDraggingRef={wasDraggingRef} />;
 }
 
-export function KanbanColumn({ column, taskIds }: KanbanColumnProps) {
+export function KanbanColumn({
+	column,
+	taskIds,
+	wasDraggingRef,
+}: KanbanColumnProps) {
 	const { setNodeRef, isOver } = useDroppable({ id: column.id });
 
 	const display = column.semanticRole
@@ -55,7 +68,11 @@ export function KanbanColumn({ column, taskIds }: KanbanColumnProps) {
 				>
 					{taskIds.length > 0 ? (
 						taskIds.map((taskId) => (
-							<TaskCardSlot key={taskId} taskId={taskId} />
+							<TaskCardSlot
+								key={taskId}
+								taskId={taskId}
+								wasDraggingRef={wasDraggingRef}
+							/>
 						))
 					) : (
 						<div className="flex flex-1 items-center justify-center rounded-md border border-dashed border-muted-foreground/30 p-4 min-h-24">

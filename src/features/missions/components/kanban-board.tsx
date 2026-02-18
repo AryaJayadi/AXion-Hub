@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, type RefObject } from "react";
 import {
 	DndContext,
 	DragOverlay,
@@ -21,7 +21,12 @@ import { findColumnOfTask } from "../lib/drag-utils";
 import { KanbanColumn } from "./kanban-column";
 import { KanbanOverlay } from "./kanban-overlay";
 
-export function KanbanBoard() {
+interface KanbanBoardProps {
+	/** Ref shared with MissionsBoardView for click-vs-drag detection */
+	wasDraggingRef?: RefObject<boolean> | undefined;
+}
+
+export function KanbanBoard({ wasDraggingRef }: KanbanBoardProps) {
 	const [activeId, setActiveId] = useState<string | null>(null);
 	const columns = useColumns();
 	const tasksByColumn = useBoardStore((s) => s.tasksByColumn);
@@ -38,8 +43,13 @@ export function KanbanBoard() {
 			const id = event.active.id as string;
 			setActiveId(id);
 			useBoardStore.getState().setDragging(true, id);
+
+			// Mark that a drag has started for click-vs-drag detection
+			if (wasDraggingRef) {
+				wasDraggingRef.current = true;
+			}
 		},
-		[],
+		[wasDraggingRef],
 	);
 
 	const handleDragOver = useCallback(
@@ -90,6 +100,15 @@ export function KanbanBoard() {
 			state.setDragging(false, null);
 			state.flushPendingTransitions();
 
+			// Clear drag flag after 200ms debounce to allow click event to check first
+			if (wasDraggingRef) {
+				setTimeout(() => {
+					if (wasDraggingRef) {
+						wasDraggingRef.current = false;
+					}
+				}, 200);
+			}
+
 			if (!over) return;
 
 			const activeTaskId = active.id as string;
@@ -130,13 +149,22 @@ export function KanbanBoard() {
 				}
 			}
 		},
-		[],
+		[wasDraggingRef],
 	);
 
 	const handleDragCancel = useCallback(() => {
 		setActiveId(null);
 		useBoardStore.getState().setDragging(false, null);
-	}, []);
+
+		// Clear drag flag on cancel too
+		if (wasDraggingRef) {
+			setTimeout(() => {
+				if (wasDraggingRef) {
+					wasDraggingRef.current = false;
+				}
+			}, 200);
+		}
+	}, [wasDraggingRef]);
 
 	return (
 		<DndContext
@@ -154,6 +182,7 @@ export function KanbanBoard() {
 						key={column.id}
 						column={column}
 						taskIds={tasksByColumn[column.id] ?? []}
+						wasDraggingRef={wasDraggingRef}
 					/>
 				))}
 			</div>
