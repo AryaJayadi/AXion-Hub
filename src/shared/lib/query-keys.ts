@@ -82,6 +82,25 @@ export const queryKeys = {
 		detail: (id: string) =>
 			[...queryKeys.activity.details(), id] as const,
 	},
+	boards: {
+		all: ["boards"] as const,
+		lists: () => [...queryKeys.boards.all, "list"] as const,
+		detail: (id: string) =>
+			[...queryKeys.boards.all, "detail", id] as const,
+		settings: (id: string) =>
+			[...queryKeys.boards.all, "settings", id] as const,
+	},
+	tasks: {
+		all: ["tasks"] as const,
+		byBoard: (boardId: string) =>
+			[...queryKeys.tasks.all, "board", boardId] as const,
+		detail: (taskId: string) =>
+			[...queryKeys.tasks.all, "detail", taskId] as const,
+		comments: (taskId: string) =>
+			[...queryKeys.tasks.all, "comments", taskId] as const,
+		activity: (taskId: string) =>
+			[...queryKeys.tasks.all, "activity", taskId] as const,
+	},
 	alerts: {
 		all: ["alerts"] as const,
 		rules: () => [...queryKeys.alerts.all, "rules"] as const,

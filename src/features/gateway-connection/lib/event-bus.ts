@@ -71,6 +71,31 @@ export type KnownEvents = {
 	};
 	"exec.approval.resolved": { agentId: string; approvalId: string; approved: boolean };
 
+	// Gateway task/mission events
+	"task.agent.started": { taskId: string; agentId: string };
+	"task.agent.progress": {
+		taskId: string;
+		agentId: string;
+		summary: string;
+	};
+	"task.deliverable.submitted": {
+		taskId: string;
+		agentId: string;
+		deliverable: { id: string; type: string; title: string; url: string };
+	};
+	"task.status.updated": {
+		taskId: string;
+		agentId: string;
+		status: string;
+	};
+	"task.comment.added": {
+		taskId: string;
+		authorId: string;
+		authorType: "agent" | "user";
+		content: string;
+		mentions: Array<{ type: "agent" | "human"; id: string; name: string }>;
+	};
+
 	// Gateway system events
 	"system-presence": { agents: string[] };
 };
