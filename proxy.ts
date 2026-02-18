@@ -17,6 +17,8 @@ const PUBLIC_PATHS = [
 	"/verify-email",
 	"/invite",
 	"/api/auth",
+	"/api/health",
+	"/api/audit/test",
 ];
 
 export function proxy(request: NextRequest) {
