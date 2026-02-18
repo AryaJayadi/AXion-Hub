@@ -65,4 +65,30 @@ export const queryKeys = {
 		search: (query: string, scope?: string) =>
 			[...queryKeys.messages.all, "search", { query, scope }] as const,
 	},
+	dashboard: {
+		all: ["dashboard"] as const,
+		stats: () => [...queryKeys.dashboard.all, "stats"] as const,
+		costs: (period: string) =>
+			[...queryKeys.dashboard.all, "costs", period] as const,
+		perAgentCosts: () =>
+			[...queryKeys.dashboard.all, "per-agent-costs"] as const,
+	},
+	activity: {
+		all: ["activity"] as const,
+		lists: () => [...queryKeys.activity.all, "list"] as const,
+		list: (filters?: Record<string, unknown>) =>
+			[...queryKeys.activity.lists(), filters] as const,
+		details: () => [...queryKeys.activity.all, "detail"] as const,
+		detail: (id: string) =>
+			[...queryKeys.activity.details(), id] as const,
+	},
+	alerts: {
+		all: ["alerts"] as const,
+		rules: () => [...queryKeys.alerts.all, "rules"] as const,
+		rule: (id: string) => [...queryKeys.alerts.rules(), id] as const,
+		notifications: () =>
+			[...queryKeys.alerts.all, "notifications"] as const,
+		notificationList: (filters?: Record<string, unknown>) =>
+			[...queryKeys.alerts.notifications(), filters] as const,
+	},
 } as const;
