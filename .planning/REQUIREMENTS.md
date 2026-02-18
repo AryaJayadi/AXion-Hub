@@ -59,8 +59,8 @@ Requirements for initial release. Each maps to roadmap phases. All ~87 pages/vie
 - [x] **AGNT-03**: User can create/provision a new agent at `/agents/new`
 - [x] **AGNT-04**: User can browse and use agent templates (Lead, Developer, Researcher, Writer, etc.) at `/agents/templates`
 - [x] **AGNT-05**: User can edit agent identity files (SOUL.md, IDENTITY.md, USER.md, AGENTS.md) with Markdown editor at `/agents/[agentId]/identity`
-- [ ] **AGNT-06**: User can view agent sessions with token counts and compaction history at `/agents/[agentId]/sessions`
-- [ ] **AGNT-07**: User can view/edit agent MEMORY.md and daily memory files, and search memory index at `/agents/[agentId]/memory`
+- [x] **AGNT-06**: User can view agent sessions with token counts and compaction history at `/agents/[agentId]/sessions`
+- [x] **AGNT-07**: User can view/edit agent MEMORY.md and daily memory files, and search memory index at `/agents/[agentId]/memory`
 - [ ] **AGNT-08**: User can manage agent skills (installed, enable/disable, install from ClawHub) at `/agents/[agentId]/skills`
 - [ ] **AGNT-09**: User can configure agent tool allow/deny lists and elevated tool config at `/agents/[agentId]/tools`
 - [ ] **AGNT-10**: User can configure agent sandbox mode, Docker settings, and workspace access at `/agents/[agentId]/sandbox`
@@ -226,8 +226,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AGNT-03 | Phase 3 | Complete |
 | AGNT-04 | Phase 3 | Complete |
 | AGNT-05 | Phase 3 | Complete |
-| AGNT-06 | Phase 3 | Pending |
-| AGNT-07 | Phase 3 | Pending |
+| AGNT-06 | Phase 3 | Complete |
+| AGNT-07 | Phase 3 | Complete |
 | AGNT-08 | Phase 3 | Pending |
 | AGNT-09 | Phase 3 | Pending |
 | AGNT-10 | Phase 3 | Pending |
