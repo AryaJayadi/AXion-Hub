@@ -112,13 +112,14 @@ Plans:
   3. A live activity feed streams the last 20 events via WebSocket, and quick action buttons (New Task, New Agent, Send Message) work
   4. User can view a real-time event stream at /activity and search/filter historical activity at /activity/history
   5. User can view system health at /monitor and configure alert rules at /monitor/alerts that trigger notifications
-**Plans**: TBD
+**Plans**: 5 plans in 4 waves
 
 Plans:
-- [ ] 05-01: Dashboard page with gateway status, agent count, task summary, context gauges, and cost summary widgets
-- [ ] 05-02: Live activity feed widget (WebSocket-powered, last 20 events) and dashboard quick actions
-- [ ] 05-03: Activity feed page (/activity) and activity history with search/filter (/activity/history)
-- [ ] 05-04: Health monitor dashboard (/monitor) and alert rules configuration (/monitor/alerts)
+- [ ] 05-01-PLAN.md -- Foundation: install deps, dashboard-event entity, Zustand stores, query keys, BentoGrid widget (Wave 1)
+- [ ] 05-02-PLAN.md -- Dashboard stat widgets: gateway status, agent counts, task summary, context gauges, cost charts, degraded banner, dashboard page (Wave 2)
+- [ ] 05-03-PLAN.md -- Activity feed widget with scroll-aware auto-scroll and quick actions (Wave 2)
+- [ ] 05-04-PLAN.md -- Activity pages (/activity, /activity/history) and health monitor (/monitor) with React Flow dependency map (Wave 3)
+- [ ] 05-05-PLAN.md -- Alert system: DB schema, BullMQ worker, template presets, rule management UI, notification bell (Wave 4)
 
 ### Phase 6: Mission Board
 **Goal**: Users can visually manage and assign tasks to agents using a Kanban board, track deliverables, enforce sign-off gates, and organize work across multiple boards
@@ -227,7 +228,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4/5/6/7 (partially parallel afte
 | 2. Authentication & App Shell | 3/4 | Complete    | 2026-02-18 |
 | 3. Agent Management | 0/6 | Planned | - |
 | 4. Real-Time Chat | 0/4 | Planned | - |
-| 5. Dashboard & Monitoring | 0/4 | Not started | - |
+| 5. Dashboard & Monitoring | 0/5 | Planned | - |
 | 6. Mission Board | 0/4 | Not started | - |
 | 7. Gateway, Channels & Models | 0/5 | Not started | - |
 | 8. Sessions, Memory, Files & Governance | 0/6 | Not started | - |
