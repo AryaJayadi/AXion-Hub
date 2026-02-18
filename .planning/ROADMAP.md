@@ -169,15 +169,15 @@ Plans:
   3. User can browse agent workspace files at /workspace, view/edit files at /workspace/[agentId]/[...path], view deliverables at /deliverables, and upload files at /workspace/upload
   4. User can view tasks awaiting sign-off at /approvals, approve/reject/request revision at /approvals/[taskId], and the approval status updates in real time
   5. User can view the immutable audit log at /audit with filtering and define governance policies (auto-approval rules, escalation rules, tool restrictions) at /governance/policies
-**Plans**: TBD
+**Plans**: 6 plans in 1 wave
 
 Plans:
-- [ ] 08-01: Session list page, session detail with token usage, JSONL transcript viewer with message tree
-- [ ] 08-02: Memory explorer, semantic memory search
-- [ ] 08-03: Workspace file browser, file viewer/editor, file upload
-- [ ] 08-04: Deliverables page, task deliverable management
-- [ ] 08-05: Approval queue with real-time updates, approval detail with approve/reject/revise actions
-- [ ] 08-06: Audit log viewer with search/filter, governance policies editor
+- [ ] 08-01-PLAN.md -- Session entity types, cross-agent session list with group toggle, session detail with token usage, JSONL transcript viewer with flat/tree toggle and tool call blocks (Wave 1)
+- [ ] 08-02-PLAN.md -- Memory entity types, agent-first memory browser with collapsible sections, semantic memory search with card grid results (Wave 1)
+- [ ] 08-03-PLAN.md -- Workspace entity types, CodeMirror install, recursive file tree sidebar, code editor with language detection, file viewer routing (Wave 1)
+- [ ] 08-04-PLAN.md -- Deliverables table grouped by task with filtering, drag-and-drop file upload with target selector (Wave 1)
+- [ ] 08-05-PLAN.md -- Approval entity types, inbox-style approval queue, approval detail with approve/reject/revision actions (Wave 1)
+- [ ] 08-06-PLAN.md -- Audit log viewer with compact expandable entries and filtering, governance policy condition builder with IF/THEN rules (Wave 1)
 
 ### Phase 9: Skills, Plugins & Workflows
 **Goal**: Users can manage agent skills and plugins from a central library, and build visual multi-step automation workflows with scheduling and webhook triggers
