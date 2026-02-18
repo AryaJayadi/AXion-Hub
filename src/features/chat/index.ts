@@ -10,6 +10,11 @@ export {
 	useStreamingLanes,
 } from "./model/hooks";
 
+// Components
+export { ChatLayout } from "./components/chat-layout";
+export { ConversationSidebar } from "./components/conversation-sidebar";
+export { ParticipantPanel } from "./components/participant-panel";
+
 // Re-export entity types for convenience
 export type {
 	Attachment,
