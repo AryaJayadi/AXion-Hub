@@ -1,21 +1,16 @@
-import { PageHeader } from "@/shared/ui/page-header";
+import { Suspense } from "react";
+import type { Metadata } from "next";
+import { ChannelPairingView } from "@/views/channels/channel-pairing-view";
+import { SkeletonDetail } from "@/shared/ui/loading-skeleton";
 
-export const metadata = {
-	title: "Channel Pairing | AXion Hub",
+export const metadata: Metadata = {
+	title: "Pair Channel | AXion Hub",
 };
 
 export default function ChannelPairingPage() {
 	return (
-		<div className="space-y-6">
-			<PageHeader
-				title="Channel Pairing"
-				description="Pair new messaging channels via QR code or connection flow"
-				breadcrumbs={[
-					{ label: "Channels", href: "/channels" },
-					{ label: "Pairing" },
-				]}
-			/>
-			<p className="text-sm text-muted-foreground">Coming in plan 07-04</p>
-		</div>
+		<Suspense fallback={<SkeletonDetail />}>
+			<ChannelPairingView />
+		</Suspense>
 	);
 }
