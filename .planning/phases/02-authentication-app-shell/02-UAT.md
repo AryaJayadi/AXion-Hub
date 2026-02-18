@@ -3,7 +3,7 @@ status: complete
 phase: 02-authentication-app-shell
 source: [02-01-SUMMARY.md, 02-02-SUMMARY.md, 02-03-SUMMARY.md, 02-04-SUMMARY.md]
 started: 2026-02-18T04:00:00Z
-updated: 2026-02-18T04:08:00Z
+updated: 2026-02-18T04:42:00Z
 ---
 
 ## Current Test
@@ -34,13 +34,14 @@ verified-by: code-review (forgot-password-form.tsx: Email input, submit calls re
 
 ### 5. Account Registration
 expected: Fill out /register with valid data (name, email, password meeting strength rules, check ToS). Submit creates account and redirects to /verify-email page showing an inbox check message.
-result: skipped
-reason: Dev server and Docker (PostgreSQL) not running — requires live environment for end-to-end auth flow
+result: pass
+verified-by: user-testing (registered arya@val.id, redirected to /verify-email?email=arya%40val.id)
+note: Required bug fix — drizzleAdapter missing schema option caused 500 on sign-up endpoint
 
 ### 6. Login & Dashboard Landing
 expected: Go to /login, enter the credentials you just registered with. After login, land on the dashboard showing a welcome empty state. The URL should be /.
-result: skipped
-reason: Dev server and Docker (PostgreSQL) not running — requires live environment for end-to-end auth flow
+result: pass
+verified-by: user-testing (logged in with arya@val.id, landed on dashboard with "Welcome to AXion Hub" empty state)
 
 ### 7. App Shell — Sidebar & Navigation
 expected: After login, see a collapsible sidebar on the left with 4 navigation groups (Core, Operations, Automation, System) containing nav items with icons. Clicking the rail toggle collapses the sidebar to icon-only mode. On mobile, sidebar hides behind a hamburger menu.
@@ -64,17 +65,25 @@ verified-by: code-review (org-switcher.tsx: SidebarHeader > OrgSwitcher with use
 
 ### 11. Session Persistence
 expected: After logging back in, refresh the browser (F5 / Cmd+R). You should remain authenticated on the dashboard — no redirect to /login.
-result: skipped
-reason: Dev server and Docker (PostgreSQL) not running — requires live environment for end-to-end auth flow
+result: pass
+verified-by: user-testing (refreshed browser, stayed on dashboard)
 
 ## Summary
 
 total: 11
-passed: 8
+passed: 11
 issues: 0
 pending: 0
-skipped: 3
+skipped: 0
 
 ## Gaps
 
 [none yet]
+
+## Bug Fixes Applied During UAT
+
+### 1. Missing schema in drizzleAdapter
+- **File:** src/features/auth/lib/auth.ts
+- **Issue:** `drizzleAdapter(db, { provider: "pg" })` was missing the `schema` option, causing better-auth to fail with "The model 'user' was not found in the schema object"
+- **Fix:** Added `schema: authSchema` by importing `* as authSchema from "@/entities/user/model/auth-schema"`
+- **Impact:** All auth API endpoints (sign-up, sign-in, etc.) were returning 500 errors
