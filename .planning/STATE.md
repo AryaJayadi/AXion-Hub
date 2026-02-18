@@ -10,9 +10,9 @@ See: .planning/PROJECT.md (updated 2026-02-17)
 ## Current Position
 
 Phase: 6 of 10 (Mission Board)
-Plan: 2 of 4 in current phase
-Status: In Progress
-Last activity: 2026-02-18 -- Completed 06-02 Task Creation and Detail Views
+Plan: 4 of 4 in current phase
+Status: Phase Complete
+Last activity: 2026-02-18 -- Completed 06-04 Task Comments and Board Organization
 
 Progress: [██████░░░░] 60%
 
@@ -60,6 +60,7 @@ Progress: [██████░░░░] 60%
 | Phase 05 P06 | 2min | 1 tasks | 1 files |
 | Phase 06 P01 | 11min | 3 tasks | 22 files |
 | Phase 06 P02 | 11min | 2 tasks | 17 files |
+| Phase 06 P04 | 10min | 2 tasks | 13 files |
 
 ## Accumulated Context
 
@@ -181,6 +182,10 @@ Recent decisions affecting current work:
 - [06-02]: Sign-off toggle in metadata sidebar uses useUpdateTask optimistic mutation
 - [06-02]: exactOptionalPropertyTypes requires `| undefined` on optional RefObject props through component tree
 - [06-02]: Calendar shadcn component installed for date picker in task creation forms
+- [Phase 06]: MentionPopover reuses cmdk Command component for searchable agent/human list matching existing slash-command popover pattern
+- [Phase 06]: Mention format @[Name](type:id) enables parsing and rendering as colored inline badges in comments
+- [Phase 06]: BoardSidebar rendered as in-content secondary sidebar (w-56 border-r), hidden on mobile via hidden md:flex
+- [Phase 06]: Automation rules use simple trigger-action model stored in local state for initial version
 
 ### Pending Todos
 
@@ -194,5 +199,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-18
-Stopped at: Completed 06-02-PLAN.md
-Resume file: .planning/phases/06-mission-board/06-02-SUMMARY.md
+Stopped at: Completed 06-04-PLAN.md
+Resume file: .planning/phases/06-mission-board/06-04-SUMMARY.md

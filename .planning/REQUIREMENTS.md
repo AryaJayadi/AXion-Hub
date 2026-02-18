@@ -48,9 +48,9 @@ Requirements for initial release. Each maps to roadmap phases. All ~87 pages/vie
 - [ ] **TASK-04**: Task detail shows activity timeline (status changes, comments, agent output) and dispatch log
 - [ ] **TASK-05**: Task detail shows deliverables (uploaded files, code artifacts, links) with preview
 - [ ] **TASK-06**: User can toggle sign-off gate on tasks (require human approval before DONE)
-- [ ] **TASK-07**: User can comment on tasks with @agent and @human mentions
-- [ ] **TASK-08**: User can organize boards by project/team at `/missions/boards`
-- [ ] **TASK-09**: User can configure board settings at `/missions/boards/[boardId]/settings` with custom columns and automation rules
+- [x] **TASK-07**: User can comment on tasks with @agent and @human mentions
+- [x] **TASK-08**: User can organize boards by project/team at `/missions/boards`
+- [x] **TASK-09**: User can configure board settings at `/missions/boards/[boardId]/settings` with custom columns and automation rules
 
 ### Agents
 
@@ -259,9 +259,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | TASK-04 | Phase 6 | Pending |
 | TASK-05 | Phase 6 | Pending |
 | TASK-06 | Phase 6 | Pending |
-| TASK-07 | Phase 6 | Pending |
-| TASK-08 | Phase 6 | Pending |
-| TASK-09 | Phase 6 | Pending |
+| TASK-07 | Phase 6 | Complete |
+| TASK-08 | Phase 6 | Complete |
+| TASK-09 | Phase 6 | Complete |
 | GATE-01 | Phase 7 | Pending |
 | GATE-02 | Phase 7 | Pending |
 | GATE-03 | Phase 7 | Pending |
