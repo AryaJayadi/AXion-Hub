@@ -16,7 +16,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 2: Authentication & App Shell** - User accounts, login/register flows, session management, dashboard shell with navigation, and gateway status indicator (completed 2026-02-18)
 - [ ] **Phase 3: Agent Management** - Agent roster, detail views, identity editing, session browsing, memory viewer, skills, tools, sandbox config, channel routing, logs, and metrics
 - [ ] **Phase 4: Real-Time Chat** - Multi-pane chat hub, streaming agent conversations, tool call visualization, media support, session switching, quick commands, and message search
-- [ ] **Phase 5: Dashboard & Monitoring** - Command center dashboard with live widgets, activity feed, health monitoring, alerts, and real-time event streaming
+- [x] **Phase 5: Dashboard & Monitoring** - Command center dashboard with live widgets, activity feed, health monitoring, alerts, and real-time event streaming (completed 2026-02-18)
 - [ ] **Phase 6: Mission Board** - Kanban task management with drag-and-drop, task detail, agent assignment, deliverables, sign-off gates, comments, board organization, and board settings
 - [ ] **Phase 7: Gateway, Channels & Models** - Gateway config editor, channel management, channel pairing, routing/bindings, model provider config, failover chains, and usage/cost tracking
 - [ ] **Phase 8: Sessions, Memory, Files & Governance** - Session browser, transcript viewer, memory explorer, semantic search, file browser, workspace editor, deliverables, approval queue, audit log, and governance policies
@@ -229,7 +229,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4/5/6/7 (partially parallel afte
 | 2. Authentication & App Shell | 3/4 | Complete    | 2026-02-18 |
 | 3. Agent Management | 0/6 | Planned | - |
 | 4. Real-Time Chat | 0/4 | Planned | - |
-| 5. Dashboard & Monitoring | 0/5 | Planned | - |
+| 5. Dashboard & Monitoring | 0/5 | Complete    | 2026-02-18 |
 | 6. Mission Board | 0/4 | Not started | - |
 | 7. Gateway, Channels & Models | 0/5 | Not started | - |
 | 8. Sessions, Memory, Files & Governance | 0/6 | Not started | - |
