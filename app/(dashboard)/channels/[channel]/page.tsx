@@ -1,4 +1,6 @@
-import { PageHeader } from "@/shared/ui/page-header";
+import { Suspense } from "react";
+import { SkeletonDetail } from "@/shared/ui/loading-skeleton";
+import { ChannelDetailView } from "@/views/channels/channel-detail-view";
 
 export const metadata = {
 	title: "Channel Detail | AXion Hub",
@@ -11,16 +13,8 @@ export default async function ChannelDetailPage({
 }) {
 	const { channel } = await params;
 	return (
-		<div className="space-y-6">
-			<PageHeader
-				title={`Channel: ${channel}`}
-				description="Channel configuration and status"
-				breadcrumbs={[
-					{ label: "Channels", href: "/channels" },
-					{ label: channel },
-				]}
-			/>
-			<p className="text-sm text-muted-foreground">Coming in plan 07-04</p>
-		</div>
+		<Suspense fallback={<SkeletonDetail />}>
+			<ChannelDetailView channelId={channel} />
+		</Suspense>
 	);
 }

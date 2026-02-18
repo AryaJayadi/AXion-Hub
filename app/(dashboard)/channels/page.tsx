@@ -1,4 +1,6 @@
-import { PageHeader } from "@/shared/ui/page-header";
+import { Suspense } from "react";
+import { SkeletonTable } from "@/shared/ui/loading-skeleton";
+import { ChannelsListView } from "@/views/channels/channels-list-view";
 
 export const metadata = {
 	title: "Channels | AXion Hub",
@@ -6,12 +8,8 @@ export const metadata = {
 
 export default function ChannelsPage() {
 	return (
-		<div className="space-y-6">
-			<PageHeader
-				title="Channels"
-				description="Manage messaging channels and platform connections"
-			/>
-			<p className="text-sm text-muted-foreground">Coming in plan 07-04</p>
-		</div>
+		<Suspense fallback={<SkeletonTable rows={5} columns={6} />}>
+			<ChannelsListView />
+		</Suspense>
 	);
 }
