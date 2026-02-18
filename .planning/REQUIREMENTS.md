@@ -129,9 +129,9 @@ Requirements for initial release. Each maps to roadmap phases. All ~87 pages/vie
 
 ### Activity & Monitoring
 
-- [ ] **MNTR-01**: User can view real-time event stream across all agents and channels at `/activity`
-- [ ] **MNTR-02**: User can search and filter activity history at `/activity/history`
-- [ ] **MNTR-03**: User can view system health dashboard (gateway, providers, channels, nodes) at `/monitor`
+- [x] **MNTR-01**: User can view real-time event stream across all agents and channels at `/activity`
+- [x] **MNTR-02**: User can search and filter activity history at `/activity/history`
+- [x] **MNTR-03**: User can view system health dashboard (gateway, providers, channels, nodes) at `/monitor`
 - [ ] **MNTR-04**: User can configure alert rules and view notification history at `/monitor/alerts`
 
 ### Files & Workspace
@@ -249,9 +249,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DASH-05 | Phase 5 | Complete |
 | DASH-06 | Phase 5 | Complete |
 | DASH-07 | Phase 5 | Complete |
-| MNTR-01 | Phase 5 | Pending |
-| MNTR-02 | Phase 5 | Pending |
-| MNTR-03 | Phase 5 | Pending |
+| MNTR-01 | Phase 5 | Complete |
+| MNTR-02 | Phase 5 | Complete |
+| MNTR-03 | Phase 5 | Complete |
 | MNTR-04 | Phase 5 | Pending |
 | TASK-01 | Phase 6 | Pending |
 | TASK-02 | Phase 6 | Pending |

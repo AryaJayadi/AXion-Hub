@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-02-17)
 ## Current Position
 
 Phase: 5 of 10 (Dashboard & Monitoring)
-Plan: 3 of 5 in current phase
+Plan: 4 of 5 in current phase
 Status: In Progress
-Last activity: 2026-02-18 -- Completed 05-02 Dashboard Stat Widgets
+Last activity: 2026-02-18 -- Completed 05-04 Activity Pages and Dependency Map
 
-Progress: [██████░░░░] 48%
+Progress: [██████░░░░] 52%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 24
+- Total plans completed: 25
 - Average duration: 6min
-- Total execution time: 2.6 hours
+- Total execution time: 2.7 hours
 
 **By Phase:**
 
@@ -31,10 +31,10 @@ Progress: [██████░░░░] 48%
 | 02 | 4 | 13min | 3min |
 | 03 | 6 | 51min | 9min |
 | 04 | 4 | 25min | 6min |
-| 05 | 3 | 15min | 5min |
+| 05 | 4 | 20min | 5min |
 
 **Recent Trend:**
-- Last 5 plans: 6min, 4min, 6min, 5min, 5min
+- Last 5 plans: 4min, 6min, 5min, 5min, 5min
 - Trend: stable
 
 *Updated after each plan completion*
@@ -54,6 +54,7 @@ Progress: [██████░░░░] 48%
 | Phase 05 P01 | 4min | 2 tasks | 13 files |
 | Phase 05 P02 | 6min | 2 tasks | 10 files |
 | Phase 05 P03 | 5min | 2 tasks | 6 files |
+| Phase 05 P04 | 5min | 2 tasks | 14 files |
 
 ## Accumulated Context
 
@@ -151,6 +152,12 @@ Recent decisions affecting current work:
 - [05-02]: Context usage color thresholds: green < 60%, yellow 60-80%, red > 80% via data-slot CSS override
 - [05-02]: Cost widget uses both Recharts stacked BarChart AND DataTable for dual per-agent visualization
 - [05-02]: DashboardView triggers useDashboardStats and useCostSummary at view level for eager data loading
+- [05-04]: Split view uses flex layout (60/40) with vertical stacking on mobile instead of ResizablePanel
+- [05-04]: nuqs multi-select filters serialized as comma-separated strings in URL
+- [05-04]: DependencyNode uses memo + custom nodeTypes registration for React Flow performance
+- [05-04]: NodeDetailPanel absolutely positioned inside map container instead of Sheet overlay
+- [05-04]: Dagre layout with rankdir TB, 60px nodesep, 80px ranksep for clean service graph spacing
+- [05-04]: nodesDraggable=false per research Pitfall 4 to reduce event listeners on dependency map
 
 ### Pending Todos
 
@@ -164,5 +171,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-18
-Stopped at: Completed 05-02-PLAN.md
-Resume file: .planning/phases/05-dashboard-monitoring/05-02-SUMMARY.md
+Stopped at: Completed 05-04-PLAN.md
+Resume file: .planning/phases/05-dashboard-monitoring/05-04-SUMMARY.md
