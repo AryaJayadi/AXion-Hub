@@ -61,12 +61,12 @@ Requirements for initial release. Each maps to roadmap phases. All ~87 pages/vie
 - [x] **AGNT-05**: User can edit agent identity files (SOUL.md, IDENTITY.md, USER.md, AGENTS.md) with Markdown editor at `/agents/[agentId]/identity`
 - [x] **AGNT-06**: User can view agent sessions with token counts and compaction history at `/agents/[agentId]/sessions`
 - [x] **AGNT-07**: User can view/edit agent MEMORY.md and daily memory files, and search memory index at `/agents/[agentId]/memory`
-- [ ] **AGNT-08**: User can manage agent skills (installed, enable/disable, install from ClawHub) at `/agents/[agentId]/skills`
-- [ ] **AGNT-09**: User can configure agent tool allow/deny lists and elevated tool config at `/agents/[agentId]/tools`
-- [ ] **AGNT-10**: User can configure agent sandbox mode, Docker settings, and workspace access at `/agents/[agentId]/sandbox`
-- [ ] **AGNT-11**: User can view which channels/bindings route to an agent at `/agents/[agentId]/channels`
-- [ ] **AGNT-12**: User can view agent activity log, tool calls, and errors at `/agents/[agentId]/logs`
-- [ ] **AGNT-13**: User can view agent metrics (token usage, cost, tasks completed, response times) at `/agents/[agentId]/metrics`
+- [x] **AGNT-08**: User can manage agent skills (installed, enable/disable, install from ClawHub) at `/agents/[agentId]/skills`
+- [x] **AGNT-09**: User can configure agent tool allow/deny lists and elevated tool config at `/agents/[agentId]/tools`
+- [x] **AGNT-10**: User can configure agent sandbox mode, Docker settings, and workspace access at `/agents/[agentId]/sandbox`
+- [x] **AGNT-11**: User can view which channels/bindings route to an agent at `/agents/[agentId]/channels`
+- [x] **AGNT-12**: User can view agent activity log, tool calls, and errors at `/agents/[agentId]/logs`
+- [x] **AGNT-13**: User can view agent metrics (token usage, cost, tasks completed, response times) at `/agents/[agentId]/metrics`
 
 ### Chat & Conversations
 
@@ -228,12 +228,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AGNT-05 | Phase 3 | Complete |
 | AGNT-06 | Phase 3 | Complete |
 | AGNT-07 | Phase 3 | Complete |
-| AGNT-08 | Phase 3 | Pending |
-| AGNT-09 | Phase 3 | Pending |
-| AGNT-10 | Phase 3 | Pending |
-| AGNT-11 | Phase 3 | Pending |
-| AGNT-12 | Phase 3 | Pending |
-| AGNT-13 | Phase 3 | Pending |
+| AGNT-08 | Phase 3 | Complete |
+| AGNT-09 | Phase 3 | Complete |
+| AGNT-10 | Phase 3 | Complete |
+| AGNT-11 | Phase 3 | Complete |
+| AGNT-12 | Phase 3 | Complete |
+| AGNT-13 | Phase 3 | Complete |
 | CHAT-01 | Phase 4 | Pending |
 | CHAT-02 | Phase 4 | Pending |
 | CHAT-03 | Phase 4 | Pending |
