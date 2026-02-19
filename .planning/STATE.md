@@ -230,6 +230,10 @@ Recent decisions affecting current work:
 - [Phase 08]: Client-side fuzzy search with relevance scoring (position 40% + frequency 60%), nuqs URL state for shareable search links
 - [Phase 08]: 08-04: Reused DeliverablePreviewCard directly from Phase 6 missions feature for task-grouped deliverables listing
 - [Phase 08]: 08-04: UploadTarget type defined locally in use-file-upload.ts since workspace entity layer does not exist yet
+- [08-05]: ApprovalInbox uses DataTable with event delegation for row click navigation instead of per-row Link wrappers
+- [08-05]: Optimistic removal from approval list on any action for instant feedback
+- [08-05]: ApprovalDetail mock data generated per taskId inline rather than separate fixture file
+- [08-05]: Approval query staleTime 30s for more frequent refresh vs Infinity for other domains
 
 ### Pending Todos
 
@@ -243,5 +247,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-19
-Stopped at: Completed 08-04-PLAN.md
-Resume file: .planning/phases/08-sessions-memory-files-governance/08-04-SUMMARY.md
+Stopped at: Completed 08-05-PLAN.md
+Resume file: .planning/phases/08-sessions-memory-files-governance/08-05-SUMMARY.md

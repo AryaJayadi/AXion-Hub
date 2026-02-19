@@ -122,8 +122,8 @@ Requirements for initial release. Each maps to roadmap phases. All ~87 pages/vie
 
 ### Approvals & Governance
 
-- [ ] **GOVR-01**: User can view tasks awaiting human sign-off at `/approvals`
-- [ ] **GOVR-02**: User can review agent output and approve/reject/request revision at `/approvals/[taskId]`
+- [x] **GOVR-01**: User can view tasks awaiting human sign-off at `/approvals`
+- [x] **GOVR-02**: User can review agent output and approve/reject/request revision at `/approvals/[taskId]`
 - [ ] **GOVR-03**: User can view immutable audit log of all actions at `/audit`
 - [ ] **GOVR-04**: User can define governance policies (auto-approval rules, escalation rules, tool restrictions) at `/governance/policies`
 
@@ -287,8 +287,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | FILE-02 | Phase 8 | Pending |
 | FILE-03 | Phase 8 | Complete |
 | FILE-04 | Phase 8 | Complete |
-| GOVR-01 | Phase 8 | Pending |
-| GOVR-02 | Phase 8 | Pending |
+| GOVR-01 | Phase 8 | Complete |
+| GOVR-02 | Phase 8 | Complete |
 | GOVR-03 | Phase 8 | Pending |
 | GOVR-04 | Phase 8 | Pending |
 | SKIL-01 | Phase 9 | Pending |
