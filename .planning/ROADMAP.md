@@ -22,6 +22,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 8: Sessions, Memory, Files & Governance** - Session browser, transcript viewer, memory explorer, semantic search, file browser, workspace editor, deliverables, approval queue, audit log, and governance policies
 - [ ] **Phase 9: Skills, Plugins & Workflows** - Skills library, ClawHub browser, plugin management, visual workflow builder, cron jobs, and webhooks
 - [x] **Phase 10: Settings, Public Pages & Developer Tools** - All settings pages, landing page, features, pricing, docs, changelog, blog, API reference, and WebSocket playground (completed 2026-02-19)
+- [ ] **Phase 11: Gap Closure — Cross-Phase Wiring & Traceability** - Fix 5 integration gaps, 1 partial requirement, 3 broken E2E flows, sidebar navigation completeness, and REQUIREMENTS.md traceability accuracy
 
 ## Phase Details
 
@@ -220,10 +221,23 @@ Plans:
 - [ ] 10-05-PLAN.md -- Internal documentation hub with sidebar + markdown pages, Scalar interactive API reference (Wave 1)
 - [ ] 10-06-PLAN.md -- WebSocket playground with connection panel, event templates, CodeMirror JSON editor, timestamped event log with export (Wave 2)
 
+### Phase 11: Gap Closure — Cross-Phase Wiring & Traceability
+**Goal**: Close all integration gaps, fix the one partial requirement, repair 3 broken E2E flows, complete sidebar navigation, and bring REQUIREMENTS.md traceability to 100% accuracy
+**Depends on**: Phase 10 (all feature phases complete)
+**Requirements**: AUTH-06, CHAT-01, AGNT-01, AGNT-02, MNTR-01, MNTR-04, SESS-01, MEMO-01, GOVR-03, FILE-03
+**Gap Closure:** Closes all gaps from v1.0 milestone audit
+**Success Criteria** (what must be TRUE):
+  1. All 7 missing sidebar navigation links are present and route to their respective pages (/monitor, /sessions, /memory, /audit, /governance/policies, /deliverables, /plugins)
+  2. Creating an agent at /agents/new makes it appear in the chat AgentPickerDialog without a page refresh, and "New Chat"/"Start Chat" buttons open the picker
+  3. Agent detail "Send Message" navigates to /chat/[agentId]; SessionsTable row click uses proper component callback (not DOM event delegation)
+  4. middleware.ts exists at project root mounting proxy.ts for edge-level auth protection
+  5. REQUIREMENTS.md shows INFR-01–11 as `[x]` Complete and SITE-01–06 as Dropped
+**Plans**: TBD (created during /gsd:plan-phase 11)
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 -> 2 -> 3 -> 4/5/6/7 (partially parallel after 3) -> 8 -> 9 -> 10
+Phases execute in numeric order: 1 -> 2 -> 3 -> 4/5/6/7 (partially parallel after 3) -> 8 -> 9 -> 10 -> 11
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -237,3 +251,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4/5/6/7 (partially parallel afte
 | 8. Sessions, Memory, Files & Governance | 0/6 | Not started | - |
 | 9. Skills, Plugins & Workflows | 0/5 | Not started | - |
 | 10. Settings, Public Pages & Developer Tools | 6/6 | Complete    | 2026-02-19 |
+| 11. Gap Closure — Wiring & Traceability | 0/0 | Not started | - |

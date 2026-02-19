@@ -9,17 +9,17 @@ Requirements for initial release. Each maps to roadmap phases. All ~87 pages/vie
 
 ### Foundation & Infrastructure
 
-- [ ] **INFR-01**: Next.js 16 App Router project initialized with TypeScript, Tailwind CSS v4, shadcn/ui, and Biome
-- [ ] **INFR-02**: PostgreSQL database with Drizzle ORM schema, migrations, and connection pooling
-- [ ] **INFR-03**: Docker Compose setup with AXion Hub, PostgreSQL, and Redis services
-- [ ] **INFR-04**: WebSocket Manager singleton with typed Event Bus for real-time OpenClaw Gateway communication via Socket.IO
-- [ ] **INFR-05**: Gateway abstraction layer that insulates all features from raw OpenClaw API changes
-- [ ] **INFR-06**: Dual-mode connection support — local (filesystem + WebSocket) and remote (WebSocket only)
-- [ ] **INFR-07**: Shared UI component library (tables, forms, status indicators, badges) built on shadcn/ui before page development
-- [ ] **INFR-08**: Feature-sliced architecture with independently organized domain modules
-- [ ] **INFR-09**: Zustand stores for real-time WebSocket state + TanStack Query for REST-fetched historical data
-- [ ] **INFR-10**: Audit logging middleware baked into every mutating API endpoint
-- [ ] **INFR-11**: BullMQ job queue with Redis for background tasks, scheduled jobs, and workflow execution
+- [x] **INFR-01**: Next.js 16 App Router project initialized with TypeScript, Tailwind CSS v4, shadcn/ui, and Biome
+- [x] **INFR-02**: PostgreSQL database with Drizzle ORM schema, migrations, and connection pooling
+- [x] **INFR-03**: Docker Compose setup with AXion Hub, PostgreSQL, and Redis services
+- [x] **INFR-04**: WebSocket Manager singleton with typed Event Bus for real-time OpenClaw Gateway communication via Socket.IO
+- [x] **INFR-05**: Gateway abstraction layer that insulates all features from raw OpenClaw API changes
+- [x] **INFR-06**: Dual-mode connection support — local (filesystem + WebSocket) and remote (WebSocket only)
+- [x] **INFR-07**: Shared UI component library (tables, forms, status indicators, badges) built on shadcn/ui before page development
+- [x] **INFR-08**: Feature-sliced architecture with independently organized domain modules
+- [x] **INFR-09**: Zustand stores for real-time WebSocket state + TanStack Query for REST-fetched historical data
+- [x] **INFR-10**: Audit logging middleware baked into every mutating API endpoint
+- [x] **INFR-11**: BullMQ job queue with Redis for background tasks, scheduled jobs, and workflow execution
 
 ### Authentication
 
@@ -98,7 +98,7 @@ Requirements for initial release. Each maps to roadmap phases. All ~87 pages/vie
 
 ### Sessions & Memory
 
-- [x] **SESS-01**: User can view all active sessions across all agents at `/sessions`
+- [ ] **SESS-01**: User can view all active sessions across all agents at `/sessions`
 - [x] **SESS-02**: User can view full session detail with transcript and token usage at `/sessions/[sessionId]`
 - [x] **SESS-03**: User can view JSONL session transcript with message tree at `/sessions/[sessionId]/transcript`
 - [x] **MEMO-01**: User can browse memories across all agents at `/memory`
@@ -204,17 +204,17 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| INFR-01 | Phase 1 | Pending |
-| INFR-02 | Phase 1 | Pending |
-| INFR-03 | Phase 1 | Pending |
-| INFR-04 | Phase 1 | Pending |
-| INFR-05 | Phase 1 | Pending |
-| INFR-06 | Phase 1 | Pending |
-| INFR-07 | Phase 1 | Pending |
-| INFR-08 | Phase 1 | Pending |
-| INFR-09 | Phase 1 | Pending |
-| INFR-10 | Phase 1 | Pending |
-| INFR-11 | Phase 1 | Pending |
+| INFR-01 | Phase 1 | Complete |
+| INFR-02 | Phase 1 | Complete |
+| INFR-03 | Phase 1 | Complete |
+| INFR-04 | Phase 1 | Complete |
+| INFR-05 | Phase 1 | Complete |
+| INFR-06 | Phase 1 | Complete |
+| INFR-07 | Phase 1 | Complete |
+| INFR-08 | Phase 1 | Complete |
+| INFR-09 | Phase 1 | Complete |
+| INFR-10 | Phase 1 | Complete |
+| INFR-11 | Phase 1 | Complete |
 | AUTH-01 | Phase 2 | Complete |
 | AUTH-02 | Phase 2 | Complete |
 | AUTH-03 | Phase 2 | Complete |
@@ -278,7 +278,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | MODL-03 | Phase 7 | Complete |
 | MODL-04 | Phase 7 | Complete |
 | MODL-05 | Phase 7 | Complete |
-| SESS-01 | Phase 8 | Complete |
+| SESS-01 | Phase 11 | Pending |
 | SESS-02 | Phase 8 | Complete |
 | SESS-03 | Phase 8 | Complete |
 | MEMO-01 | Phase 8 | Complete |
@@ -311,20 +311,22 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SETT-08 | Phase 10 | Complete |
 | SETT-09 | Phase 10 | Complete |
 | SETT-10 | Phase 10 | Complete |
-| SITE-01 | Phase 10 | Pending |
-| SITE-02 | Phase 10 | Pending |
-| SITE-03 | Phase 10 | Pending |
-| SITE-04 | Phase 10 | Pending |
-| SITE-05 | Phase 10 | Pending |
-| SITE-06 | Phase 10 | Pending |
+| SITE-01 | Phase 10 | Dropped |
+| SITE-02 | Phase 10 | Dropped |
+| SITE-03 | Phase 10 | Dropped |
+| SITE-04 | Phase 10 | Dropped |
+| SITE-05 | Phase 10 | Dropped |
+| SITE-06 | Phase 10 | Dropped |
 | ADEV-01 | Phase 10 | Complete |
 | ADEV-02 | Phase 10 | Complete |
 
 **Coverage:**
-- v1 requirements: 115 total
-- Mapped to phases: 115
+- v1 requirements: 115 total (6 dropped = 109 in-scope)
+- Satisfied: 108
+- Pending (gap closure): 1 (SESS-01 → Phase 11)
+- Dropped: 6 (SITE-01–06)
 - Unmapped: 0
 
 ---
 *Requirements defined: 2026-02-17*
-*Last updated: 2026-02-17 after roadmap creation*
+*Last updated: 2026-02-19 after gap closure phase creation*
