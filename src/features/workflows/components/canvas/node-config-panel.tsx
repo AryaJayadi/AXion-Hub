@@ -8,10 +8,11 @@
  */
 
 import { useMemo } from "react";
-import { X } from "lucide-react";
+import { X, Clock, AlertCircle, CheckCircle2, Loader2, MinusCircle } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-import type { WorkflowNodeType } from "@/entities/workflow";
+import type { WorkflowNodeType, NodeExecutionState } from "@/entities/workflow";
 import { getNodeCategory, getNodeRegistryEntry } from "@/entities/workflow";
+import { Badge } from "@/shared/ui/badge";
 import { Button } from "@/shared/ui/button";
 import { Input } from "@/shared/ui/input";
 import { Label } from "@/shared/ui/label";
@@ -25,16 +26,22 @@ import {
 } from "@/shared/ui/select";
 import { cn } from "@/shared/lib/cn";
 import { useWorkflowCanvasStore } from "../../model/workflow-canvas-store";
+import { useExecutionStore } from "../../model/execution-store";
 
 // ---------------------------------------------------------------------------
 // Component
 // ---------------------------------------------------------------------------
 
-export function NodeConfigPanel() {
+interface NodeConfigPanelProps {
+	isRunning?: boolean;
+}
+
+export function NodeConfigPanel({ isRunning }: NodeConfigPanelProps) {
 	const selectedNodeId = useWorkflowCanvasStore((s) => s.selectedNodeId);
 	const nodes = useWorkflowCanvasStore((s) => s.nodes);
 	const updateNodeData = useWorkflowCanvasStore((s) => s.updateNodeData);
 	const selectNode = useWorkflowCanvasStore((s) => s.selectNode);
+	const nodeStates = useExecutionStore((s) => s.nodeStates);
 
 	const selectedNode = useMemo(
 		() => nodes.find((n) => n.id === selectedNodeId),
@@ -42,6 +49,12 @@ export function NodeConfigPanel() {
 	);
 
 	const isOpen = selectedNode != null;
+
+	// Get execution state for selected node (when running)
+	const executionState = selectedNodeId
+		? nodeStates.get(selectedNodeId) ?? null
+		: null;
+	const showExecutionView = !!isRunning && !!executionState;
 
 	return (
 		<AnimatePresence>
@@ -60,43 +73,144 @@ export function NodeConfigPanel() {
 							onClose={() => selectNode(null)}
 						/>
 
-						{/* Config fields */}
-						<div className="flex-1 space-y-4 p-4">
-							{/* Label (always shown) */}
-							<div className="space-y-1.5">
-								<Label htmlFor="node-label">Label</Label>
-								<Input
-									id="node-label"
-									value={(selectedNode.data.label as string) ?? ""}
-									onChange={(e) =>
-										updateNodeData(selectedNode.id, {
-											label: e.target.value,
-										})
+						{showExecutionView ? (
+							/* Execution I/O display mode */
+							<ExecutionIOView executionState={executionState} />
+						) : (
+							/* Normal config fields mode */
+							<div className="flex-1 space-y-4 p-4">
+								{/* Label (always shown) */}
+								<div className="space-y-1.5">
+									<Label htmlFor="node-label">Label</Label>
+									<Input
+										id="node-label"
+										value={(selectedNode.data.label as string) ?? ""}
+										onChange={(e) =>
+											updateNodeData(selectedNode.id, {
+												label: e.target.value,
+											})
+										}
+									/>
+								</div>
+
+								{/* Type-specific fields */}
+								<NodeConfigFields
+									nodeId={selectedNode.id}
+									nodeType={
+										selectedNode.type as WorkflowNodeType
+									}
+									data={
+										selectedNode.data as Record<
+											string,
+											unknown
+										>
+									}
+									updateData={(data) =>
+										updateNodeData(selectedNode.id, data)
 									}
 								/>
 							</div>
-
-							{/* Type-specific fields */}
-							<NodeConfigFields
-								nodeId={selectedNode.id}
-								nodeType={
-									selectedNode.type as WorkflowNodeType
-								}
-								data={
-									selectedNode.data as Record<
-										string,
-										unknown
-									>
-								}
-								updateData={(data) =>
-									updateNodeData(selectedNode.id, data)
-								}
-							/>
-						</div>
+						)}
 					</div>
 				</motion.div>
 			)}
 		</AnimatePresence>
+	);
+}
+
+// ---------------------------------------------------------------------------
+// Execution I/O view (shown during live runs)
+// ---------------------------------------------------------------------------
+
+const EXEC_STATUS_CONFIG: Record<string, { icon: typeof CheckCircle2; color: string; label: string }> = {
+	pending: { icon: MinusCircle, color: "text-muted-foreground", label: "Pending" },
+	running: { icon: Loader2, color: "text-blue-500", label: "Running" },
+	success: { icon: CheckCircle2, color: "text-green-500", label: "Success" },
+	error: { icon: AlertCircle, color: "text-red-500", label: "Error" },
+	skipped: { icon: MinusCircle, color: "text-muted-foreground/60", label: "Skipped" },
+};
+
+const DEFAULT_EXEC_STATUS = { icon: MinusCircle, color: "text-muted-foreground", label: "Pending" } as const;
+
+function ExecutionIOView({ executionState }: { executionState: NodeExecutionState }) {
+	const config = EXEC_STATUS_CONFIG[executionState.status] ?? DEFAULT_EXEC_STATUS;
+	const StatusIcon = config.icon;
+
+	const duration = executionState.startedAt && executionState.completedAt
+		? executionState.completedAt.getTime() - executionState.startedAt.getTime()
+		: null;
+
+	return (
+		<div className="flex-1 space-y-4 p-4">
+			{/* Status badge */}
+			<div className="space-y-1.5">
+				<Label>Status</Label>
+				<Badge
+					variant="outline"
+					className={cn("gap-1.5", config.color)}
+				>
+					<StatusIcon className={cn("size-3.5", executionState.status === "running" && "animate-spin")} />
+					{config.label}
+				</Badge>
+			</div>
+
+			{/* Input */}
+			<div className="space-y-1.5">
+				<Label>Input</Label>
+				<pre className="text-xs bg-muted rounded p-2 overflow-auto max-h-48">
+					{executionState.input
+						? JSON.stringify(executionState.input, null, 2)
+						: "No input"}
+				</pre>
+			</div>
+
+			{/* Output */}
+			<div className="space-y-1.5">
+				<Label>Output</Label>
+				<pre className="text-xs bg-muted rounded p-2 overflow-auto max-h-48">
+					{executionState.status === "pending" || executionState.status === "running"
+						? "Waiting..."
+						: executionState.output
+							? JSON.stringify(executionState.output, null, 2)
+							: "No output"}
+				</pre>
+			</div>
+
+			{/* Error (only if status is error) */}
+			{executionState.status === "error" && executionState.error && (
+				<div className="space-y-1.5">
+					<Label className="text-red-500">Error</Label>
+					<div className="rounded border border-red-200 bg-red-500/5 p-2 text-xs text-red-600">
+						{executionState.error}
+					</div>
+				</div>
+			)}
+
+			{/* Timing */}
+			<div className="space-y-1.5">
+				<Label>Timing</Label>
+				<div className="space-y-1 text-xs text-muted-foreground">
+					{executionState.startedAt && (
+						<div className="flex items-center gap-1.5">
+							<Clock className="size-3" />
+							<span>Started: {executionState.startedAt.toLocaleTimeString()}</span>
+						</div>
+					)}
+					{executionState.completedAt && (
+						<div className="flex items-center gap-1.5">
+							<Clock className="size-3" />
+							<span>Completed: {executionState.completedAt.toLocaleTimeString()}</span>
+						</div>
+					)}
+					{duration != null && (
+						<div className="flex items-center gap-1.5">
+							<Clock className="size-3" />
+							<span>Duration: {duration >= 1000 ? `${(duration / 1000).toFixed(1)}s` : `${duration}ms`}</span>
+						</div>
+					)}
+				</div>
+			</div>
+		</div>
 	);
 }
 

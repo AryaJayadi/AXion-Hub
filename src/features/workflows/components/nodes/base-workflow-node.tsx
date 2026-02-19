@@ -26,6 +26,7 @@ import {
 import type { WorkflowNodeType } from "@/entities/workflow";
 import { getNodeCategory, getNodeRegistryEntry } from "@/entities/workflow";
 import { cn } from "@/shared/lib/cn";
+import { useNodeExecutionBorder } from "../canvas/execution-overlay";
 
 // ---------------------------------------------------------------------------
 // Icon lookup (lucide icon name string -> component)
@@ -64,6 +65,7 @@ interface BaseWorkflowNodeProps {
 }
 
 function BaseWorkflowNodeInner({
+	id,
 	data,
 	selected,
 	nodeType,
@@ -76,6 +78,9 @@ function BaseWorkflowNodeInner({
 	const IconComponent = entry ? ICON_MAP[entry.icon] : Zap;
 	const Icon = IconComponent ?? Zap;
 	const label = (data.label as string) ?? entry?.label ?? nodeType;
+
+	// Execution border: overrides category border when a run is active
+	const executionBorder = useNodeExecutionBorder(id);
 
 	return (
 		<>
@@ -92,7 +97,7 @@ function BaseWorkflowNodeInner({
 			<div
 				className={cn(
 					"w-[200px] rounded-lg border-2 bg-card p-3 shadow-sm",
-					category.border,
+					executionBorder ?? category.border,
 					selected && "ring-2 ring-primary/20",
 				)}
 			>
