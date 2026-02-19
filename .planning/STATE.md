@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-17)
 
 **Core value:** A single pane of glass where you can see everything your AI agents are doing, direct their work, and maintain governance.
-**Current focus:** Phase 7 - Gateway, Channels & Models
+**Current focus:** Phase 8 - Sessions, Memory, Files & Governance
 
 ## Current Position
 
-Phase: 7 of 10 (Gateway, Channels & Models)
-Plan: 5 of 5 in current phase
-Status: Complete
-Last activity: 2026-02-18 -- Completed 07-04 Channel Pairing Wizard and Gateway Nodes Management
+Phase: 8 of 10 (Sessions, Memory, Files & Governance)
+Plan: 6 of 6 in current phase
+Status: In Progress
+Last activity: 2026-02-19 -- Completed 08-05 Approval Queue & Review
 
-Progress: [███████░░░] 70%
+Progress: [████████░░] 78%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 33
+- Total plans completed: 35
 - Average duration: 6min
-- Total execution time: 3.5 hours
+- Total execution time: 3.7 hours
 
 **By Phase:**
 
@@ -68,6 +68,8 @@ Progress: [███████░░░] 70%
 | Phase 07 P05 | 8min | 2 tasks | 24 files |
 | Phase 07 P03 | 9min | 2 tasks | 18 files |
 | Phase 07 P04 | 5min | 2 tasks | 14 files |
+| Phase 08 P04 | 4min | 2 tasks | 8 files |
+| Phase 08 P02 | 4min | 2 tasks | 14 files |
 
 ## Accumulated Context
 
@@ -223,6 +225,10 @@ Recent decisions affecting current work:
 - [07-04]: WhatsApp QR modal renders placeholder SVG; click simulates scan for demo
 - [07-04]: Web platform auto-advances from authenticate step (no auth required)
 - [07-04]: GatewayNodesTable is reusable component for both /gateway/nodes and instance detail views
+- [Phase 08]: Memory browser uses split layout (w-72 sidebar + preview) with read-only MDEditor markdown preview
+- [Phase 08]: Client-side fuzzy search with relevance scoring (position 40% + frequency 60%), nuqs URL state for shareable search links
+- [Phase 08]: 08-04: Reused DeliverablePreviewCard directly from Phase 6 missions feature for task-grouped deliverables listing
+- [Phase 08]: 08-04: UploadTarget type defined locally in use-file-upload.ts since workspace entity layer does not exist yet
 
 ### Pending Todos
 

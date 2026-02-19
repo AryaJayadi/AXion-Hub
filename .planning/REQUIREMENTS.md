@@ -101,8 +101,8 @@ Requirements for initial release. Each maps to roadmap phases. All ~87 pages/vie
 - [ ] **SESS-01**: User can view all active sessions across all agents at `/sessions`
 - [ ] **SESS-02**: User can view full session detail with transcript and token usage at `/sessions/[sessionId]`
 - [ ] **SESS-03**: User can view JSONL session transcript with message tree at `/sessions/[sessionId]/transcript`
-- [ ] **MEMO-01**: User can browse memories across all agents at `/memory`
-- [ ] **MEMO-02**: User can perform semantic search across all agent memories at `/memory/search`
+- [x] **MEMO-01**: User can browse memories across all agents at `/memory`
+- [x] **MEMO-02**: User can perform semantic search across all agent memories at `/memory/search`
 
 ### Models & Providers
 
@@ -281,8 +281,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SESS-01 | Phase 8 | Pending |
 | SESS-02 | Phase 8 | Pending |
 | SESS-03 | Phase 8 | Pending |
-| MEMO-01 | Phase 8 | Pending |
-| MEMO-02 | Phase 8 | Pending |
+| MEMO-01 | Phase 8 | Complete |
+| MEMO-02 | Phase 8 | Complete |
 | FILE-01 | Phase 8 | Pending |
 | FILE-02 | Phase 8 | Pending |
 | FILE-03 | Phase 8 | Pending |
