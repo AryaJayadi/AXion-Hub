@@ -76,6 +76,7 @@ Progress: [████████░░] 84%
 | Phase 08 P03 | 8min | 2 tasks | 15 files |
 | Phase 09 P01 | 7min | 2 tasks | 19 files |
 | Phase 09 P02 | 8min | 2 tasks | 19 files |
+| Phase 09 P03 | 8min | 2 tasks | 28 files |
 
 ## Accumulated Context
 
@@ -257,6 +258,12 @@ Recent decisions affecting current work:
 - [Phase 09]: [09-02]: PluginSettingsForm renders dynamic fields from configSchema -- string/number/boolean type mapping
 - [Phase 09]: [09-02]: Category chip filters use local state (not URL state) since category is transient UI filter
 - [Phase 09]: [09-02]: MDEditor dynamic import with ssr:false for plugin documentation tab markdown preview
+- [Phase 09]: [09-03]: nodeTypes defined at module level outside component to prevent React Flow re-renders (Pitfall 1)
+- [Phase 09]: [09-03]: ReactFlowProvider wraps parent WorkflowEditorView, WorkflowEditorInner is child (Pitfall 2)
+- [Phase 09]: [09-03]: Canvas store uses plain Zustand (no immer) with functional updates for node/edge arrays
+- [Phase 09]: [09-03]: Condition/approval-gate dual source handles at 30%/70% left positioning with green/red colors
+- [Phase 09]: [09-03]: Undo/redo via past/future arrays with MAX_HISTORY=50 snapshots on addNode/deleteSelectedNodes
+- [Phase 09]: [09-03]: Node config panel uses framer-motion AnimatePresence for smooth open/close animation
 
 ### Pending Todos
 
@@ -270,5 +277,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-19
-Stopped at: Completed 09-02-PLAN.md
-Resume file: .planning/phases/09-skills-plugins-workflows/09-03-PLAN.md
+Stopped at: Completed 09-03-PLAN.md
+Resume file: .planning/phases/09-skills-plugins-workflows/09-04-PLAN.md
