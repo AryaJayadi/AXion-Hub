@@ -173,4 +173,43 @@ export const queryKeys = {
 		auditTrail: (filters?: Record<string, unknown>) =>
 			[...queryKeys.governance.all, "audit-trail", filters] as const,
 	},
+	skills: {
+		all: ["skills"] as const,
+		lists: () => [...queryKeys.skills.all, "list"] as const,
+		list: (filters?: Record<string, unknown>) =>
+			[...queryKeys.skills.lists(), filters] as const,
+		details: () => [...queryKeys.skills.all, "detail"] as const,
+		detail: (id: string) =>
+			[...queryKeys.skills.details(), id] as const,
+	},
+	clawhub: {
+		all: ["clawhub"] as const,
+		lists: () => [...queryKeys.clawhub.all, "list"] as const,
+		list: (filters?: Record<string, unknown>) =>
+			[...queryKeys.clawhub.lists(), filters] as const,
+		categories: () => [...queryKeys.clawhub.all, "categories"] as const,
+	},
+	plugins: {
+		all: ["plugins"] as const,
+		lists: () => [...queryKeys.plugins.all, "list"] as const,
+		list: (filters?: Record<string, unknown>) =>
+			[...queryKeys.plugins.lists(), filters] as const,
+		details: () => [...queryKeys.plugins.all, "detail"] as const,
+		detail: (id: string) =>
+			[...queryKeys.plugins.details(), id] as const,
+		available: () => [...queryKeys.plugins.all, "available"] as const,
+	},
+	workflows: {
+		all: ["workflows"] as const,
+		lists: () => [...queryKeys.workflows.all, "list"] as const,
+		list: (filters?: Record<string, unknown>) =>
+			[...queryKeys.workflows.lists(), filters] as const,
+		details: () => [...queryKeys.workflows.all, "detail"] as const,
+		detail: (id: string) =>
+			[...queryKeys.workflows.details(), id] as const,
+		runs: (id: string) =>
+			[...queryKeys.workflows.all, "runs", id] as const,
+		cron: () => [...queryKeys.workflows.all, "cron"] as const,
+		webhooks: () => [...queryKeys.workflows.all, "webhooks"] as const,
+	},
 } as const;
