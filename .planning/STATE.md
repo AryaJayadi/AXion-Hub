@@ -245,6 +245,7 @@ Recent decisions affecting current work:
 - [Phase 08]: Transcript tree view uses parentMessageId-based recursive tree building with CSS margin-left depth indentation
 - [Phase 08]: TranscriptToolBlock adapted from ToolCallGroup pattern, simplified to read-only collapsed/expandable blocks
 - [Phase 08]: CodeMirror conditional spread for exactOptionalPropertyTypes: readOnly and onChange via conditional spread to avoid undefined assignment
+- [Phase 08]: useWorkspaceFile enabled guard prevents unnecessary queries when no file selected in browser
 
 ### Pending Todos
 
@@ -258,5 +259,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-19
-Stopped at: Completed 08-06-PLAN.md
-Resume file: .planning/phases/08-sessions-memory-files-governance/08-06-SUMMARY.md
+Stopped at: Completed 08-03-PLAN.md (all Phase 8 plans now complete)
+Resume file: .planning/phases/08-sessions-memory-files-governance/08-03-SUMMARY.md

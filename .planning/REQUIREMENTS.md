@@ -136,8 +136,8 @@ Requirements for initial release. Each maps to roadmap phases. All ~87 pages/vie
 
 ### Files & Workspace
 
-- [ ] **FILE-01**: User can browse agent workspace files at `/workspace`
-- [ ] **FILE-02**: User can view/edit workspace files (SOUL.md, AGENTS.md, etc.) at `/workspace/[agentId]/[...path]`
+- [x] **FILE-01**: User can browse agent workspace files at `/workspace`
+- [x] **FILE-02**: User can view/edit workspace files (SOUL.md, AGENTS.md, etc.) at `/workspace/[agentId]/[...path]`
 - [x] **FILE-03**: User can view all task deliverables in one place at `/deliverables`
 - [x] **FILE-04**: User can upload files to agent workspace or task at `/workspace/upload`
 
@@ -283,8 +283,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SESS-03 | Phase 8 | Complete |
 | MEMO-01 | Phase 8 | Complete |
 | MEMO-02 | Phase 8 | Complete |
-| FILE-01 | Phase 8 | Pending |
-| FILE-02 | Phase 8 | Pending |
+| FILE-01 | Phase 8 | Complete |
+| FILE-02 | Phase 8 | Complete |
 | FILE-03 | Phase 8 | Complete |
 | FILE-04 | Phase 8 | Complete |
 | GOVR-01 | Phase 8 | Complete |
