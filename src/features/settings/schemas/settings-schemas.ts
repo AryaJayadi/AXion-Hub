@@ -26,3 +26,20 @@ export const profileSettingsSchema = z.object({
 });
 
 export type ProfileSettingsFormValues = z.infer<typeof profileSettingsSchema>;
+
+/**
+ * Schema for notification preferences.
+ */
+export const notificationPrefsSchema = z.object({
+	emailEnabled: z.boolean(),
+	webhookEnabled: z.boolean(),
+	webhookUrl: z.union([z.url("Must be a valid URL"), z.literal("")]).optional(),
+	slackEnabled: z.boolean(),
+	slackWebhookUrl: z.string().optional(),
+	discordEnabled: z.boolean(),
+	discordWebhookUrl: z.string().optional(),
+});
+
+export type NotificationPrefsFormValues = z.infer<
+	typeof notificationPrefsSchema
+>;
