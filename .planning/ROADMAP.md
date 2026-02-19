@@ -208,15 +208,17 @@ Plans:
   3. User can connect integrations, export/backup data, and access the danger zone (delete workspace, reset data) at their respective settings pages
   4. Visitors can view the landing page, features, pricing, docs, changelog, and blog without authentication
   5. Developers can browse interactive API documentation at /api-docs and test WebSocket commands live at /api-docs/ws
-**Plans**: TBD
+**Plans**: 6 plans in 2 waves
+
+NOTE: SITE-01 through SITE-06 (public marketing pages) are DROPPED per CONTEXT.md — AXion Hub is an internal tool. Success criterion #4 is N/A.
 
 Plans:
-- [ ] 10-01: General settings, profile settings, and theme/language configuration
-- [ ] 10-02: Security settings (password, 2FA, sessions), team/org management, invitations
-- [ ] 10-03: API keys, notification preferences, integrations, backup/export, danger zone
-- [ ] 10-04: Landing page, features page, pricing page
-- [ ] 10-05: Documentation hub, changelog, blog
-- [ ] 10-06: Interactive API reference (Swagger/OpenAPI), WebSocket playground
+- [ ] 10-01-PLAN.md -- Settings layout, sidebar, auth plugin extensions (twoFactor + apiKey), general settings, profile settings (Wave 1)
+- [ ] 10-02-PLAN.md -- Security settings: password change, TOTP 2FA with QR code + backup codes, active sessions management (Wave 2)
+- [ ] 10-03-PLAN.md -- Team member management, invitation system, API key CRUD with show-once creation pattern (Wave 2)
+- [ ] 10-04-PLAN.md -- Notification preferences, integration connection cards, backup/export, danger zone with type-to-confirm (Wave 2)
+- [ ] 10-05-PLAN.md -- Internal documentation hub with sidebar + markdown pages, Scalar interactive API reference (Wave 1)
+- [ ] 10-06-PLAN.md -- WebSocket playground with connection panel, event templates, CodeMirror JSON editor, timestamped event log with export (Wave 2)
 
 ## Progress
 
@@ -234,4 +236,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4/5/6/7 (partially parallel afte
 | 7. Gateway, Channels & Models | 0/5 | Complete    | 2026-02-18 |
 | 8. Sessions, Memory, Files & Governance | 0/6 | Not started | - |
 | 9. Skills, Plugins & Workflows | 0/5 | Not started | - |
-| 10. Settings, Public Pages & Developer Tools | 0/6 | Not started | - |
+| 10. Settings, Public Pages & Developer Tools | 0/6 | Planned | - |
