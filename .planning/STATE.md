@@ -10,9 +10,9 @@ See: .planning/PROJECT.md (updated 2026-02-17)
 ## Current Position
 
 Phase: 9 of 10 (Skills, Plugins & Workflows)
-Plan: 4 of 5 in current phase
+Plan: 5 of 5 in current phase
 Status: In Progress
-Last activity: 2026-02-19 -- Completed 09-03 Workflow Canvas & Visual Builder
+Last activity: 2026-02-19 -- Completed 09-04 Workflow Detail, Execution & Results
 
 Progress: [████████░░] 84%
 
@@ -77,6 +77,7 @@ Progress: [████████░░] 84%
 | Phase 09 P01 | 7min | 2 tasks | 19 files |
 | Phase 09 P02 | 8min | 2 tasks | 19 files |
 | Phase 09 P03 | 8min | 2 tasks | 28 files |
+| Phase 09 P04 | 6min | 2 tasks | 11 files |
 
 ## Accumulated Context
 
@@ -264,6 +265,10 @@ Recent decisions affecting current work:
 - [Phase 09]: [09-03]: Condition/approval-gate dual source handles at 30%/70% left positioning with green/red colors
 - [Phase 09]: [09-03]: Undo/redo via past/future arrays with MAX_HISTORY=50 snapshots on addNode/deleteSelectedNodes
 - [Phase 09]: [09-03]: Node config panel uses framer-motion AnimatePresence for smooth open/close animation
+- [Phase 09]: [09-04]: Execution store uses plain Zustand (no persist) for ephemeral run state
+- [Phase 09]: [09-04]: useNodeExecutionBorder returns null when idle, nodes fall back to category borders
+- [Phase 09]: [09-04]: NodeConfigPanel dual mode: isRunning prop switches config fields vs execution I/O view
+- [Phase 09]: [09-04]: Retry payload editor pre-populates Textarea with original input JSON for editing
 
 ### Pending Todos
 
@@ -277,5 +282,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-19
-Stopped at: Completed 09-03-PLAN.md
-Resume file: .planning/phases/09-skills-plugins-workflows/09-04-PLAN.md
+Stopped at: Completed 09-04-PLAN.md
+Resume file: .planning/phases/09-skills-plugins-workflows/09-05-PLAN.md
