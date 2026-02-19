@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-02-17)
 ## Current Position
 
 Phase: 10 of 10 (Settings, Public Pages & Developer Tools)
-Plan: 6 of 6 in current phase
-Status: In Progress
-Last activity: 2026-02-19 -- Completed 10-02 Security Settings
+Plan: 6 of 6 in current phase (COMPLETE)
+Status: Phase Complete
+Last activity: 2026-02-19 -- Completed 10-06 WebSocket Playground
 
-Progress: [█████████░] 98%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 38
+- Total plans completed: 39
 - Average duration: 6min
-- Total execution time: 4.0 hours
+- Total execution time: 4.1 hours
 
 **By Phase:**
 
@@ -82,6 +82,8 @@ Progress: [█████████░] 98%
 | Phase 10 P01 | 4min | 2 tasks | 15 files |
 | Phase 10 P05 | 8min | 2 tasks | 15 files |
 | Phase 10 P02 | 2min | 2 tasks | 6 files |
+| Phase 10 P06 | 3min | 2 tasks | 9 files |
+| Phase 10 P04 | 4min | 2 tasks | 15 files |
 
 ## Accumulated Context
 
@@ -289,6 +291,14 @@ Recent decisions affecting current work:
 - [Phase 10]: [10-05]: Scalar wrapped in isolate container to prevent CSS bleeding into app shell
 - [Phase 10]: [10-02]: TOTP setup uses multi-step flow (idle -> password -> scan -> verify -> enabled) managed by local state
 - [Phase 10]: [10-02]: Active sessions use optimistic removal from TanStack Query cache on revoke
+- [Phase 10]: [10-04]: Notification prefs use single form with per-channel Card sections and one Save button
+- [Phase 10]: [10-04]: Blob download pattern: Blob + URL.createObjectURL + anchor click for JSON export
+- [Phase 10]: [10-04]: Danger zone type-to-confirm uses strict equality (no trim, no case-insensitive) per locked decision
+- [Phase 10]: [10-04]: Integration disconnect uses optimistic TanStack Query cache with rollback on error
+- [Phase 10]: [10-06]: Playground creates standalone WebSocket via raw new WebSocket() rather than reusing WebSocketManager class for lightweight isolation
+- [Phase 10]: [10-06]: CodeMirror JSON editor uses dynamic import with ssr:false matching workspace code-editor pattern
+- [Phase 10]: [10-06]: Event log uses newest-first prepend ordering with collapsible JSON rows for fast scanning
+- [Phase 10]: [10-06]: Gateway frame wrapping: parsed JSON payload auto-wrapped in { type: req, id, method, params } format on send
 
 ### Pending Todos
 
@@ -302,5 +312,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-19
-Stopped at: Completed 10-02-PLAN.md
-Resume file: .planning/phases/10-settings-public-pages-developer-tools/10-02-SUMMARY.md
+Stopped at: Completed 10-06-PLAN.md
+Resume file: .planning/phases/10-settings-public-pages-developer-tools/10-06-SUMMARY.md

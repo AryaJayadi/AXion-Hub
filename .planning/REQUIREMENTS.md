@@ -157,10 +157,10 @@ Requirements for initial release. Each maps to roadmap phases. All ~87 pages/vie
 - [ ] **SETT-04**: User can manage organization settings, members, and roles at `/settings/team`
 - [ ] **SETT-05**: User can invite users and manage pending invitations at `/settings/team/invites`
 - [ ] **SETT-06**: User can manage AXion Hub API keys for external integrations at `/settings/api`
-- [ ] **SETT-07**: User can configure notification preferences (email, webhook, Slack/Discord) at `/settings/notifications`
-- [ ] **SETT-08**: User can connect external services (GitHub, Linear, Jira) at `/settings/integrations`
-- [ ] **SETT-09**: User can export config, sessions, and workspace data at `/settings/backup`
-- [ ] **SETT-10**: User can access danger zone (delete workspace, reset data, disconnect gateway) at `/settings/danger`
+- [x] **SETT-07**: User can configure notification preferences (email, webhook, Slack/Discord) at `/settings/notifications`
+- [x] **SETT-08**: User can connect external services (GitHub, Linear, Jira) at `/settings/integrations`
+- [x] **SETT-09**: User can export config, sessions, and workspace data at `/settings/backup`
+- [x] **SETT-10**: User can access danger zone (delete workspace, reset data, disconnect gateway) at `/settings/danger`
 
 ### Public / Marketing Pages
 
@@ -307,10 +307,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SETT-04 | Phase 10 | Pending |
 | SETT-05 | Phase 10 | Pending |
 | SETT-06 | Phase 10 | Pending |
-| SETT-07 | Phase 10 | Pending |
-| SETT-08 | Phase 10 | Pending |
-| SETT-09 | Phase 10 | Pending |
-| SETT-10 | Phase 10 | Pending |
+| SETT-07 | Phase 10 | Complete |
+| SETT-08 | Phase 10 | Complete |
+| SETT-09 | Phase 10 | Complete |
+| SETT-10 | Phase 10 | Complete |
 | SITE-01 | Phase 10 | Pending |
 | SITE-02 | Phase 10 | Pending |
 | SITE-03 | Phase 10 | Pending |
