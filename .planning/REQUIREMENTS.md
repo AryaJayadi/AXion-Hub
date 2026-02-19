@@ -146,8 +146,8 @@ Requirements for initial release. Each maps to roadmap phases. All ~87 pages/vie
 - [x] **SKIL-01**: User can view installed skills across all agents at `/skills`
 - [x] **SKIL-02**: User can browse and install skills from ClawHub registry at `/skills/clawhub`
 - [x] **SKIL-03**: User can view skill config, SKILL.md, and enable/disable per agent at `/skills/[skillId]`
-- [ ] **SKIL-04**: User can view installed plugins and enable/disable/configure at `/plugins`
-- [ ] **SKIL-05**: User can install plugins from npm or browse available plugins at `/plugins/install`
+- [x] **SKIL-04**: User can view installed plugins and enable/disable/configure at `/plugins`
+- [x] **SKIL-05**: User can install plugins from npm or browse available plugins at `/plugins/install`
 
 ### Settings
 
@@ -294,8 +294,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SKIL-01 | Phase 9 | Complete |
 | SKIL-02 | Phase 9 | Complete |
 | SKIL-03 | Phase 9 | Complete |
-| SKIL-04 | Phase 9 | Pending |
-| SKIL-05 | Phase 9 | Pending |
+| SKIL-04 | Phase 9 | Complete |
+| SKIL-05 | Phase 9 | Complete |
 | WORK-01 | Phase 9 | Pending |
 | WORK-02 | Phase 9 | Pending |
 | WORK-03 | Phase 9 | Pending |
