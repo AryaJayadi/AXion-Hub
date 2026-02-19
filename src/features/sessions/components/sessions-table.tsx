@@ -133,6 +133,18 @@ interface AgentGroupProps {
 }
 
 function AgentGroup({ agentName, sessions, onRowClick }: AgentGroupProps) {
+	const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+		const row = (e.target as HTMLElement).closest("tbody tr");
+		if (!row) return;
+		const index = Array.from(
+			row.parentElement?.children ?? [],
+		).indexOf(row);
+		const session = sessions[index];
+		if (session) {
+			onRowClick(session.id);
+		}
+	};
+
 	return (
 		<Collapsible defaultOpen>
 			<CollapsibleTrigger className="flex w-full items-center gap-2 rounded-md px-3 py-2 text-left hover:bg-muted/50 transition-colors">
@@ -142,7 +154,7 @@ function AgentGroup({ agentName, sessions, onRowClick }: AgentGroupProps) {
 				</Badge>
 			</CollapsibleTrigger>
 			<CollapsibleContent>
-				<div className="pl-2">
+				<div className="pl-2 [&_tbody_tr]:cursor-pointer [&_tbody_tr:hover]:bg-muted/50" onClick={handleClick}>
 					<DataTable
 						columns={groupedColumns}
 						data={sessions}
@@ -231,12 +243,27 @@ export function SessionsTable({ sessions, isLoading }: SessionsTableProps) {
 					)}
 				</div>
 			) : (
-				<DataTable
-					columns={columns}
-					data={sortedSessions}
-					enablePagination
-					pageSize={10}
-				/>
+				<div
+					className="[&_tbody_tr]:cursor-pointer [&_tbody_tr:hover]:bg-muted/50"
+					onClick={(e) => {
+						const row = (e.target as HTMLElement).closest("tbody tr");
+						if (!row) return;
+						const index = Array.from(
+							row.parentElement?.children ?? [],
+						).indexOf(row);
+						const session = sortedSessions[index];
+						if (session) {
+							handleRowClick(session.id);
+						}
+					}}
+				>
+					<DataTable
+						columns={columns}
+						data={sortedSessions}
+						enablePagination
+						pageSize={10}
+					/>
+				</div>
 			)}
 		</div>
 	);
