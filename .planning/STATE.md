@@ -10,9 +10,9 @@ See: .planning/PROJECT.md (updated 2026-02-17)
 ## Current Position
 
 Phase: 10 of 10 (Settings, Public Pages & Developer Tools)
-Plan: 5 of 6 in current phase
+Plan: 6 of 6 in current phase
 Status: In Progress
-Last activity: 2026-02-19 -- Completed 10-05 Docs Hub & API Reference
+Last activity: 2026-02-19 -- Completed 10-02 Security Settings
 
 Progress: [█████████░] 98%
 
@@ -81,6 +81,7 @@ Progress: [█████████░] 98%
 | Phase 09 P05 | 7min | 2 tasks | 12 files |
 | Phase 10 P01 | 4min | 2 tasks | 15 files |
 | Phase 10 P05 | 8min | 2 tasks | 15 files |
+| Phase 10 P02 | 2min | 2 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -286,6 +287,8 @@ Recent decisions affecting current work:
 - [Phase 10]: [10-05]: DocRenderer reuses MDEditor preview-only mode pattern from memory-preview.tsx for consistency
 - [Phase 10]: [10-05]: OpenAPI spec hand-written as static JSON for initial version; auto-generation deferred
 - [Phase 10]: [10-05]: Scalar wrapped in isolate container to prevent CSS bleeding into app shell
+- [Phase 10]: [10-02]: TOTP setup uses multi-step flow (idle -> password -> scan -> verify -> enabled) managed by local state
+- [Phase 10]: [10-02]: Active sessions use optimistic removal from TanStack Query cache on revoke
 
 ### Pending Todos
 
@@ -299,5 +302,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-19
-Stopped at: Completed 10-05-PLAN.md
-Resume file: .planning/phases/10-settings-public-pages-developer-tools/10-05-SUMMARY.md
+Stopped at: Completed 10-02-PLAN.md
+Resume file: .planning/phases/10-settings-public-pages-developer-tools/10-02-SUMMARY.md

@@ -153,7 +153,7 @@ Requirements for initial release. Each maps to roadmap phases. All ~87 pages/vie
 
 - [x] **SETT-01**: User can configure app name, timezone, theme (dark/light), language at `/settings`
 - [x] **SETT-02**: User can manage profile (display name, avatar) at `/settings/profile`
-- [ ] **SETT-03**: User can manage security settings (password, 2FA, API keys, sessions) at `/settings/security`
+- [x] **SETT-03**: User can manage security settings (password, 2FA, API keys, sessions) at `/settings/security`
 - [ ] **SETT-04**: User can manage organization settings, members, and roles at `/settings/team`
 - [ ] **SETT-05**: User can invite users and manage pending invitations at `/settings/team/invites`
 - [ ] **SETT-06**: User can manage AXion Hub API keys for external integrations at `/settings/api`
@@ -303,7 +303,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | WORK-05 | Phase 9 | Complete |
 | SETT-01 | Phase 10 | Complete |
 | SETT-02 | Phase 10 | Complete |
-| SETT-03 | Phase 10 | Pending |
+| SETT-03 | Phase 10 | Complete |
 | SETT-04 | Phase 10 | Pending |
 | SETT-05 | Phase 10 | Pending |
 | SETT-06 | Phase 10 | Pending |
