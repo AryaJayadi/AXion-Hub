@@ -84,6 +84,7 @@ Progress: [██████████] 100%
 | Phase 10 P02 | 2min | 2 tasks | 6 files |
 | Phase 10 P06 | 3min | 2 tasks | 9 files |
 | Phase 10 P04 | 4min | 2 tasks | 15 files |
+| Phase 10 P03 | 4min | 2 tasks | 12 files |
 
 ## Accumulated Context
 
@@ -299,6 +300,9 @@ Recent decisions affecting current work:
 - [Phase 10]: [10-06]: CodeMirror JSON editor uses dynamic import with ssr:false matching workspace code-editor pattern
 - [Phase 10]: [10-06]: Event log uses newest-first prepend ordering with collapsible JSON rows for fast scanning
 - [Phase 10]: [10-06]: Gateway frame wrapping: parsed JSON payload auto-wrapped in { type: req, id, method, params } format on send
+- [Phase 10]: [10-03]: ApiKeyCreateDialog uses two-phase pattern: form phase then reveal phase with full key display and copy button
+- [Phase 10]: [10-03]: API keys displayed as prefix****start (e.g., axion_****a1b2) matching Stripe masked pattern
+- [Phase 10]: [10-03]: Team hooks fall back to mock data when better-auth organization API not available for development
 
 ### Pending Todos
 

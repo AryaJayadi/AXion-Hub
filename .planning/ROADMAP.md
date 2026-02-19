@@ -21,7 +21,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 7: Gateway, Channels & Models** - Gateway config editor, channel management, channel pairing, routing/bindings, model provider config, failover chains, and usage/cost tracking (completed 2026-02-18)
 - [ ] **Phase 8: Sessions, Memory, Files & Governance** - Session browser, transcript viewer, memory explorer, semantic search, file browser, workspace editor, deliverables, approval queue, audit log, and governance policies
 - [ ] **Phase 9: Skills, Plugins & Workflows** - Skills library, ClawHub browser, plugin management, visual workflow builder, cron jobs, and webhooks
-- [ ] **Phase 10: Settings, Public Pages & Developer Tools** - All settings pages, landing page, features, pricing, docs, changelog, blog, API reference, and WebSocket playground
+- [x] **Phase 10: Settings, Public Pages & Developer Tools** - All settings pages, landing page, features, pricing, docs, changelog, blog, API reference, and WebSocket playground (completed 2026-02-19)
 
 ## Phase Details
 
@@ -236,4 +236,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4/5/6/7 (partially parallel afte
 | 7. Gateway, Channels & Models | 0/5 | Complete    | 2026-02-18 |
 | 8. Sessions, Memory, Files & Governance | 0/6 | Not started | - |
 | 9. Skills, Plugins & Workflows | 0/5 | Not started | - |
-| 10. Settings, Public Pages & Developer Tools | 5/6 | In Progress|  |
+| 10. Settings, Public Pages & Developer Tools | 6/6 | Complete   | 2026-02-19 |
