@@ -189,14 +189,14 @@ Plans:
   3. User can view saved workflows at /workflows and build new workflows with a visual node editor at /workflows/new
   4. User can view, edit, and run a workflow at /workflows/[workflowId] and see execution results
   5. User can schedule recurring tasks via cron jobs at /workflows/cron and create inbound webhook endpoints at /workflows/webhooks
-**Plans**: TBD
+**Plans**: 5 plans in 2 waves
 
 Plans:
-- [ ] 09-01: Skills library page, ClawHub browser, skill detail/config page
-- [ ] 09-02: Plugin management page, plugin install flow
-- [ ] 09-03: Workflow list page, visual workflow builder with @xyflow/react node editor
-- [ ] 09-04: Workflow detail/edit/run page, execution results view
-- [ ] 09-05: Cron job scheduling, webhook endpoint management
+- [ ] 09-01-PLAN.md -- Skills library with category card grid, ClawHub marketplace browser, skill detail with JSON+form hybrid config editor (Wave 1)
+- [ ] 09-02-PLAN.md -- Plugin management DataTable, visual plugin browser with install progress, plugin detail with settings/agents/docs/history tabs (Wave 1)
+- [ ] 09-03-PLAN.md -- Workflow list card grid, interactive @xyflow/react canvas with 12 custom node types, drag-from-sidebar palette, right sidebar config panel (Wave 1)
+- [ ] 09-04-PLAN.md -- Workflow detail/edit/run page with canvas loading, live execution overlay with colored node borders, past run results page (Wave 2)
+- [ ] 09-05-PLAN.md -- Cron schedule management with hybrid visual/raw cron builder, webhook endpoint management with URL generation and create dialog (Wave 2)
 
 ### Phase 10: Settings, Public Pages & Developer Tools
 **Goal**: Users can configure every aspect of their AXion Hub instance, visitors can learn about the product from public pages, and developers can explore the API
