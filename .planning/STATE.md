@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-02-17)
 ## Current Position
 
 Phase: 10 of 10 (Settings, Public Pages & Developer Tools)
-Plan: 1 of 6 in current phase
+Plan: 5 of 6 in current phase
 Status: In Progress
-Last activity: 2026-02-19 -- Completed 10-01 Settings Foundation
+Last activity: 2026-02-19 -- Completed 10-05 Docs Hub & API Reference
 
-Progress: [█████████░] 92%
+Progress: [█████████░] 98%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 37
+- Total plans completed: 38
 - Average duration: 6min
-- Total execution time: 3.9 hours
+- Total execution time: 4.0 hours
 
 **By Phase:**
 
@@ -80,6 +80,7 @@ Progress: [█████████░] 92%
 | Phase 09 P04 | 6min | 2 tasks | 11 files |
 | Phase 09 P05 | 7min | 2 tasks | 12 files |
 | Phase 10 P01 | 4min | 2 tasks | 15 files |
+| Phase 10 P05 | 8min | 2 tasks | 15 files |
 
 ## Accumulated Context
 
@@ -280,6 +281,11 @@ Recent decisions affecting current work:
 - [Phase 10]: [10-01]: zodResolver cast as-never for Zod v4 + exactOptionalPropertyTypes compatibility (consistent project pattern)
 - [Phase 10]: [10-01]: Profile avatar is URL input for MVP; file upload deferred to later iteration
 - [Phase 10]: [10-01]: Theme toggle uses card-style buttons (not ToggleGroup) for visual clarity with icon + label
+- [Phase 10]: [10-05]: Scalar searchHotKey set to 'q' to avoid conflict with app Cmd+K shortcut
+- [Phase 10]: [10-05]: Docs content stored as static TypeScript registry (not MDX files) for type safety and zero-config rendering
+- [Phase 10]: [10-05]: DocRenderer reuses MDEditor preview-only mode pattern from memory-preview.tsx for consistency
+- [Phase 10]: [10-05]: OpenAPI spec hand-written as static JSON for initial version; auto-generation deferred
+- [Phase 10]: [10-05]: Scalar wrapped in isolate container to prevent CSS bleeding into app shell
 
 ### Pending Todos
 
@@ -293,5 +299,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-19
-Stopped at: Completed 10-01-PLAN.md
-Resume file: .planning/phases/10-settings-public-pages-developer-tools/10-01-SUMMARY.md
+Stopped at: Completed 10-05-PLAN.md
+Resume file: .planning/phases/10-settings-public-pages-developer-tools/10-05-SUMMARY.md

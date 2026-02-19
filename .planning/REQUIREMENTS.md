@@ -173,7 +173,7 @@ Requirements for initial release. Each maps to roadmap phases. All ~87 pages/vie
 
 ### API & Developer
 
-- [ ] **ADEV-01**: Interactive REST API documentation (Swagger/OpenAPI) at `/api-docs`
+- [x] **ADEV-01**: Interactive REST API documentation (Swagger/OpenAPI) at `/api-docs`
 - [ ] **ADEV-02**: WebSocket playground for testing Gateway WebSocket commands live at `/api-docs/ws`
 
 ## v2 Requirements
@@ -317,7 +317,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SITE-04 | Phase 10 | Pending |
 | SITE-05 | Phase 10 | Pending |
 | SITE-06 | Phase 10 | Pending |
-| ADEV-01 | Phase 10 | Pending |
+| ADEV-01 | Phase 10 | Complete |
 | ADEV-02 | Phase 10 | Pending |
 
 **Coverage:**

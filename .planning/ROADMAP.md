@@ -236,4 +236,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4/5/6/7 (partially parallel afte
 | 7. Gateway, Channels & Models | 0/5 | Complete    | 2026-02-18 |
 | 8. Sessions, Memory, Files & Governance | 0/6 | Not started | - |
 | 9. Skills, Plugins & Workflows | 0/5 | Not started | - |
-| 10. Settings, Public Pages & Developer Tools | 1/6 | In Progress|  |
+| 10. Settings, Public Pages & Developer Tools | 2/6 | In Progress|  |
