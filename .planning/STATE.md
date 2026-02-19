@@ -73,6 +73,7 @@ Progress: [████████░░] 80%
 | Phase 08 P05 | 4min | 2 tasks | 12 files |
 | Phase 08 P06 | 7min | 2 tasks | 15 files |
 | Phase 08 P01 | 7min | 2 tasks | 17 files |
+| Phase 08 P03 | 8min | 2 tasks | 15 files |
 
 ## Accumulated Context
 
@@ -243,6 +244,7 @@ Recent decisions affecting current work:
 - [Phase 08]: Query keys extended with transcript, workspace, deliverables, governance domains for all Phase 8 plans
 - [Phase 08]: Transcript tree view uses parentMessageId-based recursive tree building with CSS margin-left depth indentation
 - [Phase 08]: TranscriptToolBlock adapted from ToolCallGroup pattern, simplified to read-only collapsed/expandable blocks
+- [Phase 08]: CodeMirror conditional spread for exactOptionalPropertyTypes: readOnly and onChange via conditional spread to avoid undefined assignment
 
 ### Pending Todos
 
