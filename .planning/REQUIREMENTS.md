@@ -98,9 +98,9 @@ Requirements for initial release. Each maps to roadmap phases. All ~87 pages/vie
 
 ### Sessions & Memory
 
-- [ ] **SESS-01**: User can view all active sessions across all agents at `/sessions`
-- [ ] **SESS-02**: User can view full session detail with transcript and token usage at `/sessions/[sessionId]`
-- [ ] **SESS-03**: User can view JSONL session transcript with message tree at `/sessions/[sessionId]/transcript`
+- [x] **SESS-01**: User can view all active sessions across all agents at `/sessions`
+- [x] **SESS-02**: User can view full session detail with transcript and token usage at `/sessions/[sessionId]`
+- [x] **SESS-03**: User can view JSONL session transcript with message tree at `/sessions/[sessionId]/transcript`
 - [x] **MEMO-01**: User can browse memories across all agents at `/memory`
 - [x] **MEMO-02**: User can perform semantic search across all agent memories at `/memory/search`
 
@@ -124,8 +124,8 @@ Requirements for initial release. Each maps to roadmap phases. All ~87 pages/vie
 
 - [x] **GOVR-01**: User can view tasks awaiting human sign-off at `/approvals`
 - [x] **GOVR-02**: User can review agent output and approve/reject/request revision at `/approvals/[taskId]`
-- [ ] **GOVR-03**: User can view immutable audit log of all actions at `/audit`
-- [ ] **GOVR-04**: User can define governance policies (auto-approval rules, escalation rules, tool restrictions) at `/governance/policies`
+- [x] **GOVR-03**: User can view immutable audit log of all actions at `/audit`
+- [x] **GOVR-04**: User can define governance policies (auto-approval rules, escalation rules, tool restrictions) at `/governance/policies`
 
 ### Activity & Monitoring
 
@@ -278,9 +278,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | MODL-03 | Phase 7 | Complete |
 | MODL-04 | Phase 7 | Complete |
 | MODL-05 | Phase 7 | Complete |
-| SESS-01 | Phase 8 | Pending |
-| SESS-02 | Phase 8 | Pending |
-| SESS-03 | Phase 8 | Pending |
+| SESS-01 | Phase 8 | Complete |
+| SESS-02 | Phase 8 | Complete |
+| SESS-03 | Phase 8 | Complete |
 | MEMO-01 | Phase 8 | Complete |
 | MEMO-02 | Phase 8 | Complete |
 | FILE-01 | Phase 8 | Pending |
@@ -289,8 +289,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | FILE-04 | Phase 8 | Complete |
 | GOVR-01 | Phase 8 | Complete |
 | GOVR-02 | Phase 8 | Complete |
-| GOVR-03 | Phase 8 | Pending |
-| GOVR-04 | Phase 8 | Pending |
+| GOVR-03 | Phase 8 | Complete |
+| GOVR-04 | Phase 8 | Complete |
 | SKIL-01 | Phase 9 | Pending |
 | SKIL-02 | Phase 9 | Pending |
 | SKIL-03 | Phase 9 | Pending |

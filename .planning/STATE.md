@@ -11,10 +11,10 @@ See: .planning/PROJECT.md (updated 2026-02-17)
 
 Phase: 8 of 10 (Sessions, Memory, Files & Governance)
 Plan: 6 of 6 in current phase
-Status: In Progress
-Last activity: 2026-02-19 -- Completed 08-05 Approval Queue & Review
+Status: Complete
+Last activity: 2026-02-19 -- Completed 08-06 Audit Log & Governance Policies
 
-Progress: [████████░░] 78%
+Progress: [████████░░] 80%
 
 ## Performance Metrics
 
@@ -71,6 +71,8 @@ Progress: [████████░░] 78%
 | Phase 08 P04 | 4min | 2 tasks | 8 files |
 | Phase 08 P02 | 4min | 2 tasks | 14 files |
 | Phase 08 P05 | 4min | 2 tasks | 12 files |
+| Phase 08 P06 | 7min | 2 tasks | 15 files |
+| Phase 08 P01 | 7min | 2 tasks | 17 files |
 
 ## Accumulated Context
 
@@ -234,6 +236,13 @@ Recent decisions affecting current work:
 - [08-05]: Optimistic removal from approval list on any action for instant feedback
 - [08-05]: ApprovalDetail mock data generated per taskId inline rather than separate fixture file
 - [08-05]: Approval query staleTime 30s for more frequent refresh vs Infinity for other domains
+- [Phase 08]: AuditLogTable uses custom virtual scrolling with expandable rows rather than DataTable reuse
+- [Phase 08]: Governance entity types: ConditionField, ConditionOperator, PolicyAction with Zod v4 schemas
+- [Phase 08]: Policy mutations use optimistic TanStack Query cache updates with queryClient.setQueryData
+- [Phase 08]: CrossAgentSession extends AgentSession with agentName/agentAvatar/model for cross-agent session browsing
+- [Phase 08]: Query keys extended with transcript, workspace, deliverables, governance domains for all Phase 8 plans
+- [Phase 08]: Transcript tree view uses parentMessageId-based recursive tree building with CSS margin-left depth indentation
+- [Phase 08]: TranscriptToolBlock adapted from ToolCallGroup pattern, simplified to read-only collapsed/expandable blocks
 
 ### Pending Todos
 
@@ -247,5 +256,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-19
-Stopped at: Completed 08-05-PLAN.md
-Resume file: .planning/phases/08-sessions-memory-files-governance/08-05-SUMMARY.md
+Stopped at: Completed 08-06-PLAN.md
+Resume file: .planning/phases/08-sessions-memory-files-governance/08-06-SUMMARY.md
