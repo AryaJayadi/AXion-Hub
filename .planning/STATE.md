@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-02-17)
 
 **Core value:** A single pane of glass where you can see everything your AI agents are doing, direct their work, and maintain governance.
-**Current focus:** Phase 8 - Sessions, Memory, Files & Governance
+**Current focus:** Phase 9 - Skills, Plugins & Workflows
 
 ## Current Position
 
-Phase: 8 of 10 (Sessions, Memory, Files & Governance)
-Plan: 6 of 6 in current phase
-Status: Complete
-Last activity: 2026-02-19 -- Completed 08-06 Audit Log & Governance Policies
+Phase: 9 of 10 (Skills, Plugins & Workflows)
+Plan: 2 of 5 in current phase
+Status: In Progress
+Last activity: 2026-02-19 -- Completed 09-01 Skills Library & ClawHub Browser
 
-Progress: [████████░░] 80%
+Progress: [████████░░] 82%
 
 ## Performance Metrics
 
@@ -74,6 +74,7 @@ Progress: [████████░░] 80%
 | Phase 08 P06 | 7min | 2 tasks | 15 files |
 | Phase 08 P01 | 7min | 2 tasks | 17 files |
 | Phase 08 P03 | 8min | 2 tasks | 15 files |
+| Phase 09 P01 | 7min | 2 tasks | 19 files |
 
 ## Accumulated Context
 
@@ -246,6 +247,11 @@ Recent decisions affecting current work:
 - [Phase 08]: TranscriptToolBlock adapted from ToolCallGroup pattern, simplified to read-only collapsed/expandable blocks
 - [Phase 08]: CodeMirror conditional spread for exactOptionalPropertyTypes: readOnly and onChange via conditional spread to avoid undefined assignment
 - [Phase 08]: useWorkspaceFile enabled guard prevents unnecessary queries when no file selected in browser
+- [Phase 09]: [09-01]: SkillCard uses ICON_MAP Record<string, LucideIcon> pattern from Phase 3 for dynamic lucide icon rendering
+- [Phase 09]: [09-01]: Zustand skill-config-store uses structuredClone (not lodash) matching Phase 7 config-draft-store pattern
+- [Phase 09]: [09-01]: ClawHub browser uses nuqs URL state for search query and category tab persistence
+- [Phase 09]: [09-01]: MDEditor loaded via next/dynamic with ssr:false for skill readme preview in detail view
+- [Phase 09]: [09-01]: setByDotPath uses 'as string' cast for array index access under exactOptionalPropertyTypes
 
 ### Pending Todos
 
@@ -259,5 +265,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-19
-Stopped at: Phase 9 context gathered
-Resume file: .planning/phases/09-skills-plugins-workflows/09-CONTEXT.md
+Stopped at: Completed 09-01-PLAN.md
+Resume file: .planning/phases/09-skills-plugins-workflows/09-02-PLAN.md
