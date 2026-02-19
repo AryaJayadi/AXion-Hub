@@ -37,6 +37,8 @@ export const queryKeys = {
 		details: () => [...queryKeys.sessions.all, "detail"] as const,
 		detail: (id: string) =>
 			[...queryKeys.sessions.details(), id] as const,
+		transcript: (id: string) =>
+			[...queryKeys.sessions.details(), id, "transcript"] as const,
 	},
 	gateway: {
 		all: ["gateway"] as const,
@@ -131,5 +133,44 @@ export const queryKeys = {
 			[...queryKeys.alerts.all, "notifications"] as const,
 		notificationList: (filters?: Record<string, unknown>) =>
 			[...queryKeys.alerts.notifications(), filters] as const,
+	},
+	approvals: {
+		all: ["approvals"] as const,
+		lists: () => [...queryKeys.approvals.all, "list"] as const,
+		list: (filters?: Record<string, unknown>) =>
+			[...queryKeys.approvals.lists(), filters] as const,
+		details: () => [...queryKeys.approvals.all, "detail"] as const,
+		detail: (id: string) =>
+			[...queryKeys.approvals.details(), id] as const,
+	},
+	memory: {
+		all: ["memory"] as const,
+		browser: () => [...queryKeys.memory.all, "browser"] as const,
+		search: (query: string, agentId?: string) =>
+			[...queryKeys.memory.all, "search", { query, agentId }] as const,
+	},
+	workspace: {
+		all: ["workspace"] as const,
+		tree: () => [...queryKeys.workspace.all, "tree"] as const,
+		files: (agentId: string) =>
+			[...queryKeys.workspace.all, "files", agentId] as const,
+		file: (agentId: string, path: string) =>
+			[...queryKeys.workspace.all, "file", agentId, path] as const,
+	},
+	deliverables: {
+		all: ["deliverables"] as const,
+		lists: () => [...queryKeys.deliverables.all, "list"] as const,
+		list: (filters?: Record<string, unknown>) =>
+			[...queryKeys.deliverables.lists(), filters] as const,
+		detail: (id: string) =>
+			[...queryKeys.deliverables.all, "detail", id] as const,
+	},
+	governance: {
+		all: ["governance"] as const,
+		policies: () => [...queryKeys.governance.all, "policies"] as const,
+		policy: (id: string) =>
+			[...queryKeys.governance.policies(), id] as const,
+		auditTrail: (filters?: Record<string, unknown>) =>
+			[...queryKeys.governance.all, "audit-trail", filters] as const,
 	},
 } as const;
