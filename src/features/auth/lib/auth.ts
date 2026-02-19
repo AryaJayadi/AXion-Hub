@@ -1,7 +1,7 @@
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { nextCookies } from "better-auth/next-js";
-import { organization } from "better-auth/plugins";
+import { apiKey, organization, twoFactor } from "better-auth/plugins";
 import { db } from "@/shared/lib/db";
 import * as authSchema from "@/entities/user/model/auth-schema";
 import { sendEmail } from "./email";
@@ -63,6 +63,16 @@ export const auth = betterAuth({
 
 	plugins: [
 		nextCookies(),
+		twoFactor({
+			issuer: "AXion Hub",
+		}),
+		apiKey({
+			defaultPrefix: "axion_",
+			startingCharactersConfig: {
+				shouldStore: true,
+				charactersLength: 4,
+			},
+		}),
 		organization({
 			allowUserToCreateOrganization: true,
 			creatorRole: "owner",

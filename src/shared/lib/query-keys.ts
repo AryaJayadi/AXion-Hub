@@ -212,4 +212,16 @@ export const queryKeys = {
 		cron: () => [...queryKeys.workflows.all, "cron"] as const,
 		webhooks: () => [...queryKeys.workflows.all, "webhooks"] as const,
 	},
+	settings: {
+		all: ["settings"] as const,
+		general: () => [...queryKeys.settings.all, "general"] as const,
+		profile: () => [...queryKeys.settings.all, "profile"] as const,
+		security: () => [...queryKeys.settings.all, "security"] as const,
+		team: () => [...queryKeys.settings.all, "team"] as const,
+		apiKeys: () => [...queryKeys.settings.all, "apiKeys"] as const,
+		notifications: () =>
+			[...queryKeys.settings.all, "notifications"] as const,
+		integrations: () =>
+			[...queryKeys.settings.all, "integrations"] as const,
+	},
 } as const;
