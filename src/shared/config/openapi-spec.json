@@ -1,0 +1,1163 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "AXion Hub API",
+    "version": "1.0.0",
+    "description": "REST API for AXion Hub -- a unified mission-control dashboard for managing AI agents, directing work through missions, and maintaining governance.",
+    "contact": {
+      "name": "AXion Hub Team"
+    }
+  },
+  "servers": [
+    {
+      "url": "/api",
+      "description": "AXion Hub API"
+    }
+  ],
+  "security": [
+    { "bearerAuth": [] },
+    { "cookieAuth": [] }
+  ],
+  "tags": [
+    { "name": "Auth", "description": "Authentication and session management" },
+    { "name": "Agents", "description": "Agent CRUD and management" },
+    { "name": "Sessions", "description": "Agent session management" },
+    { "name": "Tasks", "description": "Task CRUD and lifecycle" },
+    { "name": "Workflows", "description": "Workflow CRUD and execution" },
+    { "name": "Audit", "description": "Audit log queries" },
+    { "name": "Settings", "description": "Application settings" },
+    { "name": "Health", "description": "Service health checks" }
+  ],
+  "paths": {
+    "/health": {
+      "get": {
+        "tags": ["Health"],
+        "summary": "Health check",
+        "description": "Returns service health status including database and Redis connectivity.",
+        "operationId": "getHealth",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Service is healthy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "string", "enum": ["healthy", "degraded", "unhealthy"] },
+                    "timestamp": { "type": "string", "format": "date-time" },
+                    "services": {
+                      "type": "object",
+                      "properties": {
+                        "database": { "type": "string", "enum": ["up", "down"] },
+                        "redis": { "type": "string", "enum": ["up", "down"] }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/sign-in/email": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Sign in with email and password",
+        "description": "Authenticates a user with email and password credentials. Returns a session token.",
+        "operationId": "signInEmail",
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["email", "password"],
+                "properties": {
+                  "email": { "type": "string", "format": "email", "example": "user@example.com" },
+                  "password": { "type": "string", "minLength": 8, "example": "securepassword" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully authenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "user": { "$ref": "#/components/schemas/User" },
+                    "session": { "$ref": "#/components/schemas/Session" }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid credentials",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ApiError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/sign-up/email": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Register a new account",
+        "description": "Creates a new user account with email and password.",
+        "operationId": "signUpEmail",
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["name", "email", "password"],
+                "properties": {
+                  "name": { "type": "string", "example": "Alice Johnson" },
+                  "email": { "type": "string", "format": "email", "example": "alice@example.com" },
+                  "password": { "type": "string", "minLength": 8 }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Account created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "user": { "$ref": "#/components/schemas/User" },
+                    "session": { "$ref": "#/components/schemas/Session" }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ApiError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/sign-out": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Sign out",
+        "description": "Invalidates the current session and clears the session cookie.",
+        "operationId": "signOut",
+        "responses": {
+          "200": {
+            "description": "Successfully signed out"
+          }
+        }
+      }
+    },
+    "/auth/session": {
+      "get": {
+        "tags": ["Auth"],
+        "summary": "Get current session",
+        "description": "Returns the current user and session information.",
+        "operationId": "getSession",
+        "responses": {
+          "200": {
+            "description": "Active session found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "user": { "$ref": "#/components/schemas/User" },
+                    "session": { "$ref": "#/components/schemas/Session" }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No active session",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ApiError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agents": {
+      "get": {
+        "tags": ["Agents"],
+        "summary": "List agents",
+        "description": "Returns a paginated list of all agents in the current organization.",
+        "operationId": "listAgents",
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "schema": { "type": "string", "enum": ["active", "idle", "offline", "error"] },
+            "description": "Filter by agent status"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": { "type": "integer", "default": 50, "maximum": 100 },
+            "description": "Maximum number of agents to return"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": { "type": "integer", "default": 0 },
+            "description": "Number of agents to skip"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Agent list retrieved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/Agent" }
+                    },
+                    "total": { "type": "integer" },
+                    "limit": { "type": "integer" },
+                    "offset": { "type": "integer" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Agents"],
+        "summary": "Create an agent",
+        "description": "Registers a new AI agent in the current organization.",
+        "operationId": "createAgent",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["name"],
+                "properties": {
+                  "name": { "type": "string", "example": "Research Assistant" },
+                  "description": { "type": "string", "example": "An agent specialized in research and analysis" },
+                  "template": { "type": "string", "enum": ["assistant", "coder", "researcher", "ops", "custom"] },
+                  "model": { "type": "string", "example": "claude-sonnet-4" },
+                  "temperature": { "type": "number", "minimum": 0, "maximum": 1, "default": 0.7 },
+                  "maxTokens": { "type": "integer", "default": 4096 }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Agent created successfully",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Agent" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ApiError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agents/{agentId}": {
+      "get": {
+        "tags": ["Agents"],
+        "summary": "Get agent details",
+        "description": "Returns detailed information about a specific agent.",
+        "operationId": "getAgent",
+        "parameters": [
+          {
+            "name": "agentId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Agent details retrieved",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Agent" }
+              }
+            }
+          },
+          "404": {
+            "description": "Agent not found",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ApiError" }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": ["Agents"],
+        "summary": "Update an agent",
+        "description": "Updates configuration for a specific agent. Only provided fields are modified.",
+        "operationId": "updateAgent",
+        "parameters": [
+          {
+            "name": "agentId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "description": { "type": "string" },
+                  "model": { "type": "string" },
+                  "temperature": { "type": "number", "minimum": 0, "maximum": 1 },
+                  "maxTokens": { "type": "integer" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Agent updated successfully",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Agent" }
+              }
+            }
+          },
+          "404": {
+            "description": "Agent not found",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ApiError" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Agents"],
+        "summary": "Delete an agent",
+        "description": "Permanently removes an agent and all associated data.",
+        "operationId": "deleteAgent",
+        "parameters": [
+          {
+            "name": "agentId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Agent deleted successfully"
+          },
+          "404": {
+            "description": "Agent not found",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ApiError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sessions": {
+      "get": {
+        "tags": ["Sessions"],
+        "summary": "List sessions",
+        "description": "Returns a paginated list of agent sessions.",
+        "operationId": "listSessions",
+        "parameters": [
+          {
+            "name": "agentId",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "Filter sessions by agent ID"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": { "type": "string", "enum": ["active", "ended", "error"] },
+            "description": "Filter by session status"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": { "type": "integer", "default": 50 }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": { "type": "integer", "default": 0 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Session list retrieved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/AgentSession" }
+                    },
+                    "total": { "type": "integer" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sessions/{sessionId}": {
+      "get": {
+        "tags": ["Sessions"],
+        "summary": "Get session details",
+        "description": "Returns detailed information about a specific session including transcript metadata.",
+        "operationId": "getSession",
+        "parameters": [
+          {
+            "name": "sessionId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Session details retrieved",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AgentSession" }
+              }
+            }
+          },
+          "404": {
+            "description": "Session not found",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ApiError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tasks": {
+      "get": {
+        "tags": ["Tasks"],
+        "summary": "List tasks",
+        "description": "Returns a paginated list of tasks with optional filters.",
+        "operationId": "listTasks",
+        "parameters": [
+          {
+            "name": "boardId",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "Filter tasks by board ID"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": { "type": "string", "enum": ["backlog", "queued", "in-progress", "in-review", "done"] },
+            "description": "Filter by task status"
+          },
+          {
+            "name": "assigneeId",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "Filter by assignee agent ID"
+          },
+          {
+            "name": "priority",
+            "in": "query",
+            "schema": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+            "description": "Filter by priority"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": { "type": "integer", "default": 50 }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": { "type": "integer", "default": 0 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Task list retrieved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/Task" }
+                    },
+                    "total": { "type": "integer" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Tasks"],
+        "summary": "Create a task",
+        "description": "Creates a new task in the specified mission board.",
+        "operationId": "createTask",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["title", "boardId"],
+                "properties": {
+                  "title": { "type": "string", "example": "Research competitor analysis" },
+                  "description": { "type": "string" },
+                  "boardId": { "type": "string" },
+                  "assigneeId": { "type": "string" },
+                  "priority": { "type": "string", "enum": ["low", "medium", "high", "critical"], "default": "medium" },
+                  "dueDate": { "type": "string", "format": "date-time" },
+                  "requireSignOff": { "type": "boolean", "default": false }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Task created successfully",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Task" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ApiError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tasks/{taskId}": {
+      "get": {
+        "tags": ["Tasks"],
+        "summary": "Get task details",
+        "description": "Returns detailed information about a specific task including deliverables and activity.",
+        "operationId": "getTask",
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Task details retrieved",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Task" }
+              }
+            }
+          },
+          "404": {
+            "description": "Task not found",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ApiError" }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": ["Tasks"],
+        "summary": "Update a task",
+        "description": "Updates task properties. Use this to change status, assignment, priority, or content.",
+        "operationId": "updateTask",
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": { "type": "string" },
+                  "description": { "type": "string" },
+                  "status": { "type": "string", "enum": ["backlog", "queued", "in-progress", "in-review", "done"] },
+                  "assigneeId": { "type": "string" },
+                  "priority": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+                  "dueDate": { "type": "string", "format": "date-time" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task updated successfully",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Task" }
+              }
+            }
+          },
+          "404": {
+            "description": "Task not found",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ApiError" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Tasks"],
+        "summary": "Delete a task",
+        "description": "Permanently removes a task from the board.",
+        "operationId": "deleteTask",
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Task deleted successfully"
+          },
+          "404": {
+            "description": "Task not found",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ApiError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/workflows": {
+      "get": {
+        "tags": ["Workflows"],
+        "summary": "List workflows",
+        "description": "Returns all workflows in the current organization.",
+        "operationId": "listWorkflows",
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "schema": { "type": "string", "enum": ["draft", "active", "paused", "archived"] },
+            "description": "Filter by workflow status"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": { "type": "integer", "default": 50 }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": { "type": "integer", "default": 0 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Workflow list retrieved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/Workflow" }
+                    },
+                    "total": { "type": "integer" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Workflows"],
+        "summary": "Create a workflow",
+        "description": "Creates a new workflow definition.",
+        "operationId": "createWorkflow",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["name"],
+                "properties": {
+                  "name": { "type": "string", "example": "Code Review Pipeline" },
+                  "description": { "type": "string" },
+                  "nodes": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": { "type": "string" },
+                        "type": { "type": "string", "enum": ["trigger", "agent-task", "condition", "approval-gate", "notification"] },
+                        "config": { "type": "object" }
+                      }
+                    }
+                  },
+                  "edges": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "source": { "type": "string" },
+                        "target": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Workflow created",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Workflow" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/workflows/{workflowId}": {
+      "get": {
+        "tags": ["Workflows"],
+        "summary": "Get workflow details",
+        "description": "Returns the full workflow definition including nodes and edges.",
+        "operationId": "getWorkflow",
+        "parameters": [
+          {
+            "name": "workflowId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Workflow details retrieved",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Workflow" }
+              }
+            }
+          },
+          "404": {
+            "description": "Workflow not found",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ApiError" }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": ["Workflows"],
+        "summary": "Update a workflow",
+        "description": "Updates workflow definition, nodes, or edges.",
+        "operationId": "updateWorkflow",
+        "parameters": [
+          {
+            "name": "workflowId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "description": { "type": "string" },
+                  "status": { "type": "string", "enum": ["draft", "active", "paused", "archived"] },
+                  "nodes": { "type": "array", "items": { "type": "object" } },
+                  "edges": { "type": "array", "items": { "type": "object" } }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Workflow updated",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Workflow" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Workflows"],
+        "summary": "Delete a workflow",
+        "description": "Permanently removes a workflow definition.",
+        "operationId": "deleteWorkflow",
+        "parameters": [
+          {
+            "name": "workflowId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Workflow deleted"
+          }
+        }
+      }
+    },
+    "/audit": {
+      "get": {
+        "tags": ["Audit"],
+        "summary": "Query audit logs",
+        "description": "Returns paginated audit log entries with optional filters.",
+        "operationId": "listAuditLogs",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "Filter by user ID"
+          },
+          {
+            "name": "action",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "Filter by action type (e.g. agent.create, task.update)"
+          },
+          {
+            "name": "entityType",
+            "in": "query",
+            "schema": { "type": "string", "enum": ["agent", "task", "workflow", "session", "organization", "user"] },
+            "description": "Filter by entity type"
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "schema": { "type": "string", "format": "date-time" },
+            "description": "Start of time range"
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "schema": { "type": "string", "format": "date-time" },
+            "description": "End of time range"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": { "type": "integer", "default": 50, "maximum": 200 }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": { "type": "integer", "default": 0 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Audit log entries retrieved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/AuditEntry" }
+                    },
+                    "total": { "type": "integer" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/settings": {
+      "get": {
+        "tags": ["Settings"],
+        "summary": "Get application settings",
+        "description": "Returns the current workspace settings including theme, timezone, and notification preferences.",
+        "operationId": "getSettings",
+        "responses": {
+          "200": {
+            "description": "Settings retrieved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "appName": { "type": "string" },
+                    "timezone": { "type": "string" },
+                    "theme": { "type": "string", "enum": ["light", "dark", "system"] },
+                    "language": { "type": "string", "default": "en" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": ["Settings"],
+        "summary": "Update application settings",
+        "description": "Updates workspace settings. Only provided fields are modified.",
+        "operationId": "updateSettings",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "appName": { "type": "string" },
+                  "timezone": { "type": "string" },
+                  "theme": { "type": "string", "enum": ["light", "dark", "system"] },
+                  "language": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Settings updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "appName": { "type": "string" },
+                    "timezone": { "type": "string" },
+                    "theme": { "type": "string" },
+                    "language": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "API key authentication. Create keys at Settings > API Keys. Pass as: Authorization: Bearer axion_..."
+      },
+      "cookieAuth": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "better-auth.session_token",
+        "description": "Session cookie automatically set after browser login."
+      }
+    },
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "format": "uuid" },
+          "name": { "type": "string", "example": "Alice Johnson" },
+          "email": { "type": "string", "format": "email" },
+          "image": { "type": "string", "format": "uri", "nullable": true },
+          "emailVerified": { "type": "boolean" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "Session": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "token": { "type": "string" },
+          "userId": { "type": "string" },
+          "expiresAt": { "type": "string", "format": "date-time" },
+          "ipAddress": { "type": "string" },
+          "userAgent": { "type": "string" },
+          "createdAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "Agent": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "format": "uuid" },
+          "name": { "type": "string", "example": "Research Assistant" },
+          "description": { "type": "string" },
+          "status": { "type": "string", "enum": ["active", "idle", "offline", "error", "paused", "maintenance"] },
+          "template": { "type": "string", "enum": ["assistant", "coder", "researcher", "ops", "custom"] },
+          "model": { "type": "string", "example": "claude-sonnet-4" },
+          "temperature": { "type": "number" },
+          "maxTokens": { "type": "integer" },
+          "avatar": { "type": "string", "format": "uri", "nullable": true },
+          "organizationId": { "type": "string" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "AgentSession": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "format": "uuid" },
+          "agentId": { "type": "string" },
+          "agentName": { "type": "string" },
+          "status": { "type": "string", "enum": ["active", "ended", "error"] },
+          "messageCount": { "type": "integer" },
+          "startedAt": { "type": "string", "format": "date-time" },
+          "endedAt": { "type": "string", "format": "date-time", "nullable": true },
+          "metadata": { "type": "object" }
+        }
+      },
+      "Task": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "format": "uuid" },
+          "title": { "type": "string", "example": "Research competitor analysis" },
+          "description": { "type": "string" },
+          "status": { "type": "string", "enum": ["backlog", "queued", "in-progress", "in-review", "done"] },
+          "priority": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+          "boardId": { "type": "string" },
+          "assigneeId": { "type": "string", "nullable": true },
+          "dueDate": { "type": "string", "format": "date-time", "nullable": true },
+          "requireSignOff": { "type": "boolean" },
+          "columnOrder": { "type": "integer" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "Workflow": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "format": "uuid" },
+          "name": { "type": "string", "example": "Code Review Pipeline" },
+          "description": { "type": "string" },
+          "status": { "type": "string", "enum": ["draft", "active", "paused", "archived"] },
+          "nodeCount": { "type": "integer" },
+          "edgeCount": { "type": "integer" },
+          "lastRunAt": { "type": "string", "format": "date-time", "nullable": true },
+          "runCount": { "type": "integer" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "AuditEntry": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "format": "uuid" },
+          "userId": { "type": "string" },
+          "userName": { "type": "string" },
+          "action": { "type": "string", "example": "agent.create" },
+          "entityType": { "type": "string", "enum": ["agent", "task", "workflow", "session", "organization", "user"] },
+          "entityId": { "type": "string" },
+          "metadata": { "type": "object", "description": "Additional context about the action" },
+          "ipAddress": { "type": "string" },
+          "timestamp": { "type": "string", "format": "date-time" }
+        }
+      },
+      "ApiError": {
+        "type": "object",
+        "properties": {
+          "message": { "type": "string", "example": "Resource not found" },
+          "code": { "type": "string", "example": "NOT_FOUND" },
+          "statusCode": { "type": "integer", "example": 404 }
+        }
+      }
+    }
+  }
+}
