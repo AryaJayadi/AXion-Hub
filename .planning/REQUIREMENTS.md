@@ -117,8 +117,8 @@ Requirements for initial release. Each maps to roadmap phases. All ~87 pages/vie
 - [x] **WORK-01**: User can view saved multi-step automation sequences at `/workflows`
 - [x] **WORK-02**: User can build workflows with visual node editor (trigger, steps, output) at `/workflows/new` using @xyflow/react
 - [x] **WORK-03**: User can view/edit/run a workflow at `/workflows/[workflowId]`
-- [ ] **WORK-04**: User can schedule agent tasks via cron jobs at `/workflows/cron`
-- [ ] **WORK-05**: User can create and manage inbound webhook endpoints at `/workflows/webhooks`
+- [x] **WORK-04**: User can schedule agent tasks via cron jobs at `/workflows/cron`
+- [x] **WORK-05**: User can create and manage inbound webhook endpoints at `/workflows/webhooks`
 
 ### Approvals & Governance
 
@@ -299,8 +299,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | WORK-01 | Phase 9 | Complete |
 | WORK-02 | Phase 9 | Complete |
 | WORK-03 | Phase 9 | Complete |
-| WORK-04 | Phase 9 | Pending |
-| WORK-05 | Phase 9 | Pending |
+| WORK-04 | Phase 9 | Complete |
+| WORK-05 | Phase 9 | Complete |
 | SETT-01 | Phase 10 | Pending |
 | SETT-02 | Phase 10 | Pending |
 | SETT-03 | Phase 10 | Pending |

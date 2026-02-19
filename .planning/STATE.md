@@ -10,11 +10,11 @@ See: .planning/PROJECT.md (updated 2026-02-17)
 ## Current Position
 
 Phase: 9 of 10 (Skills, Plugins & Workflows)
-Plan: 5 of 5 in current phase
-Status: In Progress
-Last activity: 2026-02-19 -- Completed 09-04 Workflow Detail, Execution & Results
+Plan: 5 of 5 in current phase (COMPLETE)
+Status: Phase Complete
+Last activity: 2026-02-19 -- Completed 09-05 Cron Schedules & Webhook Endpoints
 
-Progress: [████████░░] 84%
+Progress: [█████████░] 90%
 
 ## Performance Metrics
 
@@ -78,6 +78,7 @@ Progress: [████████░░] 84%
 | Phase 09 P02 | 8min | 2 tasks | 19 files |
 | Phase 09 P03 | 8min | 2 tasks | 28 files |
 | Phase 09 P04 | 6min | 2 tasks | 11 files |
+| Phase 09 P05 | 7min | 2 tasks | 12 files |
 
 ## Accumulated Context
 
@@ -269,6 +270,11 @@ Recent decisions affecting current work:
 - [Phase 09]: [09-04]: useNodeExecutionBorder returns null when idle, nodes fall back to category borders
 - [Phase 09]: [09-04]: NodeConfigPanel dual mode: isRunning prop switches config fields vs execution I/O view
 - [Phase 09]: [09-04]: Retry payload editor pre-populates Textarea with original input JSON for editing
+- [Phase 09]: [09-05]: CronBuilder uses builderStateToExpression converter with reverse parseExpressionToState for mode toggle
+- [Phase 09]: [09-05]: Expandable rows use Fragment + conditional TableRow pattern, not DataTable subRow API
+- [Phase 09]: [09-05]: WebhookCreateDialog two-phase UI: form state then success state showing generated URL/secret
+- [Phase 09]: [09-05]: zodResolver cast as-never for Zod v4 + exactOptionalPropertyTypes (consistent project pattern)
+- [Phase 09]: [09-05]: Copy-to-clipboard uses navigator.clipboard.writeText with sonner toast feedback
 
 ### Pending Todos
 
@@ -282,5 +288,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-19
-Stopped at: Completed 09-04-PLAN.md
-Resume file: .planning/phases/09-skills-plugins-workflows/09-05-PLAN.md
+Stopped at: Completed 09-05-PLAN.md (Phase 9 complete)
+Resume file: .planning/phases/10-*/10-01-PLAN.md
