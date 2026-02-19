@@ -1,9 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Upload } from "lucide-react";
+import { toast } from "sonner";
 import { useWorkspaceTree } from "@/features/workspace/api/use-workspace-tree";
+import { useWorkspaceFile } from "@/features/workspace/api/use-workspace-file";
 import { FileTree } from "@/features/workspace/components/file-tree";
+import { FileViewer } from "@/features/workspace/components/file-viewer";
 import { Button } from "@/shared/ui/button";
 import { EmptyState } from "@/shared/ui/empty-state";
 import {
@@ -22,13 +25,32 @@ import {
  *
  * Two-panel layout using react-resizable-panels:
  * - Left panel: file tree sidebar with shared + per-agent directories
- * - Right panel: file content area (placeholder until Task 2 adds FileViewer)
+ * - Right panel: inline file editor using FileViewer (CodeMirror or MDEditor)
  *
- * File selection state maintained in React state.
+ * When a file is selected in the tree, it loads inline via useWorkspaceFile
+ * and renders FileViewer in the right panel.
  */
 export function WorkspaceBrowserView() {
 	const { data: tree, isLoading } = useWorkspaceTree();
 	const [activePath, setActivePath] = useState("");
+
+	/** Derive agentId from file path (first segment, or "shared"). */
+	const getAgentId = (path: string): string => {
+		const firstSegment = path.split("/")[0];
+		return firstSegment === "shared" ? "shared" : (firstSegment ?? "shared");
+	};
+
+	const agentId = activePath ? getAgentId(activePath) : "";
+	const { data: fileData, isLoading: isFileLoading } = useWorkspaceFile(
+		agentId,
+		activePath,
+	);
+
+	const handleSave = useCallback(async (content: string) => {
+		// Mock save -- in production this would write to the gateway
+		await new Promise((resolve) => setTimeout(resolve, 300));
+		toast.success("File saved");
+	}, []);
 
 	if (isLoading || !tree) {
 		return (
@@ -48,37 +70,6 @@ export function WorkspaceBrowserView() {
 			</div>
 		);
 	}
-
-	/** Derive agentId from file path (first segment, or "shared"). */
-	const getAgentId = (path: string): string => {
-		const firstSegment = path.split("/")[0];
-		return firstSegment === "shared" ? "shared" : (firstSegment ?? "shared");
-	};
-
-	/** Get file size display string. */
-	const formatSize = (bytes: number | undefined): string => {
-		if (bytes === undefined) return "Unknown";
-		if (bytes < 1024) return `${bytes} B`;
-		if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
-		return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
-	};
-
-	/** Find a node by path in the tree. */
-	const findNode = (
-		node: typeof tree,
-		path: string,
-	): typeof tree | undefined => {
-		if (node.path === path) return node;
-		if (node.children) {
-			for (const child of node.children) {
-				const found = findNode(child, path);
-				if (found) return found;
-			}
-		}
-		return undefined;
-	};
-
-	const activeNode = activePath ? findNode(tree, activePath) : undefined;
 
 	return (
 		<div>
@@ -122,34 +113,11 @@ export function WorkspaceBrowserView() {
 						defaultSize="75%"
 						id="workspace-content"
 					>
-						{activeNode && activeNode.type === "file" ? (
-							<div className="h-full flex flex-col">
-								{/* File header with metadata */}
-								<div className="flex items-center justify-between border-b border-border px-4 py-2 bg-muted/20">
-									<span className="font-mono text-sm font-medium truncate">
-										{activeNode.path}
-									</span>
-									<div className="flex items-center gap-3 text-xs text-muted-foreground shrink-0">
-										<span>{formatSize(activeNode.size)}</span>
-										{activeNode.lastModified && (
-											<span>
-												{activeNode.lastModified.toLocaleDateString()}
-											</span>
-										)}
-									</div>
-								</div>
-								{/* Placeholder for FileViewer (Task 2) */}
-								<div className="flex-1 flex items-center justify-center text-muted-foreground">
-									<div className="text-center space-y-2">
-										<p className="text-sm">File viewer loading for</p>
-										<code className="text-xs bg-muted px-2 py-1 rounded font-mono">
-											{activeNode.path}
-										</code>
-										<p className="text-xs text-muted-foreground/70">
-											Agent: {getAgentId(activePath)}
-										</p>
-									</div>
-								</div>
+						{activePath && fileData ? (
+							<FileViewer file={fileData} onSave={handleSave} />
+						) : activePath && isFileLoading ? (
+							<div className="p-6">
+								<SkeletonDetail />
 							</div>
 						) : (
 							<EmptyState
