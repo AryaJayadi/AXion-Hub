@@ -23,6 +23,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 9: Skills, Plugins & Workflows** - Skills library, ClawHub browser, plugin management, visual workflow builder, cron jobs, and webhooks
 - [x] **Phase 10: Settings, Public Pages & Developer Tools** - All settings pages, landing page, features, pricing, docs, changelog, blog, API reference, and WebSocket playground (completed 2026-02-19)
 - [x] **Phase 11: Gap Closure — Cross-Phase Wiring & Traceability** - Fix 5 integration gaps, 1 partial requirement, 3 broken E2E flows, sidebar navigation completeness, and REQUIREMENTS.md traceability accuracy (completed 2026-02-20)
+- [ ] **Phase 12: Gap Closure — Critical Routing & API Gaps** - Delete app/page.tsx route conflict, fix proxy.ts redirect target, create missing /api/alerts/notifications endpoint
+- [ ] **Phase 13: Gap Closure — Chat & Agent Detail Wiring** - Populate agent store on /chat entry, wire dashboard Send Message navigation, add per-agent sessions onRowClick, pass agentName to AgentDetailShell
 
 ## Phase Details
 
@@ -240,10 +242,32 @@ Plans:
 - [ ] 11-03-PLAN.md -- Agent quick actions wiring + SessionsTable row click fix + session slide-over (Wave 2)
 - [ ] 11-04-PLAN.md -- Edge-level auth middleware + alert notification bridge (Wave 3)
 
+### Phase 12: Gap Closure — Critical Routing & API Gaps
+**Goal:** Resolve the critical route conflict, fix the auth redirect double-hop, and create the missing alert notifications API endpoint
+**Depends on**: Phase 11 (all feature phases complete)
+**Requirements**: INFR-01, DASH-01, AUTH-06, MNTR-04
+**Gap Closure:** Closes INT-01, INT-02, INT-06 from v1.0 audit; fixes "Login redirect" degraded flow
+**Success Criteria** (what must be TRUE):
+  1. Only `app/(dashboard)/page.tsx` resolves to URL `/` — no route conflict
+  2. proxy.ts redirects authenticated users from `/login` to `/dashboard` (not `/`)
+  3. GET `/api/alerts/notifications` returns recent alert notifications from DB
+  4. Login → redirect → Dashboard flow completes without double redirect
+
+### Phase 13: Gap Closure — Chat & Agent Detail Wiring
+**Goal:** Wire the remaining cross-phase entry points so that chat is reachable from dashboard and agents, agent sessions are clickable, and agent detail shows the correct name
+**Depends on**: Phase 12
+**Requirements**: CHAT-01, AGNT-01, DASH-07, SESS-01, AGNT-02
+**Gap Closure:** Closes INT-03, INT-04, INT-05, INT-07 from v1.0 audit; fixes 3 broken E2E flows
+**Success Criteria** (what must be TRUE):
+  1. Navigating directly to `/chat` populates the AgentPickerDialog with agents (no prior `/agents` visit required)
+  2. Dashboard "Send Message" quick action navigates to `/chat` or opens the AgentPickerDialog
+  3. Per-agent sessions table at `/agents/[agentId]/sessions` row click opens SessionSlideOver
+  4. AgentDetailShell displays the agent's name in the header
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 -> 2 -> 3 -> 4/5/6/7 (partially parallel after 3) -> 8 -> 9 -> 10 -> 11
+Phases execute in numeric order: 1 -> 2 -> 3 -> 4/5/6/7 (partially parallel after 3) -> 8 -> 9 -> 10 -> 11 -> 12 -> 13
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -258,3 +282,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4/5/6/7 (partially parallel afte
 | 9. Skills, Plugins & Workflows | 0/5 | Not started | - |
 | 10. Settings, Public Pages & Developer Tools | 6/6 | Complete    | 2026-02-19 |
 | 11. Gap Closure — Wiring & Traceability | 4/4 | Complete    | 2026-02-20 |
+| 12. Gap Closure — Critical Routing & API | 0/0 | Not started | - |
+| 13. Gap Closure — Chat & Agent Detail Wiring | 0/0 | Not started | - |
