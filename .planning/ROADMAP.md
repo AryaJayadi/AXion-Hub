@@ -232,7 +232,13 @@ Plans:
   3. Agent detail "Send Message" navigates to /chat/[agentId]; SessionsTable row click uses proper component callback (not DOM event delegation)
   4. middleware.ts exists at project root mounting proxy.ts for edge-level auth protection
   5. REQUIREMENTS.md shows INFR-01–11 as `[x]` Complete and SITE-01–06 as Dropped
-**Plans**: TBD (created during /gsd:plan-phase 11)
+**Plans**: 4 plans in 3 waves
+
+Plans:
+- [ ] 11-01-PLAN.md -- Sidebar navigation (7 missing links) + REQUIREMENTS.md traceability update (Wave 1)
+- [ ] 11-02-PLAN.md -- Chat entry point wiring (New Chat/Start Chat) + AgentPickerDialog query key fix (Wave 2)
+- [ ] 11-03-PLAN.md -- Agent quick actions wiring + SessionsTable row click fix + session slide-over (Wave 2)
+- [ ] 11-04-PLAN.md -- Edge-level auth middleware + alert notification bridge (Wave 3)
 
 ## Progress
 
