@@ -7,13 +7,13 @@
  * conversation. Single agent selection creates a 'direct' conversation;
  * multiple agents create a 'room' conversation.
  *
- * Agent list is fetched via the gateway client wrapped in a TanStack Query
- * hook, with fallback to empty array.
+ * Agent list is read from the Zustand agent store (shared source of truth
+ * with useAgents hook), so newly created agents appear instantly via
+ * WebSocket Event Bus updates without a separate query cache.
  */
 
 import { useState, useMemo, useCallback } from "react";
 import { Search, Users, MessageSquare } from "lucide-react";
-import { useQuery } from "@tanstack/react-query";
 import {
 	Dialog,
 	DialogContent,
@@ -28,8 +28,7 @@ import { Checkbox } from "@/shared/ui/checkbox";
 import { Avatar, AvatarFallback } from "@/shared/ui/avatar";
 import { Badge } from "@/shared/ui/badge";
 import { ScrollArea } from "@/shared/ui/scroll-area";
-import { useGateway } from "@/app/providers/gateway-provider";
-import { queryKeys } from "@/shared/lib/query-keys";
+import { useAgentStore } from "@/features/agents/model/agent-store";
 
 interface AgentPickerDialogProps {
 	open: boolean;
@@ -42,24 +41,10 @@ export function AgentPickerDialog({
 	onOpenChange,
 	onCreateConversation,
 }: AgentPickerDialogProps) {
-	const { gatewayClient } = useGateway();
+	const agents = useAgentStore((s) => s.agents);
 	const [search, setSearch] = useState("");
 	const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
 	const [title, setTitle] = useState("");
-
-	// Fetch agents from gateway
-	const { data: agents = [] } = useQuery({
-		queryKey: queryKeys.agents.lists(),
-		queryFn: async () => {
-			try {
-				return await gatewayClient.getAgents();
-			} catch {
-				return [];
-			}
-		},
-		staleTime: 30_000,
-		enabled: open,
-	});
 
 	// Filter agents by search
 	const filtered = useMemo(() => {
