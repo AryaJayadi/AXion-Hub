@@ -22,7 +22,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 8: Sessions, Memory, Files & Governance** - Session browser, transcript viewer, memory explorer, semantic search, file browser, workspace editor, deliverables, approval queue, audit log, and governance policies
 - [ ] **Phase 9: Skills, Plugins & Workflows** - Skills library, ClawHub browser, plugin management, visual workflow builder, cron jobs, and webhooks
 - [x] **Phase 10: Settings, Public Pages & Developer Tools** - All settings pages, landing page, features, pricing, docs, changelog, blog, API reference, and WebSocket playground (completed 2026-02-19)
-- [ ] **Phase 11: Gap Closure — Cross-Phase Wiring & Traceability** - Fix 5 integration gaps, 1 partial requirement, 3 broken E2E flows, sidebar navigation completeness, and REQUIREMENTS.md traceability accuracy
+- [x] **Phase 11: Gap Closure — Cross-Phase Wiring & Traceability** - Fix 5 integration gaps, 1 partial requirement, 3 broken E2E flows, sidebar navigation completeness, and REQUIREMENTS.md traceability accuracy (completed 2026-02-20)
 
 ## Phase Details
 
@@ -257,4 +257,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4/5/6/7 (partially parallel afte
 | 8. Sessions, Memory, Files & Governance | 0/6 | Not started | - |
 | 9. Skills, Plugins & Workflows | 0/5 | Not started | - |
 | 10. Settings, Public Pages & Developer Tools | 6/6 | Complete    | 2026-02-19 |
-| 11. Gap Closure — Wiring & Traceability | 3/4 | In Progress|  |
+| 11. Gap Closure — Wiring & Traceability | 4/4 | Complete   | 2026-02-20 |
