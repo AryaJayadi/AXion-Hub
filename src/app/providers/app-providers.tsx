@@ -1,11 +1,18 @@
 "use client";
 
+import { useAlertNotificationBridge } from "@/features/dashboard/api/use-alert-notification-bridge";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import type { ReactNode } from "react";
 import { Toaster } from "sonner";
 import { GatewayProvider } from "./gateway-provider";
 import { QueryProvider } from "./query-provider";
 import { ThemeProvider } from "./theme-provider";
+
+/** Activates the alert notification polling bridge inside the provider tree. */
+function AlertBridge() {
+	useAlertNotificationBridge();
+	return null;
+}
 
 /**
  * App-level provider composition.
@@ -22,6 +29,7 @@ export function AppProviders({ children }: { children: ReactNode }) {
 			<NuqsAdapter>
 				<QueryProvider>
 					<GatewayProvider>
+						<AlertBridge />
 						{children}
 						<Toaster richColors position="bottom-right" />
 					</GatewayProvider>

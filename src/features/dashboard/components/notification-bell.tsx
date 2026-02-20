@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { Bell, AlertTriangle, AlertCircle, Info, CheckCheck } from "lucide-react";
 import { useAlertStore } from "@/features/dashboard";
 import { Button } from "@/shared/ui/button";
@@ -45,8 +46,10 @@ function relativeTime(date: Date): string {
  * Rendered in the global HeaderBar across all pages.
  */
 export function NotificationBell() {
+	const router = useRouter();
 	const unreadCount = useAlertStore((s) => s.unreadAlertCount);
 	const recentAlerts = useAlertStore((s) => s.recentAlerts);
+	const markRead = useAlertStore((s) => s.markRead);
 
 	const displayAlerts = recentAlerts.slice(0, 10);
 
@@ -94,10 +97,15 @@ export function NotificationBell() {
 							const color = SEVERITY_COLORS[alert.severity];
 
 							return (
-								<div
+								<button
 									key={alert.id}
+									type="button"
+									onClick={() => {
+										markRead(alert.id);
+										router.push("/monitor/alerts");
+									}}
 									className={cn(
-										"flex items-start gap-3 border-b px-4 py-3 last:border-b-0",
+										"flex w-full items-start gap-3 border-b px-4 py-3 text-left last:border-b-0 transition-colors hover:bg-muted/50",
 										!alert.read && "bg-muted/30",
 									)}
 								>
@@ -115,11 +123,21 @@ export function NotificationBell() {
 											{relativeTime(alert.timestamp)}
 										</p>
 									</div>
-								</div>
+								</button>
 							);
 						})}
 					</div>
 				)}
+				<div className="border-t p-2">
+					<Button
+						variant="ghost"
+						size="sm"
+						className="w-full text-xs"
+						onClick={() => router.push("/monitor/alerts")}
+					>
+						View all alerts
+					</Button>
+				</div>
 			</PopoverContent>
 		</Popover>
 	);
