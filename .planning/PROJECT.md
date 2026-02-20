@@ -2,7 +2,7 @@
 
 ## What This Is
 
-AXion Hub is a self-hosted web dashboard that replaces OpenClaw Gateway's built-in Lit web UI with a comprehensive mission control interface for orchestrating, monitoring, and governing AI agents. It connects to OpenClaw Gateway via WebSocket API and (when co-located) direct filesystem access to provide full visibility and control over agents, sessions, channels, memory, tools, and workflows.
+AXion Hub is a self-hosted web dashboard for orchestrating, monitoring, and governing AI agents connected to OpenClaw Gateway. It provides a comprehensive mission control interface with real-time streaming chat, Kanban task management, visual workflow builder, agent configuration, channel routing, session/memory browsing, governance policies, and developer tools — all built on Next.js 16 with shadcn/ui and Tailwind v4.
 
 ## Core Value
 
@@ -12,35 +12,44 @@ A single pane of glass where you can see everything your AI agents are doing, di
 
 ### Validated
 
-(None yet — ship to validate)
+- Dashboard with gateway status, agent health, task status, cost summary, live feed — v1.0
+- Agent management — roster, detail views, identity editing, session browsing, memory, skills, tools, sandbox config, channel routing, logs, metrics — v1.0
+- Real-time chat with agents — streaming responses, tool call visualization, media support, session switching — v1.0
+- Mission board — Kanban task management with agent assignment, subtasks, deliverables, sign-off gates — v1.0
+- Gateway management — connection status, visual config editor, channel management, node pairing, multi-gateway — v1.0
+- Channel management — overview, per-channel config, routing/bindings editor, pairing flows, group settings — v1.0
+- Sessions & memory — session list, transcript viewer, global memory browser, semantic search — v1.0
+- Models & providers — provider config, model catalog, failover chains, usage & cost tracking — v1.0
+- Workflows & automation — multi-step sequences, visual builder, cron jobs, webhooks — v1.0
+- Approvals & governance — approval queue, audit log, policy management — v1.0
+- Activity & monitoring — live feed, history, health monitor, alerts — v1.0
+- Files & workspace — file browser, viewer/editor, deliverables, upload — v1.0
+- Skills & plugins — library, ClawHub browser, plugin management — v1.0
+- Settings — general, profile, security, team/org, API keys, notifications, integrations, backup, danger zone — v1.0
+- Auth — login, register, forgot password, invite acceptance — v1.0
+- API reference & WebSocket playground — v1.0
 
 ### Active
 
-- [ ] Dashboard with gateway status, agent health, task status, cost summary, live feed
-- [ ] Agent management — roster, detail views, identity editing, session browsing, memory, skills, tools, sandbox config, channel routing, logs, metrics
-- [ ] Real-time chat with agents — streaming responses, tool call visualization, media support, session switching
-- [ ] Mission board — Kanban task management with agent assignment, subtasks, deliverables, sign-off gates
-- [ ] Gateway management — connection status, visual config editor, channel management, node pairing, multi-gateway
-- [ ] Channel management — overview, per-channel config, routing/bindings editor, pairing flows, group settings
-- [ ] Sessions & memory — session list, transcript viewer, global memory browser, semantic search
-- [ ] Models & providers — provider config, model catalog, failover chains, usage & cost tracking
-- [ ] Workflows & automation — multi-step sequences, visual builder, cron jobs, webhooks
-- [ ] Approvals & governance — approval queue, audit log, policy management
-- [ ] Activity & monitoring — live feed, history, health monitor, alerts
-- [ ] Files & workspace — file browser, viewer/editor, deliverables, upload
-- [ ] Skills & plugins — library, ClawHub browser, plugin management
-- [ ] Settings — general, profile, security, team/org, API keys, notifications, integrations, backup, danger zone
-- [ ] Auth — login, register, forgot password, invite acceptance
-- [ ] Public/marketing pages — landing, features, pricing, docs, changelog, blog
-- [ ] API reference & WebSocket playground
+- [ ] Wire all feature API hooks to real gateway data (replace mock data layer)
+- [ ] Alert evaluation logic — add trigger/evaluator to alert pipeline
+- [ ] Activity feed task event coverage — add `task.*` to event namespaces
+- [ ] OAuth integration connections (GitHub/Linear/Jira) — replace stubs with real OAuth flows
 
 ### Out of Scope
 
 - Mobile native app — web-first, responsive design covers mobile use cases
 - Building or modifying OpenClaw Gateway itself — AXion Hub is a consumer of its APIs
 - Real-time voice/audio features — OpenClaw handles voice natively on device
+- Public/marketing pages — dropped in v1.0, AXion Hub is internal tool (SITE-01–06)
+- Offline mode — real-time gateway connection is core value
 
 ## Context
+
+Shipped v1.0 with 69,878 LOC TypeScript across 856 files.
+Tech stack: Next.js 16, Tailwind CSS v4, shadcn/ui, PostgreSQL (Drizzle ORM), Redis (BullMQ), better-auth, Zustand + TanStack Query, @xyflow/react, dnd-kit, CodeMirror, Recharts.
+Frontend-first approach: all UI surfaces built with mock data; gateway API integration is primary v1.1 work.
+~25 tech debt items tracked in milestone audit (mostly mock data TODOs).
 
 **OpenClaw Gateway** is an open source AI agent platform (200k+ GitHub stars) created by Peter Steinberger. It's a Node.js gateway process that sits between messaging channels (WhatsApp, Telegram, Discord, Slack, etc.) and LLM providers (Anthropic, OpenAI, Gemini, local models). Key architecture:
 
@@ -54,8 +63,6 @@ A single pane of glass where you can see everything your AI agents are doing, di
 - **Canvas/A2UI** — visual workspace where agents render interactive HTML (port 18793)
 - **Authentication** — token, password, Tailscale, or trusted proxy modes
 - **Channel pairing** — QR codes (WhatsApp), tokens (Telegram/Discord), allowlists
-
-AXion Hub replaces the existing built-in Lit web UI served by the Gateway. Similar projects exist in the community (e.g., openclaw-mission-control) but none approach the comprehensive scope of AXion Hub.
 
 **Integration modes:**
 - **Local mode** (co-located with Gateway): Full access — WebSocket API + direct filesystem read/write for config, sessions, memory DBs, workspace files, credentials, sandbox directories
@@ -75,12 +82,17 @@ AXion Hub replaces the existing built-in Lit web UI served by the Gateway. Simil
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Replace built-in UI rather than complement | AXion Hub provides a superset of functionality; maintaining two UIs creates confusion | — Pending |
-| Next.js + shadcn/ui + Tailwind v4 | User preference; shadcn already installed; modern React stack with excellent component library | — Pending |
-| PostgreSQL over SQLite | Scales to team use later; robust for audit logs, workflows, task management | — Pending |
-| Docker deployment | Consistent environment; easy to compose alongside OpenClaw Gateway | — Pending |
-| Dual-mode (local + remote) | Maximizes deployment flexibility without sacrificing capability when co-located | — Pending |
-| ~87 pages in v1 scope | Comprehensive vision; built incrementally across many phases | — Pending |
+| Replace built-in UI rather than complement | AXion Hub provides a superset of functionality; maintaining two UIs creates confusion | Good — clean separation of concerns |
+| Next.js 16 + shadcn/ui + Tailwind v4 | User preference; modern React stack with excellent component library | Good — fast iteration, consistent design |
+| PostgreSQL over SQLite | Scales to team use later; robust for audit logs, workflows, task management | Good — Drizzle ORM works well |
+| Docker deployment | Consistent environment; easy to compose alongside OpenClaw Gateway | Good — multi-stage builds, dev/prod configs |
+| Dual-mode (local + remote) | Maximizes deployment flexibility without sacrificing capability when co-located | Good — ModeAwareResult pattern works cleanly |
+| ~87 pages in v1 scope | Comprehensive vision; built incrementally across 13 phases | Good — all surfaces built, mock data is acceptable trade-off |
+| Frontend-first with mock data | Build complete UI surface before gateway integration | Good — validated all UI patterns; mock→real swap is mechanical |
+| better-auth for authentication | Full-featured auth with org support, 2FA, API keys, OAuth | Good — minimal custom code needed |
+| Zustand (push) + TanStack Query (pull) | WebSocket state in Zustand, REST data in TanStack Query — clear separation | Good — predictable data flow |
+| Feature-sliced design (FSD) | Domain-organized modules with clear boundaries | Good — 13 feature domains cleanly separated |
+| exactOptionalPropertyTypes: true | Strict TypeScript catches real bugs despite verbose conditional spreads | Revisit — creates widespread `as never` casts and conditional spread boilerplate |
 
 ---
-*Last updated: 2026-02-17 after initialization*
+*Last updated: 2026-02-20 after v1.0 milestone*

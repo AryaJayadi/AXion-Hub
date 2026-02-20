@@ -3,7 +3,7 @@ status: complete
 phase: 03-agent-management
 source: [03-01-SUMMARY.md, 03-02-SUMMARY.md, 03-03-SUMMARY.md, 03-04-SUMMARY.md, 03-05-SUMMARY.md, 03-06-SUMMARY.md]
 started: 2026-02-18T18:00:00Z
-updated: 2026-02-18T18:15:00Z
+updated: 2026-02-18T19:50:00Z
 ---
 
 ## Current Test
@@ -50,9 +50,8 @@ result: pass
 
 ### 10. Memory File Browser
 expected: Navigate to /agents/[agentId]/memory. You should see a left sidebar with a categorized file tree: "Persistent Memory" section (MEMORY.md with edit icon) and "Daily Memory" section (dated files). Clicking MEMORY.md opens an editable Markdown editor. Clicking a daily file opens it in read-only preview mode with a Lock badge. A search input filters files by content.
-result: issue
-reported: "the color on the identity menu is good since the editor and the preview panel both changes color according to theme. However on the memory menu the color of the editor, editor tools, and preview panel all colors doesnt match or follow the theme unlike identity menu."
-severity: cosmetic
+result: pass
+note: "Fixed background: transparent override and dependency resolution (refractor/rehype-prism-plus hoisting). Re-verified after fix."
 
 ### 11. Skills Grid with Toggles
 expected: Navigate to /agents/[agentId]/skills. You should see a card grid of skills (8 mock skills) with source badges (built-in/clawhub/custom). Each card has an enable/disable Switch toggle. Toggling a switch responds instantly (optimistic update).
@@ -69,19 +68,11 @@ result: pass
 ## Summary
 
 total: 13
-passed: 12
-issues: 1
+passed: 13
+issues: 0
 pending: 0
 skipped: 0
 
 ## Gaps
 
-- truth: "Memory file browser editor, toolbar, and preview panel follow the app theme (light/dark) consistently like the identity editor"
-  status: failed
-  reason: "User reported: the color on the identity menu is good since the editor and the preview panel both changes color according to theme. However on the memory menu the color of the editor, editor tools, and preview panel all colors doesnt match or follow the theme unlike identity menu."
-  severity: cosmetic
-  test: 10
-  root_cause: ""
-  artifacts: []
-  missing: []
-  debug_session: ""
+[none - all issues resolved]
