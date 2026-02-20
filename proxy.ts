@@ -29,7 +29,7 @@ export function proxy(request: NextRequest) {
 	// Auth pages: redirect to dashboard if already logged in
 	const isAuthPage = AUTH_PAGES.some((p) => pathname.startsWith(p));
 	if (isAuthPage && sessionCookie) {
-		return NextResponse.redirect(new URL("/", request.url));
+		return NextResponse.redirect(new URL("/dashboard", request.url));
 	}
 
 	// Public paths: allow through without session
