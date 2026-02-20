@@ -98,7 +98,7 @@ Requirements for initial release. Each maps to roadmap phases. All ~87 pages/vie
 
 ### Sessions & Memory
 
-- [ ] **SESS-01**: User can view all active sessions across all agents at `/sessions`
+- [x] **SESS-01**: User can view all active sessions across all agents at `/sessions`
 - [x] **SESS-02**: User can view full session detail with transcript and token usage at `/sessions/[sessionId]`
 - [x] **SESS-03**: User can view JSONL session transcript with message tree at `/sessions/[sessionId]/transcript`
 - [x] **MEMO-01**: User can browse memories across all agents at `/memory`
@@ -278,7 +278,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | MODL-03 | Phase 7 | Complete |
 | MODL-04 | Phase 7 | Complete |
 | MODL-05 | Phase 7 | Complete |
-| SESS-01 | Phase 11 | Pending |
+| SESS-01 | Phase 11 | Complete |
 | SESS-02 | Phase 8 | Complete |
 | SESS-03 | Phase 8 | Complete |
 | MEMO-01 | Phase 8 | Complete |
@@ -322,11 +322,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 **Coverage:**
 - v1 requirements: 115 total (6 dropped = 109 in-scope)
-- Satisfied: 108
-- Pending (gap closure): 1 (SESS-01 → Phase 11)
+- Satisfied: 109
+- Pending (gap closure): 0
 - Dropped: 6 (SITE-01–06)
 - Unmapped: 0
 
 ---
 *Requirements defined: 2026-02-17*
-*Last updated: 2026-02-20 after Phase 11 traceability verification*
+*Last updated: 2026-02-20 after SESS-01 gap closure complete*
