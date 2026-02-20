@@ -10,11 +10,11 @@ See: .planning/PROJECT.md (updated 2026-02-17)
 ## Current Position
 
 Phase: 13 of 13 (Chat & Agent Detail Wiring)
-Plan: 1 of 2 in current phase
-Status: In Progress
-Last activity: 2026-02-20 -- Completed 13-01 Chat Entry Points Wiring
+Plan: 2 of 2 in current phase
+Status: Phase Complete
+Last activity: 2026-02-20 -- Completed 13-02 Per-Agent Session Slide-Over & Agent Name
 
-Progress: [██████████] 100% (Phases 1-12) | Phase 13: [█████-----] 50%
+Progress: [██████████] 100% (Phases 1-13) | Phase 13: [██████████] 100%
 
 ## Performance Metrics
 
@@ -89,6 +89,7 @@ Progress: [██████████] 100% (Phases 1-12) | Phase 13: [█�
 | Phase 11 P02 | 4min | 2 tasks | 4 files |
 | Phase 11 P04 | 2min | 2 tasks | 4 files |
 | Phase 12 P01 | 2min | 2 tasks | 3 files |
+| Phase 13 P01 | 2min | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -319,6 +320,12 @@ Recent decisions affecting current work:
 - [11-04]: AlertBridge null-component pattern mounts useAlertNotificationBridge inside provider tree
 - [Phase 12]: No new app/page.tsx redirect stub needed -- route group (dashboard) already handles /
 - [Phase 12]: Response.json() used instead of new Response(JSON.stringify()) for correct Date serialization in API routes
+- [13-01]: useAgents() placed in ChatLayout (outermost client component) not in AgentPickerDialog or route layout
+- [13-01]: Send Message uses asChild + Link pattern matching existing New Agent and New Task buttons
+- [13-02]: toSlideOverSession maps AgentSession to CrossAgentSession with agent name/model from Zustand store
+- [13-02]: useAgents() called in AgentDetailShell for direct /agents/[id] navigation store hydration
+- [13-02]: agentName prop removed from AgentDetailShellProps -- layout never passed it, zero breakage
+- [13-02]: CopyableId handleCopy uses e.stopPropagation() to prevent row click on copy
 
 ### Pending Todos
 
@@ -332,5 +339,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-20
-Stopped at: Completed 12-01-PLAN.md (Phase 12 complete)
-Resume file: .planning/phases/12-critical-routing-api-gaps/12-01-SUMMARY.md
+Stopped at: Completed 13-02-PLAN.md (Phase 13 complete)
+Resume file: .planning/phases/13-chat-agent-detail-wiring/13-02-SUMMARY.md
