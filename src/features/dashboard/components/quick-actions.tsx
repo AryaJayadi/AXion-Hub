@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { Bot, ListTodo, MessageSquare } from "lucide-react";
-import { toast } from "sonner";
 import { Button } from "@/shared/ui/button";
 
 /**
@@ -27,17 +26,11 @@ export function QuickActions() {
 				</Link>
 			</Button>
 
-			<Button
-				variant="outline"
-				size="sm"
-				onClick={() => {
-					toast.info(
-						"Coming soon -- available when Mission Board launches",
-					);
-				}}
-			>
-				<MessageSquare className="size-4" />
-				Send Message
+			<Button variant="outline" size="sm" asChild>
+				<Link href="/chat">
+					<MessageSquare className="size-4" />
+					Send Message
+				</Link>
 			</Button>
 		</div>
 	);
