@@ -24,7 +24,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 10: Settings, Public Pages & Developer Tools** - All settings pages, landing page, features, pricing, docs, changelog, blog, API reference, and WebSocket playground (completed 2026-02-19)
 - [x] **Phase 11: Gap Closure — Cross-Phase Wiring & Traceability** - Fix 5 integration gaps, 1 partial requirement, 3 broken E2E flows, sidebar navigation completeness, and REQUIREMENTS.md traceability accuracy (completed 2026-02-20)
 - [x] **Phase 12: Gap Closure — Critical Routing & API Gaps** - Delete app/page.tsx route conflict, fix proxy.ts redirect target, create missing /api/alerts/notifications endpoint (completed 2026-02-20)
-- [ ] **Phase 13: Gap Closure — Chat & Agent Detail Wiring** - Populate agent store on /chat entry, wire dashboard Send Message navigation, add per-agent sessions onRowClick, pass agentName to AgentDetailShell
+- [x] **Phase 13: Gap Closure — Chat & Agent Detail Wiring** - Populate agent store on /chat entry, wire dashboard Send Message navigation, add per-agent sessions onRowClick, pass agentName to AgentDetailShell (completed 2026-02-20)
 
 ## Phase Details
 
@@ -267,7 +267,7 @@ Plans:
   2. Dashboard "Send Message" quick action navigates to `/chat` or opens the AgentPickerDialog
   3. Per-agent sessions table at `/agents/[agentId]/sessions` row click opens SessionSlideOver
   4. AgentDetailShell displays the agent's name in the header
-**Plans:** 1/1 plans complete
+**Plans:** 2/2 plans complete
 
 Plans:
 - [ ] 13-01-PLAN.md — Chat entry point wiring: useAgents() in ChatLayout + Send Message Link navigation
@@ -292,4 +292,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4/5/6/7 (partially parallel afte
 | 10. Settings, Public Pages & Developer Tools | 6/6 | Complete    | 2026-02-19 |
 | 11. Gap Closure — Wiring & Traceability | 4/4 | Complete    | 2026-02-20 |
 | 12. Gap Closure — Critical Routing & API | 1/1 | Complete   | 2026-02-20 |
-| 13. Gap Closure — Chat & Agent Detail Wiring | 0/2 | Planned | - |
+| 13. Gap Closure — Chat & Agent Detail Wiring | 2/2 | Complete   | 2026-02-20 |
