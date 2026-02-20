@@ -15,6 +15,9 @@ import {
 import { format, formatDistanceStrict } from "date-fns";
 import { ArrowUpDown, Check, ChevronLeft, ChevronRight, Copy } from "lucide-react";
 import type { AgentSession } from "@/entities/agent";
+import type { CrossAgentSession } from "@/entities/session";
+import { useAgentStore } from "@/features/agents/model/agent-store";
+import { SessionSlideOver } from "@/features/sessions/components/session-slide-over";
 import { cn } from "@/shared/lib/cn";
 import { Badge } from "@/shared/ui/badge";
 import { Button } from "@/shared/ui/button";
@@ -77,10 +80,24 @@ function computeDurationMs(session: AgentSession): number {
 	return end - session.startedAt.getTime();
 }
 
+function toSlideOverSession(
+	session: AgentSession,
+	agentName: string,
+	agentModel: string,
+): CrossAgentSession {
+	return {
+		...session,
+		agentName,
+		agentAvatar: undefined,
+		model: agentModel,
+	};
+}
+
 function CopyableId({ id }: { id: string }) {
 	const [copied, setCopied] = useState(false);
 
-	const handleCopy = () => {
+	const handleCopy = (e: React.MouseEvent) => {
+		e.stopPropagation();
 		void navigator.clipboard.writeText(id);
 		setCopied(true);
 		setTimeout(() => setCopied(false), 1500);
@@ -242,6 +259,19 @@ export function AgentSessionsTable({ sessions }: AgentSessionsTableProps) {
 	]);
 	const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 	const [statusFilter, setStatusFilter] = useState<string>("all");
+	const [selectedSession, setSelectedSession] = useState<CrossAgentSession | null>(null);
+	const agentId = sessions[0]?.agentId ?? "";
+	const agent = useAgentStore((s) => s.agents.find((a) => a.id === agentId));
+
+	const handleRowClick = (session: AgentSession) => {
+		setSelectedSession(
+			toSlideOverSession(
+				session,
+				agent?.name ?? agentId,
+				agent?.model ?? "unknown",
+			),
+		);
+	};
 
 	const filteredSessions = useMemo(() => {
 		if (statusFilter === "all") return sessions;
@@ -297,7 +327,14 @@ export function AgentSessionsTable({ sessions }: AgentSessionsTableProps) {
 					<TableBody>
 						{table.getRowModel().rows.length > 0 ? (
 							table.getRowModel().rows.map((row) => (
-								<TableRow key={row.id}>
+								<TableRow
+									key={row.id}
+									className={cn(
+										"cursor-pointer hover:bg-accent/30 transition-colors",
+										selectedSession?.id === row.original.id && "bg-accent/50",
+									)}
+									onClick={() => handleRowClick(row.original)}
+								>
 									{row.getVisibleCells().map((cell) => (
 										<TableCell key={cell.id}>
 											{flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -345,6 +382,12 @@ export function AgentSessionsTable({ sessions }: AgentSessionsTableProps) {
 					</Button>
 				</div>
 			</div>
+
+			<SessionSlideOver
+				session={selectedSession}
+				open={selectedSession !== null}
+				onClose={() => setSelectedSession(null)}
+			/>
 		</div>
 	);
 }
