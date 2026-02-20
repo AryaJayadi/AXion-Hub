@@ -252,6 +252,10 @@ Plans:
   2. proxy.ts redirects authenticated users from `/login` to `/dashboard` (not `/`)
   3. GET `/api/alerts/notifications` returns recent alert notifications from DB
   4. Login → redirect → Dashboard flow completes without double redirect
+**Plans**: 1 plan in 1 wave
+
+Plans:
+- [ ] 12-01-PLAN.md — Delete route conflict, fix proxy redirect, create alert notifications endpoint (Wave 1)
 
 ### Phase 13: Gap Closure — Chat & Agent Detail Wiring
 **Goal:** Wire the remaining cross-phase entry points so that chat is reachable from dashboard and agents, agent sessions are clickable, and agent detail shows the correct name
