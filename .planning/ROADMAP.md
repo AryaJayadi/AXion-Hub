@@ -263,6 +263,11 @@ Plans:
   2. Dashboard "Send Message" quick action navigates to `/chat` or opens the AgentPickerDialog
   3. Per-agent sessions table at `/agents/[agentId]/sessions` row click opens SessionSlideOver
   4. AgentDetailShell displays the agent's name in the header
+**Plans:** 2 plans
+
+Plans:
+- [ ] 13-01-PLAN.md — Chat entry point wiring: useAgents() in ChatLayout + Send Message Link navigation
+- [ ] 13-02-PLAN.md — Agent detail wiring: per-agent session slide-over + agent name from Zustand store
 
 ## Progress
 
@@ -283,4 +288,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4/5/6/7 (partially parallel afte
 | 10. Settings, Public Pages & Developer Tools | 6/6 | Complete    | 2026-02-19 |
 | 11. Gap Closure — Wiring & Traceability | 4/4 | Complete    | 2026-02-20 |
 | 12. Gap Closure — Critical Routing & API | 0/0 | Not started | - |
-| 13. Gap Closure — Chat & Agent Detail Wiring | 0/0 | Not started | - |
+| 13. Gap Closure — Chat & Agent Detail Wiring | 0/2 | Planned | - |
