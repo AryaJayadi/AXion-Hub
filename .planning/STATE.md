@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-02-17)
 
 **Core value:** A single pane of glass where you can see everything your AI agents are doing, direct their work, and maintain governance.
-**Current focus:** Phase 11 - Gap Closure, Wiring & Traceability
+**Current focus:** Phase 13 - Chat & Agent Detail Wiring
 
 ## Current Position
 
-Phase: 11 of 11 (Gap Closure, Wiring & Traceability)
-Plan: 4 of 4 in current phase
-Status: Phase Complete
-Last activity: 2026-02-20 -- Completed 11-04 Auth Middleware & Alert Notification Bridge
+Phase: 13 of 13 (Chat & Agent Detail Wiring)
+Plan: 1 of 2 in current phase
+Status: In Progress
+Last activity: 2026-02-20 -- Completed 13-01 Chat Entry Points Wiring
 
-Progress: [██████████] 100% (Phases 1-10) | Phase 11: [██████████] 100%
+Progress: [██████████] 100% (Phases 1-12) | Phase 13: [█████-----] 50%
 
 ## Performance Metrics
 
@@ -88,6 +88,7 @@ Progress: [██████████] 100% (Phases 1-10) | Phase 11: [█�
 | Phase 11 P01 | 2min | 2 tasks | 2 files |
 | Phase 11 P02 | 4min | 2 tasks | 4 files |
 | Phase 11 P04 | 2min | 2 tasks | 4 files |
+| Phase 12 P01 | 2min | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -316,6 +317,8 @@ Recent decisions affecting current work:
 - [Phase 11]: [11-03]: Session slide-over shows agent, status, model, tokens, duration, started time with transcript link footer
 - [11-04]: middleware.ts is a single re-export line mounting proxy.ts -- no duplicated auth logic
 - [11-04]: AlertBridge null-component pattern mounts useAlertNotificationBridge inside provider tree
+- [Phase 12]: No new app/page.tsx redirect stub needed -- route group (dashboard) already handles /
+- [Phase 12]: Response.json() used instead of new Response(JSON.stringify()) for correct Date serialization in API routes
 
 ### Pending Todos
 
@@ -329,5 +332,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-20
-Stopped at: Completed 11-04-PLAN.md (Phase 11 complete)
-Resume file: .planning/phases/11-gap-closure-wiring-traceability/11-04-SUMMARY.md
+Stopped at: Completed 12-01-PLAN.md (Phase 12 complete)
+Resume file: .planning/phases/12-critical-routing-api-gaps/12-01-SUMMARY.md
