@@ -17,6 +17,7 @@ import { ConversationSidebar } from "./conversation-sidebar";
 import { ParticipantPanel } from "./participant-panel";
 import { CommandPalette } from "./command-palette";
 import { AgentPickerDialog } from "./agent-picker-dialog";
+import { useAgents } from "@/features/agents/api/use-agents";
 import { useChatStore } from "../model/chat-store";
 
 /* ---- ChatLayout context ---- */
@@ -61,6 +62,9 @@ export function ChatLayout({
 	conversationId,
 	showParticipants = false,
 }: ChatLayoutProps) {
+	// Hydrate agent store for AgentPickerDialog (handles direct /chat navigation)
+	useAgents();
+
 	const router = useRouter();
 	const [agentPickerOpen, setAgentPickerOpen] = useState(false);
 
