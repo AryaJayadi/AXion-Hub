@@ -10,11 +10,11 @@ See: .planning/PROJECT.md (updated 2026-02-17)
 ## Current Position
 
 Phase: 11 of 11 (Gap Closure, Wiring & Traceability)
-Plan: 1 of 4 in current phase
+Plan: 3 of 4 in current phase
 Status: In Progress
-Last activity: 2026-02-20 -- Completed 11-01 Sidebar Navigation & Traceability
+Last activity: 2026-02-20 -- Completed 11-03 Agent Quick Actions & Session Slide-Over
 
-Progress: [██████████] 100% (Phases 1-10) | Phase 11: [##........] 25%
+Progress: [██████████] 100% (Phases 1-10) | Phase 11: [########..] 75%
 
 ## Performance Metrics
 
@@ -86,6 +86,7 @@ Progress: [██████████] 100% (Phases 1-10) | Phase 11: [##...
 | Phase 10 P04 | 4min | 2 tasks | 15 files |
 | Phase 10 P03 | 4min | 2 tasks | 12 files |
 | Phase 11 P01 | 2min | 2 tasks | 2 files |
+| Phase 11 P02 | 4min | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -307,6 +308,9 @@ Recent decisions affecting current work:
 - [11-01]: Scale icon for Governance link to visually distinguish from Shield used by Approvals
 - [11-01]: MonitorCheck icon for Monitor link provides clear system health visual
 - [11-01]: SESS-01 checkbox left unchecked pending completion of Plan 11-03 SessionsTable fix
+- [Phase 11]: AgentPickerDialog reads from Zustand store instead of separate TanStack Query to eliminate query key mismatch
+- [Phase 11]: ChatLayoutContext created in chat-layout.tsx for propagating onNewChat callback; ChatHubView split into wrapper + consumer components
+- [Phase 11]: Resume-existing-conversation logic for direct chats: check conversations Map before creating new conversation
 
 ### Pending Todos
 
@@ -320,5 +324,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-20
-Stopped at: Completed 11-01-PLAN.md
-Resume file: .planning/phases/11-gap-closure-wiring-traceability/11-01-SUMMARY.md
+Stopped at: Completed 11-02-PLAN.md
+Resume file: .planning/phases/11-gap-closure-wiring-traceability/11-02-SUMMARY.md
