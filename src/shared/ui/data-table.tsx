@@ -54,6 +54,8 @@ interface DataTableProps<TData, TValue> {
 	emptyState?: ReactNode;
 	/** Show loading skeleton */
 	isLoading?: boolean;
+	/** Callback when a table row is clicked */
+	onRowClick?: (row: TData) => void;
 	/** Additional class names for the container */
 	className?: string;
 }
@@ -72,6 +74,7 @@ function DataTable<TData, TValue>({
 	onRowSelectionChange,
 	emptyState,
 	isLoading = false,
+	onRowClick,
 	className,
 }: DataTableProps<TData, TValue>) {
 	const [sorting, setSorting] = useState<SortingState>([]);
@@ -239,6 +242,7 @@ function DataTable<TData, TValue>({
 						columns={columns}
 						virtualizer={virtualizer}
 						parentRef={parentRef}
+						{...(onRowClick ? { onRowClick } : {})}
 					/>
 				) : (
 					<Table>
@@ -264,6 +268,8 @@ function DataTable<TData, TValue>({
 									<TableRow
 										key={row.id}
 										data-state={row.getIsSelected() ? "selected" : undefined}
+										className={cn(onRowClick && "cursor-pointer")}
+										onClick={() => onRowClick?.(row.original)}
 									>
 										{row.getVisibleCells().map((cell) => (
 											<TableCell key={cell.id}>
@@ -318,12 +324,14 @@ function VirtualizedTable<TData, TValue>({
 	columns,
 	virtualizer,
 	parentRef,
+	onRowClick,
 }: {
 	table: ReturnType<typeof useReactTable<TData>>;
 	rows: ReturnType<ReturnType<typeof useReactTable<TData>>["getRowModel"]>["rows"];
 	columns: ColumnDef<TData, TValue>[];
 	virtualizer: ReturnType<typeof useVirtualizer<HTMLDivElement, Element>>;
 	parentRef: React.RefObject<HTMLDivElement | null>;
+	onRowClick?: (row: TData) => void;
 }) {
 	const virtualItems = virtualizer.getVirtualItems();
 
@@ -368,6 +376,8 @@ function VirtualizedTable<TData, TValue>({
 								key={row.id}
 								data-index={virtualRow.index}
 								data-state={row.getIsSelected() ? "selected" : undefined}
+								className={cn(onRowClick && "cursor-pointer")}
+								onClick={() => onRowClick?.(row.original)}
 								style={{ height: `${virtualRow.size}px` }}
 							>
 								{row.getVisibleCells().map((cell) => (
