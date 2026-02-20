@@ -1,21 +1,23 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-import Link from "next/link";
 import {
-	LayoutDashboard,
-	FileText,
-	MessageSquare,
+	BarChart3,
 	Brain,
-	Wrench,
-	Settings2,
-	Shield,
+	FileText,
+	LayoutDashboard,
+	MessageSquare,
 	Radio,
 	ScrollText,
-	BarChart3,
+	Settings2,
+	Shield,
+	Wrench,
 } from "lucide-react";
-import { ScrollArea } from "@/shared/ui/scroll-area";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useAgents } from "@/features/agents/api/use-agents";
+import { useAgentStore } from "@/features/agents/model/agent-store";
 import { cn } from "@/shared/lib/cn";
+import { ScrollArea } from "@/shared/ui/scroll-area";
 
 const subPages = [
 	{ title: "Overview", href: "", icon: LayoutDashboard },
@@ -32,16 +34,17 @@ const subPages = [
 
 interface AgentDetailShellProps {
 	agentId: string;
-	agentName?: string | undefined;
 	children: React.ReactNode;
 }
 
-export function AgentDetailShell({
-	agentId,
-	agentName,
-	children,
-}: AgentDetailShellProps) {
+export function AgentDetailShell({ agentId, children }: AgentDetailShellProps) {
 	const pathname = usePathname();
+
+	// Hydrate agent store (handles direct /agents/[id] navigation)
+	useAgents();
+	const agentName = useAgentStore(
+		(s) => s.agents.find((a) => a.id === agentId)?.name,
+	);
 	const basePath = `/agents/${agentId}`;
 
 	return (
@@ -59,10 +62,7 @@ export function AgentDetailShell({
 					<nav className="space-y-1 px-3 py-4">
 						{subPages.map((page) => {
 							const href = `${basePath}${page.href}`;
-							const isActive =
-								page.href === ""
-									? pathname === basePath
-									: pathname.startsWith(href);
+							const isActive = page.href === "" ? pathname === basePath : pathname.startsWith(href);
 
 							return (
 								<Link
