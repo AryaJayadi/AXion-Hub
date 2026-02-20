@@ -311,6 +311,8 @@ Recent decisions affecting current work:
 - [Phase 11]: AgentPickerDialog reads from Zustand store instead of separate TanStack Query to eliminate query key mismatch
 - [Phase 11]: ChatLayoutContext created in chat-layout.tsx for propagating onNewChat callback; ChatHubView split into wrapper + consumer components
 - [Phase 11]: Resume-existing-conversation logic for direct chats: check conversations Map before creating new conversation
+- [Phase 11]: [11-03]: DataTable onRowClick uses conditional spread for exactOptionalPropertyTypes on VirtualizedTable pass-through
+- [Phase 11]: [11-03]: Session slide-over shows agent, status, model, tokens, duration, started time with transcript link footer
 
 ### Pending Todos
 
@@ -324,5 +326,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-20
-Stopped at: Completed 11-02-PLAN.md
-Resume file: .planning/phases/11-gap-closure-wiring-traceability/11-02-SUMMARY.md
+Stopped at: Completed 11-03-PLAN.md
+Resume file: .planning/phases/11-gap-closure-wiring-traceability/11-03-SUMMARY.md
