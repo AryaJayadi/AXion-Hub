@@ -1,6 +1,13 @@
 "use client";
 
-import { type ReactNode, useState, useCallback } from "react";
+import {
+	type ReactNode,
+	createContext,
+	useContext,
+	useState,
+	useCallback,
+} from "react";
+import { useRouter } from "next/navigation";
 import {
 	ResizableHandle,
 	ResizablePanel,
@@ -11,6 +18,25 @@ import { ParticipantPanel } from "./participant-panel";
 import { CommandPalette } from "./command-palette";
 import { AgentPickerDialog } from "./agent-picker-dialog";
 import { useChatStore } from "../model/chat-store";
+
+/* ---- ChatLayout context ---- */
+
+interface ChatLayoutContextValue {
+	onNewChat: () => void;
+}
+
+const ChatLayoutContext = createContext<ChatLayoutContextValue | null>(null);
+
+export function useChatLayoutContext() {
+	const ctx = useContext(ChatLayoutContext);
+	if (!ctx)
+		throw new Error(
+			"useChatLayoutContext must be used within ChatLayout",
+		);
+	return ctx;
+}
+
+/* ---- ChatLayout component ---- */
 
 interface ChatLayoutProps {
 	children: ReactNode;
@@ -35,6 +61,7 @@ export function ChatLayout({
 	conversationId,
 	showParticipants = false,
 }: ChatLayoutProps) {
+	const router = useRouter();
 	const [agentPickerOpen, setAgentPickerOpen] = useState(false);
 
 	const handleOpenAgentPicker = useCallback(() => {
@@ -44,6 +71,25 @@ export function ChatLayout({
 	const handleCreateConversation = useCallback(
 		(agentIds: string[], title?: string) => {
 			const store = useChatStore.getState();
+
+			// Resume existing conversation if one exists with the selected agent (direct chat only)
+			if (agentIds.length === 1) {
+				const existingConvo = Array.from(
+					store.conversations.values(),
+				).find(
+					(c) =>
+						c.type === "direct" &&
+						c.agentIds.length === 1 &&
+						c.agentIds[0] === agentIds[0],
+				);
+				if (existingConvo) {
+					store.setActiveConversation(existingConvo.id);
+					router.push(`/chat/${agentIds[0]}`);
+					return;
+				}
+			}
+
+			// No existing conversation -- create new
 			const id = crypto.randomUUID();
 			const type = agentIds.length > 1 ? "room" : "direct";
 
@@ -58,65 +104,74 @@ export function ChatLayout({
 				isPinned: false,
 			});
 			store.setActiveConversation(id);
+			router.push(`/chat/${agentIds[0]}`);
 		},
-		[],
+		[router],
 	);
 
+	const contextValue: ChatLayoutContextValue = {
+		onNewChat: handleOpenAgentPicker,
+	};
+
 	return (
-		<>
-			{/* Global command palette (Cmd+K) */}
-			<CommandPalette onOpenAgentPicker={handleOpenAgentPicker} />
+		<ChatLayoutContext.Provider value={contextValue}>
+			<div className="flex h-full flex-col">
+				{/* Global command palette (Cmd+K) */}
+				<CommandPalette onOpenAgentPicker={handleOpenAgentPicker} />
 
-			{/* Agent picker dialog */}
-			<AgentPickerDialog
-				open={agentPickerOpen}
-				onOpenChange={setAgentPickerOpen}
-				onCreateConversation={handleCreateConversation}
-			/>
+				{/* Agent picker dialog */}
+				<AgentPickerDialog
+					open={agentPickerOpen}
+					onOpenChange={setAgentPickerOpen}
+					onCreateConversation={handleCreateConversation}
+				/>
 
-			<ResizablePanelGroup orientation="horizontal" className="h-full">
-				{/* Left panel: Conversation sidebar */}
-				<ResizablePanel
-					defaultSize={25}
-					minSize={15}
-					maxSize={35}
-					collapsible
-					id="chat-sidebar"
-				>
-					<ConversationSidebar
-						onNewChat={handleOpenAgentPicker}
-					/>
-				</ResizablePanel>
+				<ResizablePanelGroup orientation="horizontal">
+					{/* Left panel: Conversation sidebar */}
+					<ResizablePanel
+						defaultSize="25%"
+						minSize="15%"
+						maxSize="35%"
+						collapsible
+						id="chat-sidebar"
+					>
+						<ConversationSidebar
+							onNewChat={handleOpenAgentPicker}
+						/>
+					</ResizablePanel>
 
-				<ResizableHandle withHandle />
+					<ResizableHandle withHandle />
 
-				{/* Main panel: Active chat content */}
-				<ResizablePanel
-					defaultSize={showParticipants ? 55 : 75}
-					minSize={40}
-					id="chat-main"
-				>
-					<div className="flex h-full flex-col">{children}</div>
-				</ResizablePanel>
+					{/* Main panel: Active chat content */}
+					<ResizablePanel
+						defaultSize={showParticipants ? "55%" : "75%"}
+						minSize="40%"
+						id="chat-main"
+					>
+						<div className="flex h-full flex-col">
+							{children}
+						</div>
+					</ResizablePanel>
 
-				{/* Right panel: Participant panel (only shown for rooms/teams) */}
-				{showParticipants && (
-					<>
-						<ResizableHandle withHandle />
-						<ResizablePanel
-							defaultSize={20}
-							minSize={15}
-							maxSize={30}
-							collapsible
-							id="chat-participants"
-						>
-							<ParticipantPanel
-								conversationId={conversationId}
-							/>
-						</ResizablePanel>
-					</>
-				)}
-			</ResizablePanelGroup>
-		</>
+					{/* Right panel: Participant panel (only shown for rooms/teams) */}
+					{showParticipants && (
+						<>
+							<ResizableHandle withHandle />
+							<ResizablePanel
+								defaultSize="20%"
+								minSize="15%"
+								maxSize="30%"
+								collapsible
+								id="chat-participants"
+							>
+								<ParticipantPanel
+									conversationId={conversationId}
+								/>
+							</ResizablePanel>
+						</>
+					)}
+				</ResizablePanelGroup>
+			</div>
+		</ChatLayoutContext.Provider>
 	);
 }

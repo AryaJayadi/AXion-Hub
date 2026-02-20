@@ -121,9 +121,7 @@ export function ConversationSidebar({
 						description="Start a new chat with an agent to get started."
 						action={{
 							label: "Start Chat",
-							onClick: () => {
-								/* Agent picker dialog will be wired in 04-02 */
-							},
+							onClick: () => onNewChat?.(),
 						}}
 					/>
 				)}
